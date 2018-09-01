@@ -1,0 +1,20 @@
+---
+## This playbook makes the environment ready to pull and test the container images.
+
+# Add insecure registry if its not added yet, and restart docker service
+  - name: check insecure registry is added
+    shell: grep -Pz '\[registries\.insecure\]\nregistries = \[\]' /etc/containers/registries.conf
+    ignore_errors: yes
+    register: check_insecure
+
+  - name: add insecure registry
+    lineinfile:
+      path: /etc/containers/registries.conf
+      regexp: '^registries = \[\]'
+      # dont know why insertafter: '^\[registries\.insecure\]$' does NOT work here
+      insertbefore: '^\[registries\.block\]$'
+      firstmatch: yes
+      line: "registries = ['brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888']"
+    when: check_insecure.stdout != ""
+    become: true
+    notify: restart docker service

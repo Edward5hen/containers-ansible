@@ -1,0 +1,17 @@
+---
+# This playbook is to test support-tools container image
+
+- hosts: all
+  vars:
+    image_name: /rhel7/support-tools
+    # normal size is 131, and min is like 0.9 * normal
+    size_min: 118
+    # normal size is 131, and max is like 1.1 * normal
+    size_max: 144
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+  - check_size

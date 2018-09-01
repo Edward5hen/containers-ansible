@@ -1,0 +1,18 @@
+---
+# Check rpms in container are signed correctly.
+
+# rpms which start with gpg-pubkey are fake rpms. No need to be counted.
+- name: check rpms signature
+  shell: |
+    prefix=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888
+    for r in `docker run --rm $prefix{{ image_name }}:{{ image_version }} rpm -qa | grep -v gpg-pubkey`
+    do
+      a=`docker run --rm $prefix{{ image_name }}:{{ image_version }} rpm -qi $r | grep 199e2f91fd431d51`
+      if [ -z "$a" ]
+      then
+        echo "$r has wrong signature"
+      fi
+    done
+  become: true
+  register: sig_result
+  failed_when: "'wrong' in sig_result.stdout"

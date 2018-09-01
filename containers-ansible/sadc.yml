@@ -1,0 +1,17 @@
+---
+# This playbook is to test sadc container image
+
+- hosts: all
+  vars:
+    image_name: /rhel7/sadc
+    # normal size is 245, and min is like 0.9 * normal
+    size_min: 220
+    # normal size is 245, and max is like 1.1 * normal
+    size_max: 270
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+  - check_size

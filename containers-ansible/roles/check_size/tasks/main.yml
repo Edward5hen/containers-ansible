@@ -1,0 +1,13 @@
+---
+# Check image size
+
+- name: get image size
+  #shell: docker images --format "{{.Repository}}{{.Tag}}%{{.Size}}" | grep {{ image_name }}{{ image_version }} | sed 's/.*%//' | cut -d ' ' -f1
+  shell: docker image ls brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_name }}:{{ image_version }} |  tail -n1 | tr -s ' ' | rev | cut -d ' ' -f2 | rev
+  become: true
+  register: image_size
+
+- name: check size
+  fail:
+    msg: "The image has wrong size!"
+  when: image_size.stdout|int > size_max or image_size.stdout|int < size_min

@@ -1,0 +1,10 @@
+---
+# This playbook is to pull the tested container image.
+# Parameter image_name could be defined in the playbook who calls this task, and image_version must be defined
+# in ansible-playbook command.
+
+- name: pull the image with docker
+  shell: docker pull brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_name }}:{{ image_version }}
+  become: true
+
+# pull images with atomic, to be continued...
