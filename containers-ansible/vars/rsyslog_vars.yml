@@ -1,0 +1,11 @@
+---
+image_name: /rhel7/rsyslog
+# normal size is 208, and min is like 0.9 * normal
+size_min: 187
+# normal size is 208, and max is like 1.1 * normal
+size_max: 228
+mounts: "/etc/localtime /etc/machine-id /etc/pki/rsyslog /etc/rsyslog.conf /etc/rsyslog.d /etc/sysconfig/rsyslog /run /var/lib/rsyslog /var/log "
+install_files:
+  - /etc/pki/rsyslog
+  - /etc/rsyslog.conf
+  - /etc/sysconfig/rsyslog

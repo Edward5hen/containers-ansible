@@ -1,0 +1,24 @@
+---
+# This playbook is to check container installation and mounted directories
+
+- name: install
+  shell: atomic install brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_name }}:{{ image_version }}
+  become: true
+
+- name: check install files
+  stat:
+    path: "{{ item }}"
+  register: r
+  failed_when: r.stat.exists == False
+  with_items: "{{ install_files }}"
+
+- name: run
+  shell: atomic run brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_name }}:{{ image_version }}
+  become: true
+
+- name: check mounts
+  # About the {% raw %} please see https://github.com/ansible/ansible/issues/21304
+  shell: docker inspect --format '{% raw %}{{ range .Mounts }}{{ .Source }} {{ end }}{% endraw %}' {{ container_name }} | tr " " "\n" | sed '/^\s*$/d' | sort | tr "\n" " "
+  become: true
+  register: mounts_result
+  failed_when: "mounts_result.stdout != mounts"

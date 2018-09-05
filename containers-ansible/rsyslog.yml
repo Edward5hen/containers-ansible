@@ -2,12 +2,8 @@
 # This playbook is to test rsyslog container image
 
 - hosts: all
-  vars:
-    image_name: /rhel7/rsyslog
-    # normal size is 208, and min is like 0.9 * normal
-    size_min: 187
-    # normal size is 208, and max is like 1.1 * normal
-    size_max: 228
+  vars_files:
+    - vars/rsyslog_vars.yml
 
   roles:
   - setup
@@ -15,3 +11,4 @@
   - scan
   - check_signature
   - check_size
+  - install_and_run
