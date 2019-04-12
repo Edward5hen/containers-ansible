@@ -3,9 +3,8 @@
 
 - hosts: all
   vars:
-    image_name: /rhel7/rhel-tools
     # normal size is 352, and min is like 0.9 * normal
-    size_min: 317
+    size_min: "{{ 317 if {{ ansible_distribution_major_version }} == '7' else 222}}"
     # normal size is 352, and max is like 1.1 * normal
     size_max: 387
 

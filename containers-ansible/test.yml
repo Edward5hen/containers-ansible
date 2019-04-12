@@ -1,9 +1,10 @@
 ---
-# This playbook is to test rsyslog container image
 
 - hosts: all
   vars_files:
     - vars/sadc_vars.yml
 
-  roles:
-    - install_and_mounts
+  tasks:
+  - name: debug
+    debug:
+      msg: "the system version is {{ ansible_distribution_major_version }}"

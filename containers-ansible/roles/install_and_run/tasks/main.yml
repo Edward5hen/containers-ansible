@@ -1,9 +1,15 @@
 ---
 # This playbook is to check container installation and mounted directories
 
-- name: install
-  shell: atomic install brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_name }}:{{ image_version }}
+- name: install on rhel7
+  shell: atomic install brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}
   become: true
+  when: ansible_distribution_major_version == '7'
+
+  # This is supposed to be done by command podman container runlabel, but --always flag is still not implemented yet.
+- name: install rsyslog on rhel8
+  shell: podman run --rm --privileged -v /:/host -e HOST=/host -e IMAGE=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} -e NAME=rsyslog brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} /bin/install.sh
+  when: ansible_distribution_major_version == '8'
 
 - name: check install files
   stat:
@@ -12,9 +18,16 @@
   failed_when: r.stat.exists == False
   with_items: "{{ install_files }}"
 
-- name: run
-  shell: atomic run brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_name }}:{{ image_version }}
+- name: run on rhel7
+  shell: atomic run brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}
   become: true
+  when: ansible_distribution_major_version == '7'
+
+  # This is supposed to be done by command podman container runlabel, but --always flag is still not implemented yet.
+- name: run rsyslog on rhel8
+  shell: podman run -d --privileged --name rsyslog --net=host --pid=host -v /etc/pki/rsyslog:/etc/pki/rsyslog -v /etc/rsyslog.conf:/etc/rsyslog.conf -v /etc/sysconfig/rsyslog:/etc/sysconfig/rsyslog -v /etc/rsyslog.d:/etc/rsyslog.d -v /var/log:/var/log -v /var/lib/rsyslog:/var/lib/rsyslog -v /run:/run -v /etc/machine-id:/etc/machine-id -v /etc/localtime:/etc/localtime -e IMAGE=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} -e NAME=rsyslog brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} /bin/rsyslog.sh
+  when: ansible_distribution_major_version == '8'
+
 
 - name: check mounts
   # About the {% raw %} please see https://github.com/ansible/ansible/issues/21304
@@ -22,3 +35,4 @@
   become: true
   register: mounts_result
   failed_when: "mounts_result.stdout != mounts"
+  when: ansible_distribution_major_version == '7'

@@ -2,12 +2,12 @@
 # Check rpms in container are signed correctly.
 
 # rpms which start with gpg-pubkey are fake rpms. No need to be counted.
-- name: check rpms signature
+- name: check rpms signature for rhel7 container
   shell: |
     prefix=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888
-    for r in `docker run --rm $prefix{{ image_name }}:{{ image_version }} rpm -qa | grep -v gpg-pubkey`
+    for r in `docker run --rm $prefix{{ image_version }} rpm -qa | grep -v gpg-pubkey`
     do
-      a=`docker run --rm $prefix{{ image_name }}:{{ image_version }} rpm -qi $r | grep 199e2f91fd431d51`
+      a=`docker run --rm $prefix{{ image_version }} rpm -qi $r | grep 199e2f91fd431d51`
       if [ -z "$a" ]
       then
         echo "$r has wrong signature"
@@ -15,4 +15,21 @@
     done
   become: true
   register: sig_result
+  when: ansible_distribution_major_version == '7'
+  failed_when: "'wrong' in sig_result.stdout"
+
+- name: check rpms signature for rhel8 container
+  shell: |
+    prefix=brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888
+    for r in `podman run --rm $prefix{{ image_version }} rpm -qa | grep -v gpg-pubkey`
+    do
+      a=`podman run --rm $prefix{{ image_version }} rpm -qi $r | grep 199e2f91fd431d51`
+      if [ -z "$a" ]
+      then
+        echo "$r has wrong signature"
+      fi
+    done
+  become: true
+  register: sig_result
+  when: ansible_distribution_major_version == '8'
   failed_when: "'wrong' in sig_result.stdout"

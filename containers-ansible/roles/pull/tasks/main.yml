@@ -1,10 +1,12 @@
 ---
 # This playbook is to pull the tested container image.
-# Parameter image_name could be defined in the playbook who calls this task, and image_version must be defined
-# in ansible-playbook command.
+# image_version must be defined in ansible-playbook command. e.g., /rhel7/rsyslog:5.3.9
 
 - name: pull the image with docker
-  shell: docker pull brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_name }}:{{ image_version }}
+  shell: docker pull brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}
   become: true
+  when: ansible_distribution_major_version == '7'
 
-# pull images with atomic, to be continued...
+- name: pull the image with podman
+  shell: podman pull brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}
+  when: ansible_distribution_major_version == '8'

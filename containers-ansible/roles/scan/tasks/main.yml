@@ -1,10 +1,10 @@
 ---
 # This playbook is to scan the container image with "atomic scan" command.
-# Parameter image_name could be defined in the playbook who calls this task, and image_version must be defined
-# in ansible-playbook command.
+# image_version must be defined in ansible-playbook command.
 
 - name: scan the container image with atomic scan command
-  shell: atomic scan brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_name }}:{{ image_version }}
+  shell: atomic scan brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}
   become: true
   register: scan_result
   failed_when: "'pass' not in scan_result.stdout"
+  when: ansible_distribution_major_version == '7'

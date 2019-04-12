@@ -1,13 +1,34 @@
 ---
 # Check image size
 
-- name: get image size
-  #shell: docker images --format "{{.Repository}}{{.Tag}}%{{.Size}}" | grep {{ image_name }}{{ image_version }} | sed 's/.*%//' | cut -d ' ' -f1
-  shell: docker image ls brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_name }}:{{ image_version }} |  tail -n1 | tr -s ' ' | rev | cut -d ' ' -f2 | rev
+- name: get image size with docker
+  shell: docker image ls brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} |  tail -n1 | tr -s ' ' | rev | cut -d ' ' -f2 | rev
   become: true
   register: image_size
+  when: ansible_distribution_major_version == '7'
 
-- name: check size
+- set_fact: my_image_size="{{ image_size }}"
+  when: image_size.changed
+
+- name: get image size with podman
+  shell: podman inspect brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} --format \{\{.Size\}\}
+  become: true
+  register: image_size
+  when: ansible_distribution_major_version == '8'
+
+- set_fact: my_image_size="{{ image_size }}"
+  when: image_size.changed
+
+- name: debug
+  debug:
+    var: my_image_size.stdout
+
+- name: check size for rhel7 containers
   fail:
     msg: "The image has wrong size!"
-  when: image_size.stdout|int > size_max or image_size.stdout|int < size_min
+  when: ansible_distribution_major_version == '7' and my_image_size.stdout|int > size_max_rhel7 or my_image_size.stdout|int < size_min_rhel7
+
+- name: check size for rhel8 containers
+  fail:
+    msg: "The image has wrong size!"
+  when: ansible_distribution_major_version == '8' and my_image_size.stdout|int > size_max_rhel8 or my_image_size.stdout|int < size_min_rhel8

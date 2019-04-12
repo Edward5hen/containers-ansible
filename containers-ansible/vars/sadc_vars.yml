@@ -1,5 +1,4 @@
 ---
-image_name: /rhel7/sadc
 container_name: sadc
 # normal size is 245, and min is like 0.9 * normal
 size_min: 220
