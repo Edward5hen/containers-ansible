@@ -23,12 +23,7 @@
   debug:
     var: my_image_size.stdout
 
-- name: check size for rhel7 containers
+- name: check container size
   fail:
     msg: "The image has wrong size!"
-  when: ansible_distribution_major_version == '7' and my_image_size.stdout|int > size_max_rhel7 or my_image_size.stdout|int < size_min_rhel7
-
-- name: check size for rhel8 containers
-  fail:
-    msg: "The image has wrong size!"
-  when: ansible_distribution_major_version == '8' and my_image_size.stdout|int > size_max_rhel8 or my_image_size.stdout|int < size_min_rhel8
+  when: my_image_size.stdout|int > size_max or my_image_size.stdout|int < size_min

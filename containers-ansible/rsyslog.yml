@@ -2,8 +2,13 @@
 # This playbook is to test rsyslog container image
 
 - hosts: all
-  vars_files:
-    - vars/rsyslog_vars.yml
+
+  pre_tasks:
+  - include_vars: rsyslog_rhel7_vars.yml
+    when: ansible_distribution_major_version == '7'
+
+  - include_vars: rsyslog_rhel8_vars.yml
+    when: ansible_distribution_major_version == '8'
 
   roles:
   - setup
