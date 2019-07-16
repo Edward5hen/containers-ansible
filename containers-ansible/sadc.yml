@@ -2,8 +2,29 @@
 # This playbook is to test sadc container image
 
 - hosts: all
-  vars_files:
-    - vars/sadc_vars.yml
+
+  pre_tasks:
+  - name: print distribution and architecture
+    debug:
+      msg: "{{ ansible_distribution_major_version }} has {{ ansible_architecture }}"
+
+  - include_vars: sadc_rhel7_vars.yml
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 'x86_64'
+
+  - include_vars: sadc_rhel7_ppc_vars.yml
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 'ppc64le'
+
+  - include_vars: sadc_rhel7_s390x_vars.yml
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 's390x'
+
+  - include_vars: sadc_rhel8_vars.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
+
+  - include_vars: sadc_rhel8_ppc_vars.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'ppc64le'
+
+  - include_vars: sadc_rhel8_s390x_vars.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 's390x'
 
   roles:
   - setup
@@ -12,3 +33,24 @@
   - check_signature
   - check_size
   - install_and_run
+
+  post_tasks:
+  # We're not going to cover all the features, since the rpm has been tested.
+  - name: run sa1 command within the container with docker
+    shell: docker exec sadc /usr/lib64/sa/sa1 1 1
+    become: true
+    when: ansible_distribution_major_version == '7'
+
+  - name: run sa1 command within the container with podman
+    shell: podman exec sadc /usr/lib64/sa/sa1 1 1
+    become: true
+    when: ansible_distribution_major_version == '8'
+
+  - set_fact:
+      dir_name: /var/log/sa/sa{{ ansible_date_time.day }}
+
+  - debug: msg="working dir is {{ dir_name }}"
+
+  - name: check the working directory is created
+    stat:
+      path: "{{ dir_name }}"

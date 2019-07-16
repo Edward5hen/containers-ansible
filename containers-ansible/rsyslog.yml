@@ -4,11 +4,27 @@
 - hosts: all
 
   pre_tasks:
+  - name: print distribution and architecture
+    debug:
+      msg: "{{ ansible_distribution_major_version }} has {{ ansible_architecture }}"
+
   - include_vars: rsyslog_rhel7_vars.yml
-    when: ansible_distribution_major_version == '7'
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 'x86_64'
+
+  - include_vars: rsyslog_rhel7_ppc_vars.yml
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 'ppc64le'
+
+  - include_vars: rsyslog_rhel7_s390x_vars.yml
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 's390x'
 
   - include_vars: rsyslog_rhel8_vars.yml
-    when: ansible_distribution_major_version == '8'
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
+
+  - include_vars: rsyslog_rhel8_ppc_vars.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'ppc64le'
+
+  - include_vars: rsyslog_rhel8_s390x_vars.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 's390x'
 
   roles:
   - setup
@@ -18,3 +34,9 @@
   - check_signature
   - check_size
   - install_and_run
+
+  post_tasks:
+   # We're not going to cover all the features, since the rpm has been tested already.
+  - name: check rsyslog within the container works fine
+    shell: logger "woohaa" && grep woohaa /var/log/messages
+    become: true

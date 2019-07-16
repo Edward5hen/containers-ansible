@@ -1,0 +1,12 @@
+---
+container_name: sadc
+# normal size is 276, and min is like 0.9 * normal
+size_min: 250
+# normal size is 276, and max is like 1.1 * normal
+size_max: 313
+mounts: "/ /etc/sysconfig/sysstat /etc/sysconfig/sysstat.ioconf /var/log/sa "
+install_files:
+  - /etc/cron.d/sysstat
+  - /etc/sysconfig/sysstat
+  - /etc/sysconfig/sysstat.ioconf
+  - /usr/local/bin/sysstat.sh
