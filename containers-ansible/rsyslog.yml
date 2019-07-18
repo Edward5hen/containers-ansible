@@ -8,6 +8,17 @@
     debug:
       msg: "{{ ansible_distribution_major_version }} has {{ ansible_architecture }}"
 
+  - name: check if rsyslog is running
+    shell: systemctl is-active --quiet rsyslog
+    become: true
+    register: rst
+    ignore_errors: yes
+
+  - name: stop if it's been started
+    shell: systemctl stop rsyslog
+    become: true
+    when: rst.rc == 0
+
   - include_vars: rsyslog_rhel7_vars.yml
     when: ansible_distribution_major_version == '7' and ansible_architecture == 'x86_64'
 

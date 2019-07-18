@@ -14,3 +14,8 @@
   - scan
   - check_signature
   - check_size
+
+  post_tasks:
+  - name: check sosreport, strace, tcpdump are all installed
+    shell: rpm -q sosrepot && rpm -q strace && rpm -q tcpdump
+    become: true
