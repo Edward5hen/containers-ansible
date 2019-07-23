@@ -47,6 +47,10 @@
   - install_and_run
 
   post_tasks:
+  - name: pause for 1 min to wait for container setup
+    pause:
+      minutes: 1
+
    # We're not going to cover all the features, since the rpm has been tested already.
   - name: check rsyslog within the container works fine
     shell: logger "woohaa" && grep woohaa /var/log/messages

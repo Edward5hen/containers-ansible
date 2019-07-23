@@ -18,3 +18,15 @@
     when: check_insecure.stdout != ""
     become: true
     notify: restart docker service
+
+# We're not going to remove all the images, and not going to remove the containers as a Tear-Down.
+# Because sometimes we just want to keep the "scene of crime".
+  - name: delete all containers with atomic
+    shell: atomic containers delete -af
+    become: true
+    when: ansible_distribution_major_version == '7'
+
+  - name: delete all containers with podman
+    shell: podman rm -af
+    become: true
+    when: ansible_distribution_major_version == '8'

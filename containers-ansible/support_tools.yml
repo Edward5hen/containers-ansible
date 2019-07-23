@@ -2,11 +2,12 @@
 # This playbook is to test support-tools container image
 
 - hosts: all
-  vars:
-    # normal size is 131, and min is like 0.9 * normal
-    size_min: 118
-    # normal size is 131, and max is like 1.1 * normal
-    size_max: 144
+
+  pre_tasks:
+  - include_vars: support_tools_rhel7_vars.yml
+    when: ansible_distribution_major_version == '7'
+  - include_vars: support_tools_rhel8_vars.yml
+    when: ansible_distribution_major_version == '8'
 
   roles:
   - setup
@@ -16,6 +17,29 @@
   - check_size
 
   post_tasks:
-  - name: check sosreport, strace, tcpdump are all installed
-    shell: rpm -q sosrepot && rpm -q strace && rpm -q tcpdump
+  - set_fact:
+      vir_time: "{{ ansible_date_time.epoch }}"
+
+  - debug: msg="{{ vir_time }}"
+
+  - name: run sosreport within the container
+    expect:
+      echo: yes
+      command: "podman container runlabel run brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}"
+      timeout: null
+      responses:
+        (.*)bash(.*)#: ["sosreport", "exit"]
+        (.*)Press ENTER(.*): ""
+        (.*)enter the case id(.*): "cvp-{{ vir_time }}"
+    become: true
+
+  - name: check the report has been stored in host
+    shell: ls /var/tmp | grep "sosreport.*{{ vir_time }}"
+
+  - name: remove the reports to release storage
+    shell: rm -f /var/tmp/sosreport*
+    become: true
+
+  - name: check tcpdump is installed
+    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} rpm -q tcpdump
     become: true
