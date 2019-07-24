@@ -29,10 +29,10 @@
   roles:
   - setup
   - pull
-  - scan
   - check_signature
   - check_size
   - install_and_run
+  - scan
 
   post_tasks:
   # We're not going to cover all the features, since the rpm has been tested.

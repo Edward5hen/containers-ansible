@@ -22,7 +22,7 @@
 
   - debug: msg="{{ vir_time }}"
 
-  - name: run sosreport within the container
+  - name: run sosreport within the container with docker
     expect:
       echo: yes
       command: "podman container runlabel run brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}"
@@ -32,6 +32,19 @@
         (.*)Press ENTER(.*): ""
         (.*)enter the case id(.*): "cvp-{{ vir_time }}"
     become: true
+    when: ansible_distribution_major_version == '8'
+
+  - name: run sosreport within the container with atomic
+    expect:
+      echo: yes
+      command: "atomic run brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}"
+      timeout: null
+      responses:
+        (.*)bash(.*)#: ["sosreport", "exit"]
+        (.*)Press ENTER(.*): ""
+        (.*)enter the case id(.*): "cvp-{{ vir_time }}"
+    become: true
+    when: ansible_distribution_major_version == '7'
 
   - name: check the report has been stored in host
     shell: ls /var/tmp | grep "sosreport.*{{ vir_time }}"
@@ -40,6 +53,18 @@
     shell: rm -f /var/tmp/sosreport*
     become: true
 
-  - name: check tcpdump is installed
+  - name: check tcpdump is installed with podman
     shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} rpm -q tcpdump
     become: true
+    when: ansible_distribution_major_version == '8'
+
+  - name: check tcpdump is installed with docker
+    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} rpm -q tcpdump
+    become: true
+    when: ansible_distribution_major_version == '7'
+
+# Only rhel7 support-tools has strace
+  - name: check strace is installed with docker
+    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} rpm -q strace
+    become: true
+    when: ansible_distribution_major_version == '7'
