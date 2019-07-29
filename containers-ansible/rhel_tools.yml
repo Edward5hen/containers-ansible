@@ -1,10 +1,11 @@
 ---
 # This playbook is to test rhel-tools container image
+# For now, only RHEL7 has this image.
 
 - hosts: all
   vars:
     # normal size is 352, and min is like 0.9 * normal
-    size_min: "{{ 317 if {{ ansible_distribution_major_version }} == '7' else 222}}"
+    size_min: 317
     # normal size is 352, and max is like 1.1 * normal
     size_max: 387
 
@@ -14,3 +15,8 @@
   - scan
   - check_signature
   - check_size
+
+  post_tasks:
+    - name: check the tools are included in this image.
+      shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} /bin/bash -c "command -v useradd && command -v blktrace"
+      become: true

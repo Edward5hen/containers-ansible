@@ -1,0 +1,51 @@
+---
+# This playbook is to test net-snmp container image
+
+- hosts: all
+
+  pre_tasks:
+  - include_vars: snmp_rhel7_vars.yml
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 'x86_64'
+
+  - include_vars: snmp_rhel7_ppc_vars.yml
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 'ppc64le'
+
+  - include_vars: snmp_rhel7_s390x_vars.yml
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 's390x'
+
+  - include_vars: snmp_rhel8_vars.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
+
+  - include_vars: snmp_rhel8_ppc_vars.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'ppc64le'
+
+  - include_vars: snmp_rhel8_s390x_vars.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 's390x'
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+  - check_size
+
+  post_tasks:
+  - name: run the container with docker
+    shell: docker run -d --privileged --net=host brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}
+    become: true
+    when: ansible_distribution_major_version == '7'
+
+  - name: run the container with docker
+    shell: podman run -d --privileged --net=host brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}
+    become: true
+    when: ansible_distribution_major_version == '8'
+
+  - name: run "snmpgetnext -v 2c -c public $IP .1" for remote target
+    shell: snmpgetnext -v 2c -c public {{ ansible_default_ipv4.address }} .1
+    delegate_to: localhost
+    become: true
+
+  - name: run "nmap -sU -p U:161 $IP" for remote target
+    shell:  nmap -sU -p U:161 {{ ansible_default_ipv4.address }}
+    delegate_to: localhost
+    become: true

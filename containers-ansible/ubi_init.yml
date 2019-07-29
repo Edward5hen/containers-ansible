@@ -1,0 +1,144 @@
+---
+# This playbook is to test ubi-init container image
+
+- hosts: all
+
+  pre_tasks:
+  - include_vars: ubi_init_rhel7_vars.yml
+    when: ansible_architecture == 'x86_64' and ansible_distribution_major_version == '7'
+
+  - include_vars: ubi_init_rhel7_ppc_vars.yml
+    when: ansible_architecture == 'ppc64le' and ansible_distribution_major_version == '7'
+
+  - include_vars: ubi_init_rhel7_s390x_vars.yml
+    when: ansible_architecture == 's390x' and ansible_distribution_major_version == '7'
+
+  - include_vars: ubi_init_rhel8_vars.yml
+    when: ansible_architecture == 'x86_64' and ansible_distribution_major_version == '8'
+
+  - include_vars: ubi_init_rhel8_ppc_vars.yml
+    when: ansible_architecture == 'ppc64le' and ansible_distribution_major_version == '8'
+
+  - include_vars: ubi_init_rhel8_s390x_vars.yml
+    when: ansible_architecture == 's390x' and ansible_distribution_major_version == '8'
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+  - check_size
+
+  post_tasks:
+  - name: check eula correctness with docker
+    shell: docker inspect brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} | grep {{ eula_link }}
+    become: true
+    when: ansible_distribution_major_version == '7'
+
+  - name: check eula correctness with podman
+    shell: podman inspect brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} | grep {{ eula_link }}
+    become: true
+    when: ansible_distribution_major_version == '8'
+
+  - name: check repo file with docker
+    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/yum.repos.d | grep "ubi\.repo"
+    become: true
+    when: ansible_distribution_major_version == '7'
+
+  - name: check repo file with podman
+    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/yum.repos.d | grep "ubi\.repo"
+    become: true
+    when: ansible_distribution_major_version == '8'
+
+  - name: check pem file with docker for arch x86_64
+    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "69\.pem"
+    become: true
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 'x86_64'
+
+  - name: check pem file with docker for arch ppc64le
+    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "279\.pem"
+    become: true
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 'ppc64le'
+
+  - name: check pem file with docker for arch s390x
+    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "69\.pem"
+    become: true
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 's390x'
+
+  - name: check pem file with podman for arch x86_64
+    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "69\.pem"
+    become: true
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
+
+  - name: check pem file with podman for arch ppc64le
+    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "279\.pem"
+    become: true
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'ppc64le'
+
+  - name: check pem file with podman for arch s390x
+    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "69\.pem"
+    become: true
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 's390x'
+  # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
+  - name: set boolean container_manage_cgroup to 1
+    shell: setsebool -P container_manage_cgroup 1
+    become: true
+
+  - name: create dockerfile of httpd
+    template:
+      src: Dockerfile-rhel-init.j2
+      dest: /tmp/Dockerfile-ubi-init
+    become: true
+
+  - name: build the image with docker
+    shell: docker build -f /tmp/Dockerfile-ubi-init -t ubi7-init-httpd /tmp/
+    when: ansible_distribution_major_version == '7'
+    become: true
+
+  - name: build the image with podman
+    shell: podman build -f /tmp/Dockerfile-ubi-init -t ubi8-init-httpd /tmp/
+    when: ansible_distribution_major_version == '8'
+    become: true
+
+  - name: run the image with docker
+    shell: docker run -d -p 80:80 --name init-ubi7-httpd ubi7-init-httpd
+    when: ansible_distribution_major_version == '7'
+    become: true
+
+  - name: run the image with podman
+    shell: docker run -d -p 80:80 --name init-ubi8-httpd ubi8-init-httpd
+    when: ansible_distribution_major_version == '8'
+    become: true
+
+  - name: check there are only 3 processes are running within the container
+    shell: docker exec init-ubi7-httpd ps | wc -l
+    register: amount_rst
+    become: true
+    when: ansible_distribution_major_version == '7'
+    failed_when: amount_rst.stdout|int != 5
+
+  - name: check there are only 3 processes are running within the container by podman
+    shell: docker exec init-ubi8-httpd ps | wc -l
+    register: amount_rst
+    become: true
+    when: ansible_distribution_major_version == '8'
+    failed_when: amount_rst.stdout|int != 5
+
+  - name: check the processes are systemd, systemd-journal and httpd
+    shell: >
+      docker exec init-ubi7-httpd ps | sed -n '2p' | grep ".*systemd$" &&
+      docker exec init-ubi7-httpd ps | sed -n '3p' | grep ".*systemd-journal$" &&
+      docker exec init-ubi7-httpd ps | sed -n '4p' | grep ".*httpd$"
+    become: true
+    when: ansible_distribution_major_version == '7'
+
+  - name: check the processes are systemd, systemd-journal and httpd by podman
+    shell: >
+      podman exec init-ubi-httpd ps | sed -n '2p' | grep ".*systemd$" &&
+      podman exec init-ubi-httpd ps | sed -n '3p' | grep ".*systemd-journal$" &&
+      podman exec init-ubi-httpd ps | sed -n '4p' | grep ".*httpd$"
+    become: true
+    when: ansible_distribution_major_version == '8'
+
+  - name: check the container running fine
+    shell: curl localhost

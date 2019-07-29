@@ -1,0 +1,22 @@
+---
+# This playbook is to test sadc container image.
+# Only rhel7 has this container images.
+
+- hosts: all
+
+  pre_tasks:
+  - include_vars: etcd_rhel7_vars.yml
+    when: ansible_architecture == 'x86_64'
+
+  - include_vars: etcd_rhel7_ppc_vars.yml
+    when: ansible_architecture == 'ppc64le'
+
+  - include_vars: etcd_rhel7_s390x_vars.yml
+    when: ansible_architecture == 's390x'
+
+  roles:
+  - setup
+  - pull
+  - check_signature
+  - check_size
+  - scan

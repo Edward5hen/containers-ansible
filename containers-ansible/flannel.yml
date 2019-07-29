@@ -1,0 +1,17 @@
+---
+# This playbook is to test flannel container image
+# For now, only RHEL7 has this image, and only available on x86_64.
+
+- hosts: all
+  vars:
+    # normal size is 258, and min is like 0.9 * normal
+    size_min: 232
+    # normal size is 258, and max is like 1.1 * normal
+    size_max: 284
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+  - check_size

@@ -1,5 +1,6 @@
 ---
-# This playbook is to test sadc container image
+# This playbook is to test sadc container image.
+# Only rhel7 has this container images.
 
 - hosts: all
 
@@ -9,22 +10,13 @@
       msg: "{{ ansible_distribution_major_version }} has {{ ansible_architecture }}"
 
   - include_vars: sadc_rhel7_vars.yml
-    when: ansible_distribution_major_version == '7' and ansible_architecture == 'x86_64'
+    when: ansible_architecture == 'x86_64'
 
   - include_vars: sadc_rhel7_ppc_vars.yml
-    when: ansible_distribution_major_version == '7' and ansible_architecture == 'ppc64le'
+    when: ansible_architecture == 'ppc64le'
 
   - include_vars: sadc_rhel7_s390x_vars.yml
-    when: ansible_distribution_major_version == '7' and ansible_architecture == 's390x'
-
-  - include_vars: sadc_rhel8_vars.yml
-    when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
-
-  - include_vars: sadc_rhel8_ppc_vars.yml
-    when: ansible_distribution_major_version == '8' and ansible_architecture == 'ppc64le'
-
-  - include_vars: sadc_rhel8_s390x_vars.yml
-    when: ansible_distribution_major_version == '8' and ansible_architecture == 's390x'
+    when: ansible_architecture == 's390x'
 
   roles:
   - setup
@@ -40,11 +32,6 @@
     shell: docker exec sadc /usr/lib64/sa/sa1 1 1
     become: true
     when: ansible_distribution_major_version == '7'
-
-  - name: run sa1 command within the container with podman
-    shell: podman exec sadc /usr/lib64/sa/sa1 1 1
-    become: true
-    when: ansible_distribution_major_version == '8'
 
   - set_fact:
       dir_name: /var/log/sa/sa{{ ansible_date_time.day }}
