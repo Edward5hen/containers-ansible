@@ -1,6 +1,6 @@
 # containers-ansible
-* using ansible to test container images
-* no inventory file included, target must be Atomic Host.
+* using ansible to test container images: rsyslog, support-tools, sadc, rhel-tools, net-snmp, ubi-init/rhel-init, etcd and flannel
+* no inventory file included
 
 # status:
 *Being developed*
