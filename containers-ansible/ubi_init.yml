@@ -66,7 +66,7 @@
     when: ansible_distribution_major_version == '7' and ansible_architecture == 's390x'
 
   - name: check pem file with podman for arch x86_64
-    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "69\.pem"
+    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "479\.pem"
     become: true
     when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
 
@@ -76,7 +76,7 @@
     when: ansible_distribution_major_version == '8' and ansible_architecture == 'ppc64le'
 
   - name: check pem file with podman for arch s390x
-    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "69\.pem"
+    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "72\.pem"
     become: true
     when: ansible_distribution_major_version == '8' and ansible_architecture == 's390x'
   # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
@@ -101,12 +101,12 @@
     become: true
 
   - name: run the image with docker
-    shell: docker run -d -p 80:80 --name init-ubi7-httpd ubi7-init-httpd
+    shell: docker run -d --name init-ubi7-httpd ubi7-init-httpd
     when: ansible_distribution_major_version == '7'
     become: true
 
   - name: run the image with podman
-    shell: docker run -d -p 80:80 --name init-ubi8-httpd ubi8-init-httpd
+    shell: podman run -d --name init-ubi8-httpd ubi8-init-httpd
     when: ansible_distribution_major_version == '8'
     become: true
 
@@ -118,11 +118,11 @@
     failed_when: amount_rst.stdout|int != 5
 
   - name: check there are only 3 processes are running within the container by podman
-    shell: docker exec init-ubi8-httpd ps | wc -l
-    register: amount_rst
+    shell: podman exec init-ubi8-httpd ps | wc -l
+    register: amount_rst_8
     become: true
     when: ansible_distribution_major_version == '8'
-    failed_when: amount_rst.stdout|int != 5
+    failed_when: amount_rst_8.stdout|int != 5
 
   - name: check the processes are systemd, systemd-journal and httpd
     shell: >
@@ -134,11 +134,29 @@
 
   - name: check the processes are systemd, systemd-journal and httpd by podman
     shell: >
-      podman exec init-ubi-httpd ps | sed -n '2p' | grep ".*systemd$" &&
-      podman exec init-ubi-httpd ps | sed -n '3p' | grep ".*systemd-journal$" &&
-      podman exec init-ubi-httpd ps | sed -n '4p' | grep ".*httpd$"
+      podman exec init-ubi8-httpd ps | sed -n '2p' | grep ".*systemd$" &&
+      podman exec init-ubi8-httpd ps | sed -n '3p' | grep ".*systemd-journal$" &&
+      podman exec init-ubi8-httpd ps | sed -n '4p' | grep ".*httpd$"
     become: true
     when: ansible_distribution_major_version == '8'
 
+  - name: get IP of the container with docker
+    shell: docker inspect init-ubi7-httpd --format=\{\{.NetworkSettings.IPAddress\}\}
+    register: ip_ctn
+    become: true
+    when: ansible_distribution_major_version == '7'
+
+  - set_fact: my_ip="{{ ip_ctn }}"
+    when: ip_ctn.changed
+
+  - name: get IP of the container with podman
+    shell: podman inspect init-ubi8-httpd --format=\{\{.NetworkSettings.IPAddress\}\}
+    register: ip_ctn
+    become: true
+    when: ansible_distribution_major_version == '8'
+
+  - set_fact: my_ip="{{ ip_ctn }}"
+    when: ip_ctn.changed
+
   - name: check the container running fine
-    shell: curl localhost
+    shell: curl {{ my_ip.stdout }}

@@ -1,5 +1,6 @@
 ---
-# This playbook is to test support-tools container image
+# This playbook is to test support-tools container image.
+# This image just has x64_64 version for rhel7, but has x64_64, s390x and ppc64le for rhel8.
 
 - hosts: all
 
@@ -7,7 +8,11 @@
   - include_vars: support_tools_rhel7_vars.yml
     when: ansible_distribution_major_version == '7'
   - include_vars: support_tools_rhel8_vars.yml
-    when: ansible_distribution_major_version == '8'
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
+  - include_vars: support_tools_rhel8_ppc_vars.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'ppc64le'
+  - include_vars: support_tools_rhel8_s390x_vars.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 's390x'
 
   roles:
   - setup
@@ -22,7 +27,7 @@
 
   - debug: msg="{{ vir_time }}"
 
-  - name: run sosreport within the container with docker
+  - name: run sosreport within the container with podman
     expect:
       echo: yes
       command: "podman container runlabel run brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}"
