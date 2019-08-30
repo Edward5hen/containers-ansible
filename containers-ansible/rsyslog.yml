@@ -53,5 +53,5 @@
 
    # We're not going to cover all the features, since the rpm has been tested already.
   - name: check rsyslog within the container works fine
-    shell: logger "woohaa" && grep woohaa /var/log/messages
+    shell: logger "woohaa" && sleep 30 && grep woohaa /var/log/messages
     become: true
