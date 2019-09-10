@@ -41,7 +41,7 @@
   - setup
   - pull
   # only rhel7 container can be scanned now.
-  #- scan
+  - scan
   - check_signature
   - check_size
   - install_and_run
