@@ -2,7 +2,7 @@
 # Check image size
 
 - name: get image size with docker
-  shell: docker image ls brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} |  tail -n1 | tr -s ' ' | rev | cut -d ' ' -f2 | rev
+  shell: docker image ls {{ image_fullname }} |  tail -n1 | tr -s ' ' | rev | cut -d ' ' -f2 | rev
   become: true
   register: image_size
   when: ansible_distribution_major_version == '7'
@@ -11,7 +11,7 @@
   when: image_size.changed
 
 - name: get image size with podman
-  shell: podman inspect brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} --format \{\{.Size\}\}
+  shell: podman inspect {{ image_fullname }} --format \{\{.Size\}\}
   become: true
   register: image_size
   when: ansible_distribution_major_version == '8'

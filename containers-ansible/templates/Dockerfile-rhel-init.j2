@@ -1,4 +1,4 @@
-FROM brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}
+FROM {{ image_fullname }}
 MAINTAINER Edward Shen "weshen@redhat.com"
 
 RUN yum install -y httpd && yum clean all && systemctl enable httpd
