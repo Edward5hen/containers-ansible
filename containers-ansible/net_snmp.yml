@@ -31,12 +31,12 @@
 
   post_tasks:
   - name: run the container with docker
-    shell: docker run -d --privileged --net=host brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}
+    shell: docker run -d --privileged --net=host {{ image_fullname }}
     become: true
     when: ansible_distribution_major_version == '7'
 
   - name: run the container with docker
-    shell: podman run -d --privileged --net=host brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}
+    shell: podman run -d --privileged --net=host {{ image_fullname }}
     become: true
     when: ansible_distribution_major_version == '8'
 

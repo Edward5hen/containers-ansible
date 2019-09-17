@@ -30,7 +30,7 @@
   - name: run sosreport within the container with podman
     expect:
       echo: yes
-      command: "podman container runlabel run brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}"
+      command: "podman container runlabel run {{ image_fullname }}"
       timeout: null
       responses:
         (.*)bash(.*)#: ["sosreport", "exit"]
@@ -42,7 +42,7 @@
   - name: run sosreport within the container with atomic
     expect:
       echo: yes
-      command: "atomic run brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }}"
+      command: "atomic run {{ image_fullname }}"
       timeout: null
       responses:
         (.*)bash(.*)#: ["sosreport", "exit"]
@@ -59,17 +59,17 @@
     become: true
 
   - name: check tcpdump is installed with podman
-    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} rpm -q tcpdump
+    shell: podman run --rm {{ image_fullname }} rpm -q tcpdump
     become: true
     when: ansible_distribution_major_version == '8'
 
   - name: check tcpdump is installed with docker
-    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} rpm -q tcpdump
+    shell: docker run --rm {{ image_fullname }} rpm -q tcpdump
     become: true
     when: ansible_distribution_major_version == '7'
 
 # Only rhel7 support-tools has strace
   - name: check strace is installed with docker
-    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} rpm -q strace
+    shell: docker run --rm {{ image_fullname }} rpm -q strace
     become: true
     when: ansible_distribution_major_version == '7'

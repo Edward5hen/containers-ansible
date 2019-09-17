@@ -18,5 +18,5 @@
 
   post_tasks:
     - name: check the tools are included in this image.
-      shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} /bin/bash -c "command -v useradd && command -v blktrace"
+      shell: docker run --rm  {{ image_fullname }} /bin/bash -c "command -v useradd && command -v blktrace"
       become: true

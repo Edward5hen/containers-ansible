@@ -31,52 +31,52 @@
 
   post_tasks:
   - name: check eula correctness with docker
-    shell: docker inspect brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} | grep {{ eula_link }}
+    shell: docker inspect {{ image_fullname }} | grep {{ eula_link }}
     become: true
     when: ansible_distribution_major_version == '7'
 
   - name: check eula correctness with podman
-    shell: podman inspect brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} | grep {{ eula_link }}
+    shell: podman inspect {{ image_fullname }} | grep {{ eula_link }}
     become: true
     when: ansible_distribution_major_version == '8'
 
   - name: check repo file with docker
-    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/yum.repos.d | grep "ubi\.repo"
+    shell: docker run --rm {{ image_fullname }} ls /etc/yum.repos.d | grep "ubi\.repo"
     become: true
     when: ansible_distribution_major_version == '7'
 
   - name: check repo file with podman
-    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/yum.repos.d | grep "ubi\.repo"
+    shell: podman run --rm {{ image_fullname }} ls /etc/yum.repos.d | grep "ubi\.repo"
     become: true
     when: ansible_distribution_major_version == '8'
 
   - name: check pem file with docker for arch x86_64
-    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "69\.pem"
+    shell: docker run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "69\.pem"
     become: true
     when: ansible_distribution_major_version == '7' and ansible_architecture == 'x86_64'
 
   - name: check pem file with docker for arch ppc64le
-    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "279\.pem"
+    shell: docker run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "279\.pem"
     become: true
     when: ansible_distribution_major_version == '7' and ansible_architecture == 'ppc64le'
 
   - name: check pem file with docker for arch s390x
-    shell: docker run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "72\.pem"
+    shell: docker run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "72\.pem"
     become: true
     when: ansible_distribution_major_version == '7' and ansible_architecture == 's390x'
 
   - name: check pem file with podman for arch x86_64
-    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "479\.pem"
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "479\.pem"
     become: true
     when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
 
   - name: check pem file with podman for arch ppc64le
-    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "279\.pem"
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "279\.pem"
     become: true
     when: ansible_distribution_major_version == '8' and ansible_architecture == 'ppc64le'
 
   - name: check pem file with podman for arch s390x
-    shell: podman run --rm brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888{{ image_version }} ls /etc/pki/product-default | grep "72\.pem"
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "72\.pem"
     become: true
     when: ansible_distribution_major_version == '8' and ansible_architecture == 's390x'
   # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
