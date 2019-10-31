@@ -1,0 +1,18 @@
+---
+# This playbook is to test open-vm-tools container image, which will probably be deprecated months later.
+# The full test must be run on a vsphere ENV, we just do gating test here for CVP.
+# For now, only RHEL7 has this image, and only available on x86_64.
+
+- hosts: all
+  vars:
+    # normal size is 310, and min is like 0.9 * normal
+    size_min: 280
+    # normal size is 310, and max is like 1.1 * normal
+    size_max: 340
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+  - check_size
