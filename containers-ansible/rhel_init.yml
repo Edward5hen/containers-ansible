@@ -52,6 +52,7 @@
       docker exec init-rhel7-httpd ps | sed -n '2p' | grep ".*systemd$" &&
       docker exec init-rhel7-httpd ps | sed -n '3p' | grep ".*systemd-journal$" &&
       docker exec init-rhel7-httpd ps | sed -n '4p' | grep ".*httpd$"
+    become: true
 
   - name: check the container running fine
     shell: curl localhost
