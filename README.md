@@ -7,7 +7,6 @@
 
 # requirements:
 - ansible: 2.6
-- python: 2.7
 
 # Usage:
 `ansible-playbook -i $inventory $container.yml -e image_fullname=$img_fn`
