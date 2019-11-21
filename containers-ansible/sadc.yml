@@ -1,4 +1,4 @@
----
+
 # This playbook is to test sadc container image.
 # Only rhel7 has this container images.
 
@@ -29,7 +29,7 @@
   post_tasks:
   # We're not going to cover all the features, since the rpm has been tested.
   - name: run sa1 command within the container with docker
-    shell: docker exec sadc /usr/lib64/sa/sa1 1 1
+    shell: docker exec {{ container_name }} /usr/lib64/sa/sa1 1 1
     become: true
     when: ansible_distribution_major_version == '7'
 
