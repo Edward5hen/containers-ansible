@@ -18,5 +18,5 @@
   - setup
   - pull
   - check_signature
-  - check_size
   - scan
+    # - check_size

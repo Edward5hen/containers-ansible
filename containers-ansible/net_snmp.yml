@@ -27,7 +27,8 @@
   - pull
   - scan
   - check_signature
-  - check_size
+  # following test case check_size is not stable enough for CVP
+  # - check_size
 
   post_tasks:
   - name: run the container with docker

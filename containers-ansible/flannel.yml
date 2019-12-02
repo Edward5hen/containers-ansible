@@ -14,4 +14,5 @@
   - pull
   - scan
   - check_signature
-  - check_size
+    # following test case is not stable enough for CVP
+    #  - check_size

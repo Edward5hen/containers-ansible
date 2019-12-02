@@ -1,6 +1,6 @@
 ---
 # This playbook is to scan the container image with "atomic scan" command.
-# image_version must be defined in ansible-playbook command.
+# image_fullname must be defined in ansible-playbook command.
 
 - name: scan the container image with atomic scan command
   shell: atomic scan {{ image_fullname }}

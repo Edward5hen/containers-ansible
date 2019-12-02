@@ -27,7 +27,8 @@
   - pull
   - scan
   - check_signature
-  - check_size
+  # Following test case check_size is not stable enough for CVP
+  # - check_size
 
   post_tasks:
   - name: check eula correctness with docker
@@ -160,3 +161,4 @@
 
   - name: check the container running fine
     shell: curl {{ my_ip.stdout }}
+
