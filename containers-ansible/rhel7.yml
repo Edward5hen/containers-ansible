@@ -1,0 +1,59 @@
+---
+# This playbook is to test rhel-init container image
+# For now it only applies to rhel7. rhel8 doesn't have rhel-init.
+
+- hosts: all
+
+  pre_tasks:
+  - include_vars: rhel_init_rhel7_vars.yml
+    when: ansible_architecture == 'x86_64'
+
+  - include_vars: rhel_init_rhel7_ppc_vars.yml
+    when: ansible_architecture == 'ppc64le'
+
+  - include_vars: rhel_init_rhel7_s390x_vars.yml
+    when: ansible_architecture == 's390x'
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+  - check_size
+
+  post_tasks:
+  # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
+  - name: set boolean container_manage_cgroup to 1
+    shell: setsebool -P container_manage_cgroup 1
+    become: true
+
+  - name: create dockerfile of httpd
+    template:
+      src: Dockerfile-rhel-init.j2
+      dest: /tmp/Dockerfile-rhel-init
+    become: true
+
+  - name: build the image
+    shell: docker build -f /tmp/Dockerfile-rhel-init -t rhel7-init-httpd /tmp/
+    become: true
+
+  - name: run the image
+    shell: docker run -d -p 80:80 --name init-rhel7-httpd rhel7-init-httpd
+    become: true
+
+  - name: check there are only 3 processes are running within the container
+    shell: docker exec init-rhel7-httpd ps | wc -l
+    register: amount_rst
+    become: true
+    failed_when: amount_rst.stdout|int != 5
+
+  - name: check the processes are systemd, systemd-journal and httpd
+    shell: >
+      docker exec init-rhel7-httpd ps | sed -n '2p' | grep ".*systemd$" &&
+      docker exec init-rhel7-httpd ps | sed -n '3p' | grep ".*systemd-journal$" &&
+      docker exec init-rhel7-httpd ps | sed -n '4p' | grep ".*httpd$"
+    become: true
+
+  - name: check the container running fine
+    shell: curl localhost
+

@@ -1,0 +1,7 @@
+FROM {{ image_fullname }}
+MAINTAINER Edward Shen "weshen@redhat.com"
+
+RUN yum install -y httpd && yum clean all && systemctl enable httpd
+RUN echo "hello from Edward" > /var/www/html/index.html
+
+EXPOSE 80

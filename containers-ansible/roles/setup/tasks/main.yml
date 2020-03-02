@@ -14,7 +14,7 @@
       # dont know why insertafter: '^\[registries\.insecure\]$' does NOT work here
       insertbefore: '^\[registries\.block\]$'
       firstmatch: yes
-      line: "registries = ['brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888']"
+      line: "registries = ['brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888', 'registry-proxy.engineering.redhat.com']"
     when: check_insecure.stdout != ""
     become: true
 
@@ -42,4 +42,4 @@
     shell: podman rm -af
     become: true
     ignore_errors: yes
-    when: ansible_distribution_major_version == '8'
+    when: ansible_distribution_major_version == '7' or ansible_distribution_major_version == '8'
