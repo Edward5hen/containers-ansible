@@ -68,3 +68,7 @@
     shell: curl localhost
     register: curl_result
     failed_when: "'Connection refused' in curl_result.stdout"
+    
+  - name: stop container
+    shell: podman kill init-rhel7-httpd
+    become: true

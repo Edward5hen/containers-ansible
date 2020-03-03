@@ -2,7 +2,7 @@ FROM {{ image_fullname }}
 MAINTAINER Edward Shen "weshen@redhat.com"
 
 RUN yum install -y httpd && yum clean all && systemctl enable httpd
-RUN echo "hello from Edward" > /var/www/html/index.html
+RUN echo "RHEL base container CI test" > /var/www/html/index.html
 
 CMD ["/sbin/init"]
 
