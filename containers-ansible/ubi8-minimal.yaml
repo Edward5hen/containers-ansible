@@ -5,7 +5,7 @@
 - hosts: all
 
   pre_tasks:
-  - include_vars: ubi8_minimal_vars.yml
+  - include_vars: ubi8__minimalvars.yml
     when: ansible_architecture == 'x86_64'
 
   #- include_vars: rhel_init_rhel7_ppc_vars.yml
@@ -68,8 +68,8 @@
 
   - name: create dockerfile with rhel content
     template:
-      src: Dockerfile-ubi8-rhel.j2
-      dest: /tmp/Dockerfile-ubi8-rhel
+      src: Dockerfile-ubi8-minimal-rhel.j2
+      dest: /tmp/Dockerfile-ubi8-minimal-rhel
     become: true
     
   - name: remove existing rhel content image
@@ -83,7 +83,7 @@
     become: true
 
   - name: build the rhel content image
-    shell: podman build -f /tmp/Dockerfile-ubi8-rhel -t ubi8-build-rhel /tmp/
+    shell: podman build -f /tmp/Dockerfile-ubi8-minimal-rhel -t ubi8-build-rhel /tmp/
     become: true
     
   - name: run the rhel content image
@@ -94,8 +94,8 @@
     
   - name: create dockerfile with ubi content
     template:
-      src: Dockerfile-ubi8-ubi.j2
-      dest: /tmp/Dockerfile-ubi8-ubi
+      src: Dockerfile-ubi8-minimal-ubi.j2
+      dest: /tmp/Dockerfile-ubi8-minimal-ubi
     become: true
     
   - name: remove existing ubi content based image
@@ -109,7 +109,7 @@
     become: true
 
   - name: build the ubi content image
-    shell: podman build -f /tmp/Dockerfile-ubi8-ubi -t ubi8-build-ubi /tmp/
+    shell: podman build -f /tmp/Dockerfile-ubi8-minimal-ubi -t ubi8-build-ubi /tmp/
     become: true
     
   - name: run the ubi content image
