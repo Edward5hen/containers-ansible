@@ -72,21 +72,21 @@
       dest: /tmp/Dockerfile-ubi8-rhel
     become: true
     
-  - name: remove existing image
+  - name: remove existing rhel content image
     shell: podman rmi -f ubi8-build-rhel
     ignore_errors: yes
     become: true
     
-  - name: remove existing container
+  - name: remove existing rhel content container
     shell: podman rm -f ubi8-container-rhel
     ignore_errors: yes
     become: true
 
-  - name: build the image
+  - name: build the rhel content image
     shell: podman build -f /tmp/Dockerfile-ubi8-rhel -t ubi8-build-rhel /tmp/
     become: true
     
-  - name: run the image
+  - name: run the rhel content image
     shell: podman run --name ubi8-container-rhel ubi8-build-rhel
     register: result_out
     failed_when: "'traceroute to www.amazon.com' not in result_out.stdout"
@@ -98,22 +98,22 @@
       dest: /tmp/Dockerfile-ubi8-ubi
     become: true
     
-  - name: remove existing image
+  - name: remove existing ubi content based image
     shell: podman rmi -f ubi8-build-ubi
     ignore_errors: yes
     become: true
     
-  - name: remove existing container
+  - name: remove existing ubi content container
     shell: podman rm -f ubi8-container-ubi
     ignore_errors: yes
     become: true
 
-  - name: build the image
+  - name: build the ubi content image
     shell: podman build -f /tmp/Dockerfile-ubi8-ubi -t ubi8-build-ubi /tmp/
     become: true
     
-  - name: run the image
-    shell: podman run --name ubi8-container-ubi ubi8-build-ubi
+  - name: run the ubi content image
+    shell: podman run --name ubi8-container-ubi ubi8-build-ubi 2>&1
     register: result_out
     failed_when: "'HTTP request sent, awaiting response' not in result_out.stdout"
     become: true
