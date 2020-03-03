@@ -17,7 +17,6 @@
   roles:
   - setup
   - pull
-  - scan
   - check_signature
   - check_size
 
@@ -61,6 +60,7 @@
     shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "72\.pem"
     become: true
     when: ansible_architecture == 's390x'
+  
   # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
   - name: set boolean container_manage_cgroup to 1
     shell: setsebool -P container_manage_cgroup 1
@@ -69,7 +69,7 @@
   - name: create dockerfile with rhel content
     template:
       src: Dockerfile-ubi8-rhel.j2
-      dest: /tmp/Dockerfile-rhel-init
+      dest: /tmp/Dockerfile-ubi8-rhel
     become: true
     
   - name: remove existing image
@@ -87,14 +87,34 @@
     become: true
     
   - name: run the image
-    shell: podman run ubi8-container-rhel ubi8-build-rhel
+    shell: podman run --name ubi8-container-rhel ubi8-build-rhel
+    register: result_out
+    failed when: "'traceroute to www.amazon.com' not in result_out.stdout"
+    become: true
+    
+    
+ - name: create dockerfile with ubi content
+    template:
+      src: Dockerfile-ubi8-ubi.j2
+      dest: /tmp/Dockerfile-ubi8-ubi
+    become: true
+    
+  - name: remove existing image
+    shell: podman rmi -f ubi8-build-ubi
+    ignore_errors: yes
+    become: true
+    
+  - name: remove existing container
+    shell: podman rm -f ubi8-container-ubi
+    ignore_errors: yes
     become: true
 
-  - name: check the container running fine
-    shell: curl localhost
-    register: curl_result
-    failed_when: "'Connection refused' in curl_result.stdout"
+  - name: build the image
+    shell: podman build -f /tmp/Dockerfile-ubi8-ubi -t ubi8-build-ubi /tmp/
+    become: true
     
-  - name: stop container
-    shell: podman kill ubi8-container-rhel
+  - name: run the image
+    shell: podman run --name ubi8-container-ubi ubi8-build-ubi
+    register: result_out
+    failed when: "'HTTP request sent, awaiting response' not in result_out.stdout"
     become: true
