@@ -89,7 +89,7 @@
   - name: run the image
     shell: podman run --name ubi8-container-rhel ubi8-build-rhel
     register: result_out
-    failed when: "'traceroute to www.amazon.com' not in result_out.stdout"
+    failed_when: "'traceroute to www.amazon.com' not in result_out.stdout"
     become: true
     
   - name: create dockerfile with ubi content
@@ -115,5 +115,5 @@
   - name: run the image
     shell: podman run --name ubi8-container-ubi ubi8-build-ubi
     register: result_out
-    failed when: "'HTTP request sent, awaiting response' not in result_out.stdout"
+    failed_when: "'HTTP request sent, awaiting response' not in result_out.stdout"
     become: true

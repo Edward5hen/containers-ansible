@@ -14,7 +14,7 @@
   shell: podman inspect {{ image_fullname }} --format \{\{.Size\}\}
   become: true
   register: image_size
-  when: ansible_distribution_major_version == '8'
+  when: ansible_distribution_major_version == '7' or ansible_distribution_major_version == '8'
 
 - set_fact: my_image_size="{{ image_size }}"
   when: image_size.changed
