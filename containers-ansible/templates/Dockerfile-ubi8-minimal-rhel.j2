@@ -1,6 +1,6 @@
 FROM {{ image_fullname }}
 MAINTAINER  Atomic QE "atomic-qe@redhat.com"
 
-RUN microdnfdnf install -y traceroute && microdnf clean all
+RUN microdnf install -y traceroute && microdnf clean all
 
 CMD ["/usr/bin/traceroute", "www.amazon.com"]
