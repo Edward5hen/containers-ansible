@@ -92,8 +92,7 @@
     failed when: "'traceroute to www.amazon.com' not in result_out.stdout"
     become: true
     
-    
- - name: create dockerfile with ubi content
+  - name: create dockerfile with ubi content
     template:
       src: Dockerfile-ubi8-ubi.j2
       dest: /tmp/Dockerfile-ubi8-ubi
