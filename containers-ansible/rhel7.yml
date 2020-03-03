@@ -5,14 +5,14 @@
 - hosts: all
 
   pre_tasks:
-  - include_vars: rhel_init_rhel7_vars.yml
+  - include_vars: rhel7_vars.yml
     when: ansible_architecture == 'x86_64'
 
-  - include_vars: rhel_init_rhel7_ppc_vars.yml
-    when: ansible_architecture == 'ppc64le'
-
-  - include_vars: rhel_init_rhel7_s390x_vars.yml
-    when: ansible_architecture == 's390x'
+  #- include_vars: rhel_init_rhel7_ppc_vars.yml
+  #  when: ansible_architecture == 'ppc64le'
+  #
+  #- include_vars: rhel_init_rhel7_s390x_vars.yml
+  #  when: ansible_architecture == 's390x'
 
   roles:
   - setup
@@ -32,11 +32,21 @@
       src: Dockerfile-rhel-init.j2
       dest: /tmp/Dockerfile-rhel-init
     become: true
+    
+  - name: remove existing image
+    shell: docker rmi -f rhel7-init-httpd
+    ignore_errors: yes
+    become: true
+    
+  - name: remove existing container
+    shell: docker rm -f init-rhel7-httpd
+    ignore_errors: yes
+    become: true
 
   - name: build the image
     shell: docker build -f /tmp/Dockerfile-rhel-init -t rhel7-init-httpd /tmp/
     become: true
-
+    
   - name: run the image
     shell: docker run -d -p 80:80 --name init-rhel7-httpd rhel7-init-httpd
     become: true
@@ -56,4 +66,5 @@
 
   - name: check the container running fine
     shell: curl localhost
-
+    register: curl_result
+    failed_when: "'Connection refused' in curl_result.stdout"
