@@ -34,34 +34,34 @@
     become: true
     
   - name: remove existing image
-    shell: docker rmi -f rhel7-init-httpd
+    shell: podman rmi -f rhel7-init-httpd
     ignore_errors: yes
     become: true
     
   - name: remove existing container
-    shell: docker rm -f init-rhel7-httpd
+    shell: podman rm -f init-rhel7-httpd
     ignore_errors: yes
     become: true
 
   - name: build the image
-    shell: docker build -f /tmp/Dockerfile-rhel-init -t rhel7-init-httpd /tmp/
+    shell: podman build -f /tmp/Dockerfile-rhel-init -t rhel7-init-httpd /tmp/
     become: true
     
   - name: run the image
-    shell: docker run -d -p 80:80 --name init-rhel7-httpd rhel7-init-httpd
+    shell: podman run -d -p 80:80 --name init-rhel7-httpd rhel7-init-httpd
     become: true
 
   - name: check there are only 3 processes are running within the container
-    shell: docker exec init-rhel7-httpd ps | wc -l
+    shell: podman exec init-rhel7-httpd ps | wc -l
     register: amount_rst
     become: true
     failed_when: amount_rst.stdout|int != 5
 
   - name: check the processes are systemd, systemd-journal and httpd
     shell: >
-      docker exec init-rhel7-httpd ps | sed -n '2p' | grep ".*systemd$" &&
-      docker exec init-rhel7-httpd ps | sed -n '3p' | grep ".*systemd-journal$" &&
-      docker exec init-rhel7-httpd ps | sed -n '4p' | grep ".*httpd$"
+      podman exec init-rhel7-httpd ps | sed -n '2p' | grep ".*systemd$" &&
+      podman exec init-rhel7-httpd ps | sed -n '3p' | grep ".*systemd-journal$" &&
+      podman exec init-rhel7-httpd ps | sed -n '4p' | grep ".*httpd$"
     become: true
 
   - name: check the container running fine
