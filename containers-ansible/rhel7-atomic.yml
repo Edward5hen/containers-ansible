@@ -52,7 +52,3 @@
     register: result_out
     failed_when: "'traceroute to www.amazon.com' not in result_out.stdout"
     become: true
-
-  - name: stop container
-    shell: podman kill atomic-rhel7-test
-    become: true
