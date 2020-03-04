@@ -48,7 +48,7 @@
     become: true
     
   - name: run the image
-    shell: podman run atomic-rhel7-test rhel7-atomic-test
+    shell: podman run --name atomic-rhel7-test rhel7-atomic-test
     register: result_out
     failed_when: "'traceroute to www.amazon.com' not in result_out.stdout"
     become: true
