@@ -1,7 +1,7 @@
 FROM {{ image_fullname }}
-MAINTAINER Edward Shen "weshen@redhat.com"
+MAINTAINER Atomic QE "atomic-qe@redhat.com"
 
-RUN yum install -y httpd && yum clean all && systemctl enable httpd
-RUN echo "hello from Edward" > /var/www/html/index.html
+RUN microdnf install -y httpd && microdnf clean all && systemctl enable httpd
+RUN echo "RHEL atomic httpd images" > /var/www/html/index.html
 
 EXPOSE 80
