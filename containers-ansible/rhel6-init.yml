@@ -29,7 +29,7 @@
 
   - name: create dockerfile of httpd
     template:
-      src: Dockerfile-rhel6.j2
+      src: Dockerfile-rhel6-init.j2
       dest: /tmp/Dockerfile-rhel6-init
     become: true
     
