@@ -29,7 +29,7 @@
 
   - name: create dockerfile of httpd
     template:
-      src: Dockerfile-rhel6-init.j2
+      src: Dockerfile-rhel6.j2
       dest: /tmp/Dockerfile-rhel6-init
     become: true
     
@@ -43,7 +43,7 @@
     ignore_errors: yes
     become: true
 
-  - name: build the image
+  - name: build the rhel6 init image
     shell: podman build -f /tmp/Dockerfile-rhel6-init -t rhel6-init-httpd /tmp/
     become: true
     
@@ -57,7 +57,7 @@
       podman exec init-rhel6-httpd ps -ef | grep dumb-init
     become: true
 
-  - name: check the container http server running fine
+  - name: check the container http server is available
     shell: curl localhost
     register: curl_result
     failed_when: "'Connection refused' in curl_result.stdout"
