@@ -7,7 +7,7 @@
 - hosts: all
 
   pre_tasks:
-  - include_vars: ubi7_minimal_vars.yml
+  - include_vars: ubi7_vars.yml
     when: ansible_architecture == 'x86_64'
 
   #- include_vars: rhel_init_rhel7_ppc_vars.yml
