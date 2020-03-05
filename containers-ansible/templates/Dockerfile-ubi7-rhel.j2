@@ -1,6 +1,6 @@
 FROM {{ image_fullname }}
 MAINTAINER  Atomic QE "atomic-qe@redhat.com"
 
-RUN dnf install -y traceroute && dnf clean all
+RUN yum install -y traceroute && yum clean all
 
 CMD ["/usr/bin/traceroute", "www.amazon.com"]
