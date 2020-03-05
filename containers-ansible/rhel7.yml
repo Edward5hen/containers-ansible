@@ -1,6 +1,8 @@
 ---
-# This playbook is to test rhel-init container image
-# For now it only applies to rhel7. rhel8 doesn't have rhel-init.
+# This playbook is to test rhel7 container image
+# todo: add email with package delta summary
+# todo: somehow ensure packages have not regressed in nvr
+# todo: multi-arch
 
 - hosts: all
 

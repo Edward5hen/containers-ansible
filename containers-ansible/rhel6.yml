@@ -1,6 +1,6 @@
 ---
-# This playbook is to test rhel-init container image
-# For now it only applies to rhel7. rhel8 doesn't have rhel-init.
+# This playbook is to test rhel6 container image
+# For now it only applies to rhel6.
 
 - hosts: all
 

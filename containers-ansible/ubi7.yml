@@ -1,12 +1,13 @@
 ---
-# This playbook is to test ubi8 container image
+# This playbook is to test ubi7 container image
 # todo: add email with package delta summary
 # todo: somehow ensure packages have not regressed in nvr
+# todo: multiarch
 
 - hosts: all
 
   pre_tasks:
-  - include_vars: ubi8_minimal_vars.yml
+  - include_vars: ubi7_minimal_vars.yml
     when: ansible_architecture == 'x86_64'
 
   #- include_vars: rhel_init_rhel7_ppc_vars.yml
@@ -69,52 +70,52 @@
 
   - name: create dockerfile with rhel content
     template:
-      src: Dockerfile-ubi8-rhel.j2
-      dest: /tmp/Dockerfile-ubi8-rhel
+      src: Dockerfile-ubi7-rhel.j2
+      dest: /tmp/Dockerfile-ubi7-rhel
     become: true
     
   - name: remove existing rhel content image
-    shell: podman rmi -f ubi8-build-rhel
+    shell: podman rmi -f ubi7-build-rhel
     ignore_errors: yes
     become: true
     
   - name: remove existing rhel content container
-    shell: podman rm -f ubi8-container-rhel
+    shell: podman rm -f ubi7-container-rhel
     ignore_errors: yes
     become: true
 
   - name: build the rhel content image
-    shell: podman build -f /tmp/Dockerfile-ubi8-rhel -t ubi8-build-rhel /tmp/
+    shell: podman build -f /tmp/Dockerfile-ubi7-rhel -t ubi7-build-rhel /tmp/
     become: true
     
   - name: run the rhel content image
-    shell: podman run --name ubi8-container-rhel ubi8-build-rhel
+    shell: podman run --name ubi7-container-rhel ubi7-build-rhel
     register: result_out
     failed_when: "'traceroute to www.amazon.com' not in result_out.stdout"
     become: true
     
   - name: create dockerfile with ubi content
     template:
-      src: Dockerfile-ubi8-ubi.j2
-      dest: /tmp/Dockerfile-ubi8-ubi
+      src: Dockerfile-ubi7-ubi.j2
+      dest: /tmp/Dockerfile-ubi7-ubi
     become: true
     
   - name: remove existing ubi content based image
-    shell: podman rmi -f ubi8-build-ubi
+    shell: podman rmi -f ubi7-build-ubi
     ignore_errors: yes
     become: true
     
   - name: remove existing ubi content container
-    shell: podman rm -f ubi8-container-ubi
+    shell: podman rm -f ubi7-container-ubi
     ignore_errors: yes
     become: true
 
   - name: build the ubi content image
-    shell: podman build -f /tmp/Dockerfile-ubi8-ubi -t ubi8-build-ubi /tmp/
+    shell: podman build -f /tmp/Dockerfile-ubi7-ubi -t ubi7-build-ubi /tmp/
     become: true
     
   - name: run the ubi content image
-    shell: podman run --name ubi8-container-ubi ubi8-build-ubi 2>&1
+    shell: podman run --name ubi7-container-ubi ubi7-build-ubi 2>&1
     register: result_out
     failed_when: "'HTTP request sent, awaiting response' not in result_out.stdout"
     become: true
