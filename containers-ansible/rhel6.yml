@@ -53,8 +53,8 @@
 
   - name: check the processes are systemd, systemd-journal and httpd
     shell: >
-      podman exec init-rhel6-httpd ps -ef | sed -n '2p' | grep ".*dumb-init$" &&
-      podman exec init-rhel6-httpd ps -ef | sed -n '4p' | grep ".*httpd$"
+      podman exec init-rhel6-httpd ps -ef | grep httpd &&
+      podman exec init-rhel6-httpd ps -ef | grep dumb-init
     become: true
 
   - name: check the container running fine
