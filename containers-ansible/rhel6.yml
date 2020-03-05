@@ -1,0 +1,67 @@
+---
+# This playbook is to test rhel-init container image
+# For now it only applies to rhel7. rhel8 doesn't have rhel-init.
+
+- hosts: all
+
+  pre_tasks:
+  - include_vars: rhel6_vars.yml
+    when: ansible_architecture == 'x86_64'
+
+  #- include_vars: rhel_init_rhel7_ppc_vars.yml
+  #  when: ansible_architecture == 'ppc64le'
+  #
+  #- include_vars: rhel_init_rhel7_s390x_vars.yml
+  #  when: ansible_architecture == 's390x'
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+  - check_size
+
+  post_tasks:
+  # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
+  - name: set boolean container_manage_cgroup to 1
+    shell: setsebool -P container_manage_cgroup 1
+    become: true
+
+  - name: create dockerfile of httpd
+    template:
+      src: Dockerfile-rhel6.j2
+      dest: /tmp/Dockerfile-rhel6-init
+    become: true
+    
+  - name: remove existing image
+    shell: podman rmi -f rhel6-init-httpd
+    ignore_errors: yes
+    become: true
+    
+  - name: remove existing container
+    shell: podman rm -f init-rhel6-httpd
+    ignore_errors: yes
+    become: true
+
+  - name: build the image
+    shell: podman build -f /tmp/Dockerfile-rhel6-init -t rhel6-init-httpd /tmp/
+    become: true
+    
+  - name: run the image
+    shell: podman run -d -p 80:80 --name init-rhel6-httpd rhel6-init-httpd
+    become: true
+
+  - name: check the processes are systemd, systemd-journal and httpd
+    shell: >
+      podman exec init-rhel7-httpd ps -ef | sed -n '2p' | grep ".*dumb-init$" &&
+      podman exec init-rhel7-httpd ps -ef | sed -n '4p' | grep ".*httpd$"
+    become: true
+
+  - name: check the container running fine
+    shell: curl localhost
+    register: curl_result
+    failed_when: "'Connection refused' in curl_result.stdout"
+    
+  - name: stop container
+    shell: podman kill init-rhel6-httpd
+    become: true
