@@ -49,7 +49,7 @@
     when: ansible_distribution_major_version == '8' or ansible_distribution_major_version == '7'
 
   - name: check pem file with podman for arch x86_64
-    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "479\.pem"
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "69\.pem"
     become: true
     when: ansible_architecture == 'x86_64'
 
