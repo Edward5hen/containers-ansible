@@ -1,0 +1,121 @@
+---
+# This playbook is to test ubi7-minimal container image
+# todo: add email with package delta summary
+# todo: somehow ensure packages have not regressed in nvr
+# todo: multiarch
+
+- hosts: all
+
+  pre_tasks:
+  - include_vars: ubi7_minimal_vars.yml
+    when: ansible_architecture == 'x86_64'
+
+  #- include_vars: rhel_init_rhel7_ppc_vars.yml
+  #  when: ansible_architecture == 'ppc64le'
+  #
+  #- include_vars: rhel_init_rhel7_s390x_vars.yml
+  #  when: ansible_architecture == 's390x'
+
+  roles:
+  - setup
+  - pull
+  - check_signature
+  - check_size
+
+  post_tasks:
+  # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
+  - name: set boolean container_manage_cgroup to 1
+    shell: setsebool -P container_manage_cgroup 1
+    become: true
+    
+  - name: check eula correctness with docker
+    shell: docker inspect {{ image_fullname }} | grep {{ eula_link }}
+    become: true
+    when: ansible_distribution_major_version == '7'
+
+  - name: check eula correctness with podman
+    shell: podman inspect {{ image_fullname }} | grep {{ eula_link }}
+    become: true
+    when: ansible_distribution_major_version == '8' or ansible_distribution_major_version == '7'
+
+  - name: check repo file with docker
+    shell: docker run --rm {{ image_fullname }} ls /etc/yum.repos.d | grep "ubi\.repo"
+    become: true
+    when: ansible_distribution_major_version == '7'
+
+  - name: check repo file with podman
+    shell: podman run --rm {{ image_fullname }} ls /etc/yum.repos.d | grep "ubi\.repo"
+    become: true
+    when: ansible_distribution_major_version == '8' or ansible_distribution_major_version == '7'
+
+  - name: check pem file with podman for arch x86_64
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "69\.pem"
+    become: true
+    when: ansible_architecture == 'x86_64'
+
+  - name: check pem file with podman for arch ppc64le
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "279\.pem"
+    become: true
+    when: ansible_architecture == 'ppc64le'
+
+  - name: check pem file with podman for arch s390x
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "72\.pem"
+    become: true
+    when: ansible_architecture == 's390x'
+  
+  # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
+  - name: set boolean container_manage_cgroup to 1
+    shell: setsebool -P container_manage_cgroup 1
+    become: true
+
+  - name: create dockerfile with rhel content
+    template:
+      src: Dockerfile-ubi7-minimal-rhel.j2
+      dest: /tmp/Dockerfile-ubi7-minimal-rhel
+    become: true
+    
+  - name: remove existing rhel content image
+    shell: podman rmi -f ubi7-build-rhel
+    ignore_errors: yes
+    become: true
+    
+  - name: remove existing rhel content container
+    shell: podman rm -f ubi7-container-rhel
+    ignore_errors: yes
+    become: true
+
+  - name: build the rhel content image
+    shell: podman build -f /tmp/Dockerfile-ubi7-minimal-rhel -t ubi7-build-rhel /tmp/
+    become: true
+    
+  - name: run the rhel content image
+    shell: podman run --name ubi7-container-rhel ubi7-build-rhel
+    register: result_out
+    failed_when: "'traceroute to www.amazon.com' not in result_out.stdout"
+    become: true
+    
+  - name: create dockerfile with ubi content
+    template:
+      src: Dockerfile-ubi7-minimal-ubi.j2
+      dest: /tmp/Dockerfile-ubi7-minimal-ubi
+    become: true
+    
+  - name: remove existing ubi content based image
+    shell: podman rmi -f ubi7-build-ubi
+    ignore_errors: yes
+    become: true
+    
+  - name: remove existing ubi content container
+    shell: podman rm -f ubi7-container-ubi
+    ignore_errors: yes
+    become: true
+
+  - name: build the ubi content image
+    shell: podman build -f /tmp/Dockerfile-ubi7-minimal-ubi -t ubi7-build-ubi /tmp/
+    become: true
+    
+  - name: run the ubi content image
+    shell: podman run --name ubi7-container-ubi ubi7-build-ubi 2>&1
+    register: result_out
+    failed_when: "'HTTP request sent, awaiting response' not in result_out.stdout"
+    become: true

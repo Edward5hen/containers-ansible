@@ -1,0 +1,76 @@
+---
+# This playbook is to test rhel7 container image
+# todo: add email with package delta summary
+# todo: somehow ensure packages have not regressed in nvr
+# todo: multi-arch
+
+- hosts: all
+
+  pre_tasks:
+  - include_vars: rhel7_vars.yml
+    when: ansible_architecture == 'x86_64'
+
+  #- include_vars: rhel_init_rhel7_ppc_vars.yml
+  #  when: ansible_architecture == 'ppc64le'
+  #
+  #- include_vars: rhel_init_rhel7_s390x_vars.yml
+  #  when: ansible_architecture == 's390x'
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+  - check_size
+
+  post_tasks:
+  # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
+  - name: set boolean container_manage_cgroup to 1
+    shell: setsebool -P container_manage_cgroup 1
+    become: true
+
+  - name: create dockerfile of httpd
+    template:
+      src: Dockerfile-rhel7.j2
+      dest: /tmp/Dockerfile-rhel-init
+    become: true
+    
+  - name: remove existing image
+    shell: podman rmi -f rhel7-init-httpd
+    ignore_errors: yes
+    become: true
+    
+  - name: remove existing container
+    shell: podman rm -f init-rhel7-httpd
+    ignore_errors: yes
+    become: true
+
+  - name: build the image
+    shell: podman build -f /tmp/Dockerfile-rhel-init -t rhel7-init-httpd /tmp/
+    become: true
+    
+  - name: run the image
+    shell: podman run -d -p 80:80 --name init-rhel7-httpd rhel7-init-httpd
+    become: true
+
+  - name: check there are only 3 processes are running within the container
+    shell: podman exec init-rhel7-httpd ps | wc -l
+    register: amount_rst
+    become: true
+    failed_when: amount_rst.stdout|int != 5
+
+  - name: check the processes are systemd, systemd-journal and httpd
+    shell: >
+      podman exec init-rhel7-httpd ps | sed -n '2p' | grep ".*systemd$" &&
+      podman exec init-rhel7-httpd ps | sed -n '3p' | grep ".*systemd-journal$" &&
+      podman exec init-rhel7-httpd ps | sed -n '4p' | grep ".*httpd$"
+    become: true
+
+  - name: check the container running fine
+    shell: curl localhost
+    register: curl_result
+    failed_when: "'Connection refused' in curl_result.stdout"
+    
+  - name: stop container
+    shell: podman kill init-rhel7-httpd
+    become: true

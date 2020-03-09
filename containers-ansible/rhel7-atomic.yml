@@ -1,0 +1,55 @@
+---
+# This playbook is to test rhel7-atomic container image
+# todo: add email with package delta summary
+# todo: somehow ensure packages have not regressed in nvr
+
+- hosts: all
+
+  pre_tasks:
+  - include_vars: rhel7_atomic_vars.yml
+    when: ansible_architecture == 'x86_64'
+
+  #- include_vars: rhel_init_rhel7_ppc_vars.yml
+  #  when: ansible_architecture == 'ppc64le'
+  #
+  #- include_vars: rhel_init_rhel7_s390x_vars.yml
+  #  when: ansible_architecture == 's390x'
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+  - check_size
+
+  post_tasks:
+  # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
+  - name: set boolean container_manage_cgroup to 1
+    shell: setsebool -P container_manage_cgroup 1
+    become: true
+
+  - name: create dockerfile of test
+    template:
+      src: Dockerfile-rhel7-atomic.j2
+      dest: /tmp/Dockerfile-rhel-atomic
+    become: true
+    
+  - name: remove existing image
+    shell: podman rmi -f rhel7-atomic-test
+    ignore_errors: yes
+    become: true
+    
+  - name: remove existing container
+    shell: podman rm -f atomic-rhel7-test
+    ignore_errors: yes
+    become: true
+
+  - name: build the image
+    shell: podman build -f /tmp/Dockerfile-rhel-atomic -t rhel7-atomic-test /tmp/
+    become: true
+    
+  - name: run the image
+    shell: podman run --name atomic-rhel7-test rhel7-atomic-test
+    register: result_out
+    failed_when: "'traceroute to www.amazon.com' not in result_out.stdout"
+    become: true
