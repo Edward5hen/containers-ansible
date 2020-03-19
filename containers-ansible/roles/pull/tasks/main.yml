@@ -1,12 +1,6 @@
 ---
 # This playbook is to pull the tested container image.
-# image_version must be defined in ansible-playbook command. e.g., /rhel7/rsyslog:5.3.9
-
-- name: pull the image with docker
-  shell: docker pull {{ image_fullname }}
-  become: true
-  when: ansible_distribution_major_version == '7'
 
 - name: pull the image with podman
   shell: podman pull {{ image_fullname }}
-  when: ansible_distribution_major_version == '7' or ansible_distribution_major_version == '8'
+  become: true

@@ -1,6 +1,6 @@
 ---
-# normal size is 204, and min is like 0.9 * normal
-size_min: 184000000
-# normal size is 204, and max is like 1.1 * normal
-size_max: 224000000
+# normal size is 215, and min is like 0.9 * normal
+size_min: 194
+# normal size is 215, and max is like 1.1 * normal
+size_max: 236
 eula_link: https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI

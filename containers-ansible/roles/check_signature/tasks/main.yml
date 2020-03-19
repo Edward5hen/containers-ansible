@@ -1,22 +1,6 @@
 ---
 # Check rpms in container are signed correctly.
 
-# rpms which start with gpg-pubkey are fake rpms. No need to be counted.
-- name: check rpm signatures with docker (rhel7 only)
-  shell: |
-    for r in `docker run --rm {{ image_fullname }} rpm -qa | grep -v gpg-pubkey`
-    do
-      a=`docker run --rm {{ image_fullname }} rpm -qi $r | grep 199e2f91fd431d51`
-      if [ -z "$a" ]
-      then
-        echo "$r has wrong signature"
-      fi
-    done
-  become: true
-  register: sig_result
-  when: ansible_distribution_major_version == '7'
-  failed_when: "'wrong' in sig_result.stdout"
-
 - name: check rpm signatures with podman
   shell: |
     for r in `podman run --rm {{ image_fullname }} rpm -qa | grep -v gpg-pubkey`
@@ -29,5 +13,4 @@
     done
   become: true
   register: sig_result
-  when: ansible_distribution_major_version == '7' or ansible_distribution_major_version == '8'
   failed_when: "'wrong' in sig_result.stdout"

@@ -8,12 +8,6 @@
   - include_vars: ubi8_minimal_vars.yml
     when: ansible_architecture == 'x86_64'
 
-  #- include_vars: rhel_init_rhel7_ppc_vars.yml
-  #  when: ansible_architecture == 'ppc64le'
-  #
-  #- include_vars: rhel_init_rhel7_s390x_vars.yml
-  #  when: ansible_architecture == 's390x'
-
   roles:
   - setup
   - pull
@@ -25,7 +19,7 @@
   - name: set boolean container_manage_cgroup to 1
     shell: setsebool -P container_manage_cgroup 1
     become: true
-    
+
   - name: check eula correctness with docker
     shell: docker inspect {{ image_fullname }} | grep {{ eula_link }}
     become: true
@@ -60,7 +54,7 @@
     shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "72\.pem"
     become: true
     when: ansible_architecture == 's390x'
-  
+
   # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
   - name: set boolean container_manage_cgroup to 1
     shell: setsebool -P container_manage_cgroup 1
@@ -71,12 +65,12 @@
       src: Dockerfile-ubi8-minimal-rhel.j2
       dest: /tmp/Dockerfile-ubi8-minimal-rhel
     become: true
-    
+
   - name: remove existing rhel content image
     shell: podman rmi -f ubi8-build-rhel
     ignore_errors: yes
     become: true
-    
+
   - name: remove existing rhel content container
     shell: podman rm -f ubi8-container-rhel
     ignore_errors: yes
@@ -85,24 +79,24 @@
   - name: build the rhel content image
     shell: podman build -f /tmp/Dockerfile-ubi8-minimal-rhel -t ubi8-build-rhel /tmp/
     become: true
-    
+
   - name: run the rhel content image
     shell: podman run --name ubi8-container-rhel ubi8-build-rhel
     register: result_out
     failed_when: "'traceroute to www.amazon.com' not in result_out.stdout"
     become: true
-    
+
   - name: create dockerfile with ubi content
     template:
       src: Dockerfile-ubi8-minimal-ubi.j2
       dest: /tmp/Dockerfile-ubi8-minimal-ubi
     become: true
-    
+
   - name: remove existing ubi content based image
     shell: podman rmi -f ubi8-build-ubi
     ignore_errors: yes
     become: true
-    
+
   - name: remove existing ubi content container
     shell: podman rm -f ubi8-container-ubi
     ignore_errors: yes
@@ -111,7 +105,7 @@
   - name: build the ubi content image
     shell: podman build -f /tmp/Dockerfile-ubi8-minimal-ubi -t ubi8-build-ubi /tmp/
     become: true
-    
+
   - name: run the ubi content image
     shell: podman run --name ubi8-container-ubi ubi8-build-ubi 2>&1
     register: result_out

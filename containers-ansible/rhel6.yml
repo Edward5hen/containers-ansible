@@ -8,16 +8,9 @@
   - include_vars: rhel6_vars.yml
     when: ansible_architecture == 'x86_64'
 
-  #- include_vars: rhel_init_rhel7_ppc_vars.yml
-  #  when: ansible_architecture == 'ppc64le'
-  #
-  #- include_vars: rhel_init_rhel7_s390x_vars.yml
-  #  when: ansible_architecture == 's390x'
-
   roles:
   - setup
   - pull
-  - scan
   - check_signature
   - check_size
 
@@ -32,12 +25,12 @@
       src: Dockerfile-rhel6.j2
       dest: /tmp/Dockerfile-rhel6-init
     become: true
-    
+
   - name: remove existing image
     shell: podman rmi -f rhel6-init-httpd
     ignore_errors: yes
     become: true
-    
+
   - name: remove existing container
     shell: podman rm -f init-rhel6-httpd
     ignore_errors: yes
@@ -46,7 +39,7 @@
   - name: build the image
     shell: podman build -f /tmp/Dockerfile-rhel6-init -t rhel6-init-httpd /tmp/
     become: true
-    
+
   - name: run the image
     shell: podman run -d -p 80:80 --name init-rhel6-httpd rhel6-init-httpd
     become: true
@@ -61,7 +54,7 @@
     shell: curl localhost
     register: curl_result
     failed_when: "'Connection refused' in curl_result.stdout"
-    
+
   - name: stop container
     shell: podman kill init-rhel6-httpd
     become: true

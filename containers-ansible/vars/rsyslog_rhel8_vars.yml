@@ -1,8 +1,8 @@
 ---
-# normal size is 234000000, and min is like 0.9 * normal
-size_min: 210000000
-# normal size is 234000000, and max is like 1.1 * normal
-size_max: 257400000
+# normal size is 234, and min is like 0.9 * normal
+size_min: 210
+# normal size is 234, and max is like 1.1 * normal
+size_max: 234
 container_name: 'rsyslog'
 mounts: "/etc/localtime /etc/machine-id /etc/pki/rsyslog /etc/rsyslog.conf /etc/rsyslog.d /etc/sysconfig/rsyslog /run /var/lib/rsyslog /var/log "
 install_files:

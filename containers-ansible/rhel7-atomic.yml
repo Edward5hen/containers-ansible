@@ -9,16 +9,9 @@
   - include_vars: rhel7_atomic_vars.yml
     when: ansible_architecture == 'x86_64'
 
-  #- include_vars: rhel_init_rhel7_ppc_vars.yml
-  #  when: ansible_architecture == 'ppc64le'
-  #
-  #- include_vars: rhel_init_rhel7_s390x_vars.yml
-  #  when: ansible_architecture == 's390x'
-
   roles:
   - setup
   - pull
-  - scan
   - check_signature
   - check_size
 
@@ -33,12 +26,12 @@
       src: Dockerfile-rhel7-atomic.j2
       dest: /tmp/Dockerfile-rhel-atomic
     become: true
-    
+
   - name: remove existing image
     shell: podman rmi -f rhel7-atomic-test
     ignore_errors: yes
     become: true
-    
+
   - name: remove existing container
     shell: podman rm -f atomic-rhel7-test
     ignore_errors: yes
@@ -47,7 +40,7 @@
   - name: build the image
     shell: podman build -f /tmp/Dockerfile-rhel-atomic -t rhel7-atomic-test /tmp/
     become: true
-    
+
   - name: run the image
     shell: podman run --name atomic-rhel7-test rhel7-atomic-test
     register: result_out
