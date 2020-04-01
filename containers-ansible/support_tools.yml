@@ -17,7 +17,7 @@
   roles:
   - setup
   - pull
-  - scan
+    #  - scan
   - check_signature
   - check_size
 
@@ -39,18 +39,6 @@
     become: true
     when: ansible_distribution_major_version == '8'
 
-  - name: run sosreport within the container with atomic
-    expect:
-      echo: yes
-      command: "atomic run {{ image_fullname }}"
-      timeout: null
-      responses:
-        (.*)bash(.*)#: ["sosreport", "exit"]
-        (.*)Press ENTER(.*): ""
-        (.*)enter the case id(.*): "cvp-{{ vir_time }}"
-    become: true
-    when: ansible_distribution_major_version == '7'
-
   - name: check the report has been stored in host
     shell: ls /var/tmp | grep "sosreport.*{{ vir_time }}"
 
@@ -61,15 +49,9 @@
   - name: check tcpdump is installed with podman
     shell: podman run --rm {{ image_fullname }} rpm -q tcpdump
     become: true
-    when: ansible_distribution_major_version == '8'
-
-  - name: check tcpdump is installed with docker
-    shell: docker run --rm {{ image_fullname }} rpm -q tcpdump
-    become: true
-    when: ansible_distribution_major_version == '7'
 
 # Only rhel7 support-tools has strace
   - name: check strace is installed with docker
-    shell: docker run --rm {{ image_fullname }} rpm -q strace
+    shell: podman run --rm {{ image_fullname }} rpm -q strace
     become: true
     when: ansible_distribution_major_version == '7'

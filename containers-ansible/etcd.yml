@@ -19,4 +19,4 @@
   - pull
   - check_signature
   - check_size
-  - scan
+    #- scan

@@ -24,14 +24,13 @@
   - check_signature
   - check_size
   - install_and_run
-  - scan
+    #  - scan
 
   post_tasks:
   # We're not going to cover all the features, since the rpm has been tested.
   - name: run sa1 command within the container with docker
-    shell: docker exec {{ container_name }} /usr/lib64/sa/sa1 1 1
+    shell: podman exec {{ container_name }} /usr/lib64/sa/sa1 1 1
     become: true
-    when: ansible_distribution_major_version == '7'
 
   - set_fact:
       dir_name: /var/log/sa/sa{{ ansible_date_time.day }}

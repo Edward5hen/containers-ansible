@@ -12,11 +12,11 @@
   roles:
   - setup
   - pull
-  - scan
+    #- scan
   - check_signature
   - check_size
 
   post_tasks:
     - name: check the tools are included in this image.
-      shell: docker run --rm  {{ image_fullname }} /bin/bash -c "command -v useradd && command -v blktrace"
+      shell: podman run --rm  {{ image_fullname }} /bin/bash -c "command -v useradd && command -v blktrace"
       become: true

@@ -1,9 +1,9 @@
 ---
-# normal size is 215, and min is like 0.9 * normal
-size_min: 194
-# normal size is 215, and max is like 1.1 * normal
-size_max: 236
-container_name: 'rhel7-rsyslog'
+# normal size is 244, and min is like 0.9 * normal
+size_min: 220
+# normal size is 244, and max is like 1.1 * normal
+size_max: 268
+container_name: 'rsyslog'
 mounts: "/etc/localtime /etc/machine-id /etc/pki/rsyslog /etc/rsyslog.conf /etc/rsyslog.d /etc/sysconfig/rsyslog /run /var/lib/rsyslog /var/log "
 install_files:
   - /etc/pki/rsyslog
