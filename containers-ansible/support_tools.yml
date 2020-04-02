@@ -51,7 +51,7 @@
     become: true
 
 # Only rhel7 support-tools has strace
-  - name: check strace is installed with docker
+  - name: check strace is installed
     shell: podman run --rm {{ image_fullname }} rpm -q strace
     become: true
     when: ansible_distribution_major_version == '7'
