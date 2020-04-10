@@ -1,0 +1,10 @@
+FROM {{ image_fullname }}
+MAINTAINER  Atomic QE "atomic-qe@redhat.com"
+
+RUN yum -y install --disablerepo=* --enablerepo=rhel-6-server-rpms httpd
+RUN echo "RHEL6 base container CI test" > /var/www/html/index.html
+RUN chkconfig httpd on
+
+CMD ["/sbin/init"]
+
+EXPOSE 80

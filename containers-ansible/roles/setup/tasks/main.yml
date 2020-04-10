@@ -14,7 +14,7 @@
       # dont know why insertafter: '^\[registries\.insecure\]$' does NOT work here
       insertbefore: '^\[registries\.block\]$'
       firstmatch: yes
-      line: "registries = ['brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888']"
+      line: "registries = ['registry-proxy.engineering.redhat.com']"
     when: check_insecure.stdout != ""
     become: true
 

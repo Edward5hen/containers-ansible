@@ -1,0 +1,6 @@
+FROM {{ image_fullname }}
+MAINTAINER  Atomic QE "atomic-qe@redhat.com"
+
+RUN microdnf install -y --enablerepo=ubi-8-appstream wget && microdnf clean all
+
+CMD ["/usr/bin/wget", "access.redhat.com"]

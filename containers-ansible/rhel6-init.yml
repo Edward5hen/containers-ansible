@@ -1,0 +1,60 @@
+---
+# This playbook is to test rhel6-init container image
+
+- hosts: all
+
+  pre_tasks:
+  - include_vars: rhel6_vars.yml
+    when: ansible_architecture == 'x86_64'
+
+  roles:
+  - setup
+  - pull
+  - scan
+  - check_signature
+    #- check_size
+
+  post_tasks:
+  # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
+  - name: set boolean container_manage_cgroup to 1
+    shell: setsebool -P container_manage_cgroup 1
+    become: true
+
+  - name: create dockerfile of httpd
+    template:
+      src: Dockerfile-rhel6-init.j2
+      dest: /tmp/Dockerfile-rhel6-init
+    become: true
+
+  - name: remove existing image
+    shell: docker rmi -f rhel6-init-httpd
+    ignore_errors: yes
+    become: true
+
+  - name: remove existing container
+    shell: docker rm -f init-rhel6-httpd
+    ignore_errors: yes
+    become: true
+
+  - name: build the rhel6 init image
+    shell: docker build -f /tmp/Dockerfile-rhel6-init -t rhel6-init-httpd /tmp/
+    become: true
+
+  - name: run the image
+    shell: docker run -d -p 80:80 --name init-rhel6-httpd rhel6-init-httpd
+    become: true
+
+  - name: check the processes are dumb-init and httpd
+    shell: >
+      docker exec init-rhel6-httpd ps -ef | grep httpd &&
+      docker exec init-rhel6-httpd ps -ef | grep dumb-init
+    become: true
+
+  - name: check the container http server is available
+    shell: curl localhost
+    register: curl_result
+    failed_when: "'Connection refused' in curl_result.stdout"
+
+  - name: stop container
+    shell: docker kill init-rhel6-httpd
+    become: true
