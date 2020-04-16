@@ -1,9 +1,7 @@
 # containers-ansible
-* using ansible to test container images: rsyslog, support-tools, sadc, rhel-tools, net-snmp, ubi-init/rhel-init, etcd and flannel
-* no inventory file included
-
-# status:
-*Being developed*
+* This branch is for CVP only. Stable tests are moved from master branch.
+* For rhel7 containers, docker and atomic should be installed in the system, since the scan feature is wanted.
+* No inventory file included
 
 # requirements:
 - ansible: 2.6
