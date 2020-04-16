@@ -1,9 +1,7 @@
 # containers-ansible
-* using ansible to test container images: rsyslog, support-tools, sadc, rhel-tools, net-snmp, ubi-init/rhel-init, etcd and flannel
+* using ansible to test container images: rsyslog, support-tools, sadc, rhel-tools, net-snmp, ubi-init/rhel-init, etcd, flannel, ubi base and ubi minimal base images.
+* podman needs to be installed
 * no inventory file included
-
-# status:
-*Being developed*
 
 # requirements:
 - ansible: 2.6
