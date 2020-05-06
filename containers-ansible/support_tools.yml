@@ -55,3 +55,9 @@
     shell: podman run --rm {{ image_fullname }} rpm -q strace
     become: true
     when: ansible_distribution_major_version == '7'
+
+# Only rhel8 support-tools has strace
+  - name: check mtr strace and telnet is installed
+    shell: podman run --rm {{ image_fullname }} rpm -q strace mtr telnet
+    become: true
+    when: ansible_distribution_major_version == '8'
