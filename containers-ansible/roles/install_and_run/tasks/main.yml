@@ -1,16 +1,9 @@
 ---
 # This playbook is to check container installation and mounted directories
 
-  # This is supposed to be done by command podman container runlabel, but --always flag is still not implemented yet.
 - name: install
-  shell: podman run --rm --privileged -v /:/host -e HOST=/host -e IMAGE={{ image_fullname }} -e NAME=rsyslog {{ image_fullname }} /bin/install.sh
+  shell: podman container runlabel install {{ image_fullname }}
   become: true
-  when: container_name == "rsyslog"
-
-- name: install
-  shell: podman run --rm --privileged -v /:/host -e HOST=/host -e IMAGE={{ image_fullname }} -e NAME={{ container_name }} {{ image_fullname }} /usr/local/bin/sysstat-install.sh
-  become: true
-  when: container_name == "sadc"
 
 - name: check install files
   stat:
@@ -19,16 +12,21 @@
   failed_when: r.stat.exists == False
   with_items: "{{ install_files }}"
 
-  # This is supposed to be done by command podman container runlabel, but --always flag is still not implemented yet.
-- name: run
-  shell: podman run -d --privileged --name rsyslog --net=host --pid=host -v /etc/pki/rsyslog:/etc/pki/rsyslog -v /etc/rsyslog.conf:/etc/rsyslog.conf -v /etc/sysconfig/rsyslog:/etc/sysconfig/rsyslog -v /etc/rsyslog.d:/etc/rsyslog.d -v /var/log:/var/log -v /var/lib/rsyslog:/var/lib/rsyslog -v /run:/run -v /etc/machine-id:/etc/machine-id -v /etc/localtime:/etc/localtime -e IMAGE={{ image_fullname }} -e NAME=rsyslog {{ image_fullname }} /bin/rsyslog.sh
-  become: true
-  when: container_name == "rsyslog"
+- name: check /var/log/sa for sadc
+  stat:
+    path: /var/log/sa
+  ignore_errors: yes
+  register: check_sa
+
+- name: create dir /var/log/sa
+  file:
+    path: /var/log/sa
+    state: directory
+  when: check_sa.stat.exists == False
 
 - name: run
-  shell: podman run -d --privileged --name sadc -v /etc/sysconfig/sysstat:/etc/sysconfig/sysstat -v /etc/sysconfig/sysstat.ioconf:/etc/sysconfig/sysstat.ioconf -v /var/log/sa:/var/log/sa -v /:/host -e HOST=/host -e IMAGE={{ image_fullname }} -e NAME=rhel7-sadc --net=host {{ image_fullname }} /usr/local/bin/sysstat.sh
+  shell: podman container runlabel run {{ image_fullname }}
   become: true
-  when: container_name == "sadc"
 
 - name: check mounts
   # About the {% raw %} please see https://github.com/ansible/ansible/issues/21304

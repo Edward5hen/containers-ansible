@@ -6,7 +6,11 @@
 
   pre_tasks:
   - include_vars: support_tools_rhel7_vars.yml
-    when: ansible_distribution_major_version == '7'
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 'x86_64'
+  - include_vars: support_tools_rhel7_ppc_vars.yml
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 'ppc64le'
+  - include_vars: support_tools_rhel7_s390x_vars.yml
+    when: ansible_distribution_major_version == '7' and ansible_architecture == 's390x'
   - include_vars: support_tools_rhel8_vars.yml
     when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
   - include_vars: support_tools_rhel8_ppc_vars.yml
@@ -27,30 +31,29 @@
 
   - debug: msg="{{ vir_time }}"
 
-  - name: run sosreport within the container with podman
-    expect:
-      echo: yes
-      command: "podman container runlabel run {{ image_fullname }}"
-      timeout: null
-      responses:
-        (.*)bash(.*)#: ["sosreport", "exit"]
-        (.*)Press ENTER(.*): ""
-        (.*)enter the case id(.*): "cvp-{{ vir_time }}"
-    become: true
-    when: ansible_distribution_major_version == '8'
+    # - name: run sosreport within the container with podman
+    #   expect:
+    #     echo: yes
+    #     command: "podman container runlabel run {{ image_fullname }}"
+    #     timeout: null
+    #     responses:
+    #       (.*)bash(.*)#: ["sosreport", "exit"]
+    #       (.*)Press ENTER(.*): ""
+    #       (.*)enter the case id(.*): "cvp-{{ vir_time }}"
+    #   become: true
+    #   when: ansible_distribution_major_version == '8'
 
-  - name: check the report has been stored in host
-    shell: ls /var/tmp | grep "sosreport.*{{ vir_time }}"
+    # - name: check the report has been stored in host
+    #   shell: ls /var/tmp | grep "sosreport.*{{ vir_time }}"
 
-  - name: remove the reports to release storage
-    shell: rm -f /var/tmp/sosreport*
-    become: true
+    # - name: remove the reports to release storage
+    #   shell: rm -f /var/tmp/sosreport*
+    #   become: true
 
   - name: check tcpdump is installed with podman
     shell: podman run --rm {{ image_fullname }} rpm -q tcpdump
     become: true
 
-# Only rhel7 support-tools has strace
   - name: check strace is installed
     shell: podman run --rm {{ image_fullname }} rpm -q strace
     become: true
