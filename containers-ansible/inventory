@@ -1,0 +1,5 @@
+#10.16.216.114 ansible_ssh_user=root
+#10.16.66.196 ansible_ssh_user=root
+10.10.179.78 ansible_ssh_user=root ansible_python_interpreter=/usr/libexec/platform-python
+10.16.56.201 ansible_ssh_user=root ansible_python_interpreter=/usr/libexec/platform-python
+#10.0.2.81 ansible_ssh_user=root

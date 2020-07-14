@@ -3,7 +3,7 @@
 size_min: 208
 # normal size is 231, and max is like 1.1 * normal
 size_max: 254
-container_name: 'rsyslog'
+container_name: 'rhel8-rsyslog'
 mounts: "/etc/localtime /etc/machine-id /etc/pki/rsyslog /etc/rsyslog.conf /etc/rsyslog.d /etc/sysconfig/rsyslog /run /var/lib/rsyslog /var/log "
 install_files:
   - /etc/pki/rsyslog

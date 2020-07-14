@@ -1,0 +1,3 @@
+[defaults]
+log_path=/var/log/ansible/ansible-flannel-0619.log
+display_args_to_stdout=true
