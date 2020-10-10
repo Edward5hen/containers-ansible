@@ -1,0 +1,12 @@
+---
+# This playbook is to check whether label version in image matches.
+
+- name: get the label version
+  shell: podman inspect --format \{\{.Labels.version\}\} {{ image_fullname }}
+  become: true
+  register: label_version
+
+- name: check label version
+  fail:
+    msg: "Label version does NOT match!"
+  when: label_version.stdout != correct_version

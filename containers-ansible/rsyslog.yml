@@ -43,6 +43,7 @@
   # only rhel7 container can be scanned now.
   #- scan
   - check_signature
+  - check_label_version
   - check_size
   - install_and_run
 
