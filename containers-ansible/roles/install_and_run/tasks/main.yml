@@ -5,12 +5,12 @@
   shell: podman container runlabel install {{ image_fullname }}
   become: true
 
-  - name: check install files
-    stat:
-      path: "{{ item }}"
-    register: r
-    failed_when: r.stat.exists == False
-    with_items: "{{ install_files }}"
+    #- name: check install files
+    #  stat:
+    #    path: "{{ item }}"
+    #  register: r
+    #  failed_when: r.stat.exists == False
+    #  with_items: "{{ install_files }}"
 
 - name: check /var/log/sa for sadc
   stat:

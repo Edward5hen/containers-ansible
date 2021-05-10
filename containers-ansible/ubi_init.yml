@@ -28,7 +28,7 @@
     #- scan
   - check_signature
   - check_label_version
-  - check_size
+    #- check_size
 
   post_tasks:
   - name: check eula correctness with podman
