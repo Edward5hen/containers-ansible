@@ -1,0 +1,43 @@
+---
+# https://www.redhat.com/sysadmin/podman-inside-container
+
+- hosts: all
+
+  roles:
+  - pull
+  - check_signature
+  - check_label_version
+
+  post_tasks:
+  - name: Rootful Podman in rootful Podman with --privileged
+    shell: podman run --privileged {{ image_fullname  }} podman run ubi8 echo hello | grep "hello"
+    become: true
+
+  - name: Rootless Podman in rootful Podman with --privileged
+    shell: podman run --user podman --privileged {{ image_fullname }} podman run ubi8 echo hello | grep "hello"
+    become: true
+
+  - name: Rootful Podman in rootful Podman without --privileged
+    shell: podman run --cap-add=sys_admin,mknod --device=/dev/fuse --security-opt label=disable {{ image_fullname }} podman run ubi8 echo hello | grep "hello"
+    become: true
+
+  - name: Rootless Podman in rootful Podman without --privileged
+    shell: podman run --user podman --security-opt label=disable --security-opt unmask=ALL --device /dev/fuse {{ image_fullname }} podman run ubi8 echo hello | grep "hello"
+    become: true
+
+  - name: Add user weshen
+    shell: useradd weshen
+    ignore_errors: yes
+    become: true
+
+  - name: Switch to user weshen
+    shell: su - weshen
+    become: true
+
+  - name: Rootless Podman with containerized rootful Podman
+    shell: podman run --privileged {{ image_fullname }} podman run ubi8 echo hello | grep "hello"
+    become: true
+
+  - name: Rootless Podman running rootless Podman
+    shell: podman run --security-opt label=disable --user podman --device /dev/fuse {{ image_fullname }} podman run ubi8 echo hello | grep "hello"
+    become: true
