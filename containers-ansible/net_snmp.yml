@@ -4,6 +4,9 @@
 - hosts: all
 
   pre_tasks:
+  - set_fact: ansible_distribution_major_version="9"
+    when: ansible_distribution_major_version is undefined
+
   - include_vars: snmp_rhel7_vars.yml
     when: ansible_distribution_major_version == '7' and ansible_architecture == 'x86_64'
 
@@ -22,11 +25,20 @@
   - include_vars: snmp_rhel8_s390x_vars.yml
     when: ansible_distribution_major_version == '8' and ansible_architecture == 's390x'
 
+  - include_vars: snmp_rhel9_vars.yml
+    when: ansible_distribution_major_version == '9' and ansible_architecture == 'x86_64'
+
+  - include_vars: snmp_rhel9_ppc_vars.yml
+    when: ansible_distribution_major_version == '9' and ansible_architecture == 'ppc64le'
+
+  - include_vars: snmp_rhel9_s390x_vars.yml
+    when: ansible_distribution_major_version == '9' and ansible_architecture == 's390x'
+
   roles:
   - setup
   - pull
     #- scan
-  - check_signature
+    #- check_signature
   - check_label_version
     #- check_size
 

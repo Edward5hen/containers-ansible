@@ -4,6 +4,9 @@
 - hosts: all
 
   pre_tasks:
+  - set_fact: ansible_distribution_major_version="9"
+    when: ansible_distribution_major_version is undefined
+
   - include_vars: ubi_init_rhel7_vars.yml
     when: ansible_architecture == 'x86_64' and ansible_distribution_major_version == '7'
 
@@ -22,11 +25,20 @@
   - include_vars: ubi_init_rhel8_s390x_vars.yml
     when: ansible_architecture == 's390x' and ansible_distribution_major_version == '8'
 
+  - include_vars: ubi_init_rhel9_vars.yml
+    when: ansible_architecture == 'x86_64' and ansible_distribution_major_version == '9'
+
+  - include_vars: ubi_init_rhel9_ppc_vars.yml
+    when: ansible_architecture == 'ppc64le' and ansible_distribution_major_version == '9'
+
+  - include_vars: ubi_init_rhel9_s390x_vars.yml
+    when: ansible_architecture == 's390x' and ansible_distribution_major_version == '9'
+
   roles:
   - setup
   - pull
     #- scan
-  - check_signature
+    #- check_signature
   - check_label_version
     #- check_size
 
@@ -54,10 +66,10 @@
     become: true
     when: ansible_distribution_major_version == '7' and ansible_architecture == 's390x'
 
-  - name: check pem file with podman for arch x86_64
-    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "479\.pem"
-    become: true
-    when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
+      #  - name: check pem file with podman for arch x86_64
+      #    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "479\.pem"
+      #    become: true
+      #    when: ansible_distribution_major_version == '8' and ansible_architecture == 'x86_64'
 
   - name: check pem file with podman for arch ppc64le
     shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "279\.pem"
