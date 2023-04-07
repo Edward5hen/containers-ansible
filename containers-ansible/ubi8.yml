@@ -13,9 +13,9 @@
 
   roles:
   - setup
-    #  - pull
+  - pull
     #  - check_signature
-    #  - check_label_version
+  - check_label_version
     #  - check_size
 
   post_tasks:
