@@ -1,5 +1,0 @@
----
-# normal size is 271, and min is like 0.9 * normal
-size_min: 247
-# normal size is 271, and max is like 1.1 * normal
-size_max: 298
