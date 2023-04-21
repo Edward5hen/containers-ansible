@@ -13,16 +13,18 @@ Currently, project includes rsyslog, support-tools, sadc, rhel-tools, net-snmp, 
 
 ## Known Issue
 
-- Unsecurity repo task failure
-- Container size failure
+- Add unsecurity repo task failure
+- Check container size task failure
 - Parts of task ignore
 
 ## Usage
 
 Run in your main (local) node `ansible-playbook -i $inventory $container.yml -e image_fullname=$img_fn -e correct_version=$rhelVR -v`
 
-$container.yml should be replaced to related playbooks under containers-ansible folder. 
-$img_fn should be replaced to internal brew page. 
+$container.yml should be replaced to related playbooks under containers-ansible folder.
+
+$img_fn should be replaced to internal brew page.
+
 $rhelVR should be replated to version.release.
 
 |**Playbook Name**|**Platform**|**Errata Task**|
