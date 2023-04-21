@@ -1,13 +1,14 @@
 ## Overview
 
 Project `containers-ansible` is designed for internal layered image Errata Test.
+
 Currently, project includes rsyslog, support-tools, sadc, rhel-tools, net-snmp, ubi-init/rhel-init, etcd, flannel, ubi base and ubi minimal base images.
 
 ## Requirement
 
 - Ansible / ansible-core is necessary in your main (local) node.
 - Podman is necessary in your worker (beaker) node(s).
- - If your worker (beaker) nodes are RHEL-7, please use subscription-manager to book related repos based on different platforms.
+  - If your worker (beaker) nodes are RHEL-7, please use subscription-manager to book related repos based on different platforms.
 - Add above worker nodes hostname / ip to `inventory` file.
 
 ## Known Issue
@@ -20,8 +21,8 @@ Currently, project includes rsyslog, support-tools, sadc, rhel-tools, net-snmp, 
 
 Run in your main (local) node `ansible-playbook -i $inventory $container.yml -e image_fullname=$img_fn -e correct_version=$rhelVR -v`
 
-$container.yml should be replaced to related playbooks under containers-ansible folder.
-$img_fn should be replaced to internal brew page.
+$container.yml should be replaced to related playbooks under containers-ansible folder. 
+$img_fn should be replaced to internal brew page. 
 $rhelVR should be replated to version.release.
 
 |**Playbook Name**|**Platform**|**Errata Task**|
