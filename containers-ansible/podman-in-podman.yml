@@ -30,14 +30,12 @@
     ignore_errors: yes
     become: true
 
-  - name: Switch to user weshen
-    shell: su - weshen
-    become: true
-
   - name: Rootless Podman with containerized rootful Podman
     shell: podman run --privileged {{ image_fullname }} podman run ubi8 echo hello | grep "hello"
     become: true
+    become_user: weshen
 
   - name: Rootless Podman running rootless Podman
     shell: podman run --security-opt label=disable --user podman --device /dev/fuse {{ image_fullname }} podman run ubi8 echo hello | grep "hello"
     become: true
+    become_user: weshen
