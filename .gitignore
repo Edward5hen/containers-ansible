@@ -1,6 +1,9 @@
 *.retry
 *.gitigore
 *.code*
-*.inventory
 *.ansible.cfg*
-*.vscode
+
+# configuration folder
+.vscode
+# Ignore all files whose name contains inventory
+*[Ii]nventory*

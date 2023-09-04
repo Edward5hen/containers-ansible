@@ -47,6 +47,7 @@
     shell: podman run -d --privileged --net=host {{ image_fullname }}
     become: true
 
+  # sudo privilege is needed for this step
   - name: run "snmpgetnext -v 2c -c public $IP .1" for remote target
     shell: snmpgetnext -v 2c -c public {{ ansible_default_ipv4.address }} .1
     delegate_to: localhost
