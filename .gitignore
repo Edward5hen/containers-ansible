@@ -3,3 +3,4 @@
 *.code*
 *.inventory
 *.ansible.cfg*
+*.vscode
