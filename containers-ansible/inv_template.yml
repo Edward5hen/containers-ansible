@@ -2,21 +2,13 @@ all:
   hosts:
     x86_64:
       ansible_host: ${host}
-      ansible_ssh_user: root
-      ansible_python_interpreter: /usr/libexec/platform-python
-      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
     ppc64le:
       ansible_host: ${host}
-      ansible_ssh_user: root
-      ansible_python_interpreter: /usr/libexec/platform-python
-      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
     s390x:
       ansible_host: ${host}
-      ansible_ssh_user: root
-      ansible_python_interpreter: /usr/libexec/platform-python
-      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
     aarch64:
       ansible_host: ${host}
-      ansible_ssh_user: root
-      ansible_python_interpreter: /usr/libexec/platform-python
-      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+  vars:
+    ansible_ssh_user: root
+    ansible_python_interpreter: /usr/libexec/platform-python
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
