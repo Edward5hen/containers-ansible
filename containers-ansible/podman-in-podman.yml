@@ -5,7 +5,7 @@
 
   roles:
   - pull
-    #- check_signature
+  - check_signature
   - check_label_version
 
   post_tasks:

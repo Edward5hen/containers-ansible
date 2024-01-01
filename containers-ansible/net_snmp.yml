@@ -38,7 +38,7 @@
   - setup
   - pull
     #- scan
-    #- check_signature
+  - check_signature
   - check_label_version
     #- check_size
 

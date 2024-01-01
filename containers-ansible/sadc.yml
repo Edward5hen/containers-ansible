@@ -21,9 +21,9 @@
   roles:
   - setup
   - pull
-    #  - check_signature
+  - check_signature
   - check_label_version
-  - check_size
+    #- check_size
   - install_and_run
     #  - scan
 

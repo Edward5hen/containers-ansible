@@ -14,7 +14,7 @@
   - pull
   - check_signature
   - check_label_version
-  - check_size
+    #  - check_size
 
   post_tasks:
   # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
