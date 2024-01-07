@@ -21,7 +21,7 @@
 
     # Add support for aarch64. as check_size is no needed anymore, just use ubi_init_rhel8_vars
   - include_vars: ubi_init_rhel8_vars.yml
-    when: ansible_architecture == 'ppc64le'
+    when: ansible_architecture == 'aarch64'
 
   - include_vars: ubi_init_rhel8_ppc_vars.yml
     when: ansible_architecture == 'ppc64le' and ansible_distribution_major_version == '8'
