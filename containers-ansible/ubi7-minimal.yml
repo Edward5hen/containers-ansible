@@ -55,6 +55,21 @@
       src: Dockerfile-ubi7-minimal-rhel.j2
       dest: /tmp/Dockerfile-ubi7-minimal-rhel
     become: true
+    when: ansible_architecture == 'x86_64'
+
+  - name: create dockerfile with rhel content for ppc64le
+    template:
+      src: Dockerfile-ubi7-minimal-rhel-ppc.j2
+      dest: /tmp/Dockerfile-ubi7-minimal-rhel
+    become: true
+    when: ansible_architecture == 'ppc64le'
+
+  - name: create dockerfile with rhel content
+    template:
+      src: Dockerfile-ubi7-minimal-rhel-s390x.j2
+      dest: /tmp/Dockerfile-ubi7-minimal-rhel
+    become: true
+    when: ansible_architecture == 's390x'
 
   - name: remove existing rhel content image
     shell: podman rmi -f ubi7-build-rhel
