@@ -6,9 +6,6 @@
 
   pre_tasks:
   - include_vars: ubi8_minimal_vars.yml
-    when: ansible_architecture == 'x86_64'
-  - include_vars: ubi8_minimal_ppc_vars.yml
-    when: ansible_architecture == 'ppc64le'
 
   roles:
   - setup
