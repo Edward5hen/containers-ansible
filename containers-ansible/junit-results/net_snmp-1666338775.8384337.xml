@@ -1,0 +1,2911 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="21" tests="60" time="228.99286651611328">
+	<testsuite disabled="0" errors="0" failures="21" name="net_snmp" skipped="33" tests="60" time="228.99286651611328">
+		<testcase name="[10.0.2.69] all: Gathering Facts gather_subset=all, gather_timeout=10" time="10.108445" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:4">
+			<system-out>{
+&quot;ansible_facts&quot;: {
+&quot;ansible_all_ipv4_addresses&quot;: [
+&quot;10.88.0.1&quot;,
+&quot;10.0.2.69&quot;
+],
+&quot;ansible_all_ipv6_addresses&quot;: [
+&quot;fe80::c81c:5ff:fe99:a08b&quot;,
+&quot;2620:52:0:2:7499:5ff:fef5:5602&quot;,
+&quot;fe80::7499:5ff:fef5:5602&quot;
+],
+&quot;ansible_apparmor&quot;: {
+&quot;status&quot;: &quot;disabled&quot;
+},
+&quot;ansible_architecture&quot;: &quot;ppc64le&quot;,
+&quot;ansible_bios_date&quot;: &quot;NA&quot;,
+&quot;ansible_bios_version&quot;: &quot;NA&quot;,
+&quot;ansible_cmdline&quot;: {
+&quot;BOOT_IMAGE&quot;: &quot;/vmlinuz-4.18.0-372.32.1.el8_6.ppc64le&quot;,
+&quot;crashkernel&quot;: &quot;auto&quot;,
+&quot;rd.lvm.lv&quot;: &quot;rhel_ibm-p9z-18-lp2/swap&quot;,
+&quot;ro&quot;: true,
+&quot;root&quot;: &quot;/dev/mapper/rhel_ibm--p9z--18--lp2-root&quot;
+},
+&quot;ansible_cni_podman0&quot;: {
+&quot;active&quot;: false,
+&quot;device&quot;: &quot;cni-podman0&quot;,
+&quot;features&quot;: {
+&quot;esp_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;esp_tx_csum_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;fcoe_mtu&quot;: &quot;off [fixed]&quot;,
+&quot;generic_receive_offload&quot;: &quot;on&quot;,
+&quot;generic_segmentation_offload&quot;: &quot;on&quot;,
+&quot;highdma&quot;: &quot;on&quot;,
+&quot;hw_tc_offload&quot;: &quot;off [fixed]&quot;,
+&quot;l2_fwd_offload&quot;: &quot;off [fixed]&quot;,
+&quot;large_receive_offload&quot;: &quot;off [fixed]&quot;,
+&quot;loopback&quot;: &quot;off [fixed]&quot;,
+&quot;netns_local&quot;: &quot;on [fixed]&quot;,
+&quot;ntuple_filters&quot;: &quot;off [fixed]&quot;,
+&quot;receive_hashing&quot;: &quot;off [fixed]&quot;,
+&quot;rx_all&quot;: &quot;off [fixed]&quot;,
+&quot;rx_checksumming&quot;: &quot;off [fixed]&quot;,
+&quot;rx_fcs&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_hw&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_list&quot;: &quot;off&quot;,
+&quot;rx_udp_gro_forwarding&quot;: &quot;off&quot;,
+&quot;rx_udp_tunnel_port_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_hw_parse&quot;: &quot;off [fixed]&quot;,
+&quot;scatter_gather&quot;: &quot;on&quot;,
+&quot;tcp_segmentation_offload&quot;: &quot;on&quot;,
+&quot;tls_hw_record&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_rx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_tx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_fcoe_crc&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ip_generic&quot;: &quot;on&quot;,
+&quot;tx_checksum_ipv4&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ipv6&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_sctp&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksumming&quot;: &quot;on&quot;,
+&quot;tx_esp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_fcoe_segmentation&quot;: &quot;on&quot;,
+&quot;tx_gre_csum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_gre_segmentation&quot;: &quot;on&quot;,
+&quot;tx_gso_list&quot;: &quot;on&quot;,
+&quot;tx_gso_partial&quot;: &quot;on&quot;,
+&quot;tx_gso_robust&quot;: &quot;on&quot;,
+&quot;tx_ipxip4_segmentation&quot;: &quot;on&quot;,
+&quot;tx_ipxip6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_lockless&quot;: &quot;on [fixed]&quot;,
+&quot;tx_nocache_copy&quot;: &quot;off&quot;,
+&quot;tx_scatter_gather&quot;: &quot;on&quot;,
+&quot;tx_scatter_gather_fraglist&quot;: &quot;on&quot;,
+&quot;tx_sctp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_ecn_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_mangleid_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tunnel_remcsum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_csum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_segmentation&quot;: &quot;on&quot;,
+&quot;tx_vlan_offload&quot;: &quot;on&quot;,
+&quot;tx_vlan_stag_hw_insert&quot;: &quot;on&quot;,
+&quot;vlan_challenged&quot;: &quot;off [fixed]&quot;
+},
+&quot;hw_timestamp_filters&quot;: [],
+&quot;id&quot;: &quot;8000.ca1c0599a08b&quot;,
+&quot;interfaces&quot;: [],
+&quot;ipv4&quot;: {
+&quot;address&quot;: &quot;10.88.0.1&quot;,
+&quot;broadcast&quot;: &quot;10.88.255.255&quot;,
+&quot;netmask&quot;: &quot;255.255.0.0&quot;,
+&quot;network&quot;: &quot;10.88.0.0&quot;
+},
+&quot;ipv6&quot;: [
+{
+&quot;address&quot;: &quot;fe80::c81c:5ff:fe99:a08b&quot;,
+&quot;prefix&quot;: &quot;64&quot;,
+&quot;scope&quot;: &quot;link&quot;
+}
+],
+&quot;macaddress&quot;: &quot;ca:1c:05:99:a0:8b&quot;,
+&quot;mtu&quot;: 1500,
+&quot;promisc&quot;: false,
+&quot;speed&quot;: -1,
+&quot;stp&quot;: false,
+&quot;timestamping&quot;: [],
+&quot;type&quot;: &quot;bridge&quot;
+},
+&quot;ansible_date_time&quot;: {
+&quot;date&quot;: &quot;2022-10-21&quot;,
+&quot;day&quot;: &quot;21&quot;,
+&quot;epoch&quot;: &quot;1666338692&quot;,
+&quot;hour&quot;: &quot;03&quot;,
+&quot;iso8601&quot;: &quot;2022-10-21T07:51:32Z&quot;,
+&quot;iso8601_basic&quot;: &quot;20221021T035132540056&quot;,
+&quot;iso8601_basic_short&quot;: &quot;20221021T035132&quot;,
+&quot;iso8601_micro&quot;: &quot;2022-10-21T07:51:32.540181Z&quot;,
+&quot;minute&quot;: &quot;51&quot;,
+&quot;month&quot;: &quot;10&quot;,
+&quot;second&quot;: &quot;32&quot;,
+&quot;time&quot;: &quot;03:51:32&quot;,
+&quot;tz&quot;: &quot;EDT&quot;,
+&quot;tz_offset&quot;: &quot;-0400&quot;,
+&quot;weekday&quot;: &quot;Friday&quot;,
+&quot;weekday_number&quot;: &quot;5&quot;,
+&quot;weeknumber&quot;: &quot;42&quot;,
+&quot;year&quot;: &quot;2022&quot;
+},
+&quot;ansible_default_ipv4&quot;: {
+&quot;address&quot;: &quot;10.0.2.69&quot;,
+&quot;alias&quot;: &quot;env2&quot;,
+&quot;broadcast&quot;: &quot;10.0.2.255&quot;,
+&quot;gateway&quot;: &quot;10.0.2.254&quot;,
+&quot;interface&quot;: &quot;env2&quot;,
+&quot;macaddress&quot;: &quot;76:99:05:f5:56:02&quot;,
+&quot;mtu&quot;: 1500,
+&quot;netmask&quot;: &quot;255.255.255.0&quot;,
+&quot;network&quot;: &quot;10.0.2.0&quot;,
+&quot;type&quot;: &quot;ether&quot;
+},
+&quot;ansible_default_ipv6&quot;: {
+&quot;address&quot;: &quot;2620:52:0:2:7499:5ff:fef5:5602&quot;,
+&quot;gateway&quot;: &quot;fe80::eab6:c202:5a10:dc81&quot;,
+&quot;interface&quot;: &quot;env2&quot;,
+&quot;macaddress&quot;: &quot;76:99:05:f5:56:02&quot;,
+&quot;mtu&quot;: 1500,
+&quot;prefix&quot;: &quot;64&quot;,
+&quot;scope&quot;: &quot;global&quot;,
+&quot;type&quot;: &quot;ether&quot;
+},
+&quot;ansible_device_links&quot;: {
+&quot;ids&quot;: {
+&quot;dm-0&quot;: [
+&quot;dm-name-rhel_ibm--p9z--18--lp2-root&quot;,
+&quot;dm-uuid-LVM-HYMCM9hSMYdjzUYScsNr0kqTHRPdT8x1JoD76sCn4N2N8fRLJR2yDmBwE1IsW45E&quot;
+],
+&quot;dm-1&quot;: [
+&quot;dm-name-rhel_ibm--p9z--18--lp2-swap&quot;,
+&quot;dm-uuid-LVM-HYMCM9hSMYdjzUYScsNr0kqTHRPdT8x1kPYNd9Wtx5Gd5klF1180Awv7CuBMblsY&quot;
+],
+&quot;dm-2&quot;: [
+&quot;dm-name-rhel_ibm--p9z--18--lp2-home&quot;,
+&quot;dm-uuid-LVM-HYMCM9hSMYdjzUYScsNr0kqTHRPdT8x13ezbXamzdXAbtT4IVnkGZS8q2vr6WliW&quot;
+],
+&quot;sda&quot;: [
+&quot;scsi-SAIX_VDASD_00faf50900004b00000001639776309e.2&quot;
+],
+&quot;sda1&quot;: [
+&quot;scsi-SAIX_VDASD_00faf50900004b00000001639776309e.2-part1&quot;
+],
+&quot;sda2&quot;: [
+&quot;scsi-SAIX_VDASD_00faf50900004b00000001639776309e.2-part2&quot;
+],
+&quot;sda3&quot;: [
+&quot;lvm-pv-uuid-FfXwN7-MDsc-NG3Q-9NWn-Ys2y-I8YS-FZJYBU&quot;,
+&quot;scsi-SAIX_VDASD_00faf50900004b00000001639776309e.2-part3&quot;
+]
+},
+&quot;labels&quot;: {},
+&quot;masters&quot;: {
+&quot;sda3&quot;: [
+&quot;dm-0&quot;,
+&quot;dm-1&quot;,
+&quot;dm-2&quot;
+]
+},
+&quot;uuids&quot;: {
+&quot;dm-0&quot;: [
+&quot;a1556789-bf87-48dc-be51-37413ec986ba&quot;
+],
+&quot;dm-1&quot;: [
+&quot;628d1fbe-a253-4a6f-bc6d-d40cf1da4ef2&quot;
+],
+&quot;dm-2&quot;: [
+&quot;ba5aba35-c791-42b2-b7f1-9da60dcf2ee0&quot;
+],
+&quot;sda2&quot;: [
+&quot;45ebd60d-1d8c-447d-aa73-890c2aaf73ed&quot;
+]
+}
+},
+&quot;ansible_devices&quot;: {
+&quot;dm-0&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;dm-name-rhel_ibm--p9z--18--lp2-root&quot;,
+&quot;dm-uuid-LVM-HYMCM9hSMYdjzUYScsNr0kqTHRPdT8x1JoD76sCn4N2N8fRLJR2yDmBwE1IsW45E&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;a1556789-bf87-48dc-be51-37413ec986ba&quot;
+]
+},
+&quot;model&quot;: null,
+&quot;partitions&quot;: {},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;&quot;,
+&quot;sectors&quot;: &quot;87359488&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;serial&quot;: &quot;00faf50900004b00000001639776309e&quot;,
+&quot;size&quot;: &quot;41.66 GB&quot;,
+&quot;support_discard&quot;: &quot;0&quot;,
+&quot;vendor&quot;: null,
+&quot;virtual&quot;: 1
+},
+&quot;dm-1&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;dm-name-rhel_ibm--p9z--18--lp2-swap&quot;,
+&quot;dm-uuid-LVM-HYMCM9hSMYdjzUYScsNr0kqTHRPdT8x1kPYNd9Wtx5Gd5klF1180Awv7CuBMblsY&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;628d1fbe-a253-4a6f-bc6d-d40cf1da4ef2&quot;
+]
+},
+&quot;model&quot;: null,
+&quot;partitions&quot;: {},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;&quot;,
+&quot;sectors&quot;: &quot;14680064&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;serial&quot;: &quot;00faf50900004b00000001639776309e&quot;,
+&quot;size&quot;: &quot;7.00 GB&quot;,
+&quot;support_discard&quot;: &quot;0&quot;,
+&quot;vendor&quot;: null,
+&quot;virtual&quot;: 1
+},
+&quot;dm-2&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;dm-name-rhel_ibm--p9z--18--lp2-home&quot;,
+&quot;dm-uuid-LVM-HYMCM9hSMYdjzUYScsNr0kqTHRPdT8x13ezbXamzdXAbtT4IVnkGZS8q2vr6WliW&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;ba5aba35-c791-42b2-b7f1-9da60dcf2ee0&quot;
+]
+},
+&quot;model&quot;: null,
+&quot;partitions&quot;: {},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;&quot;,
+&quot;sectors&quot;: &quot;42647552&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;serial&quot;: &quot;00faf50900004b00000001639776309e&quot;,
+&quot;size&quot;: &quot;20.34 GB&quot;,
+&quot;support_discard&quot;: &quot;0&quot;,
+&quot;vendor&quot;: null,
+&quot;virtual&quot;: 1
+},
+&quot;sda&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;scsi-SAIX_VDASD_00faf50900004b00000001639776309e.2&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: []
+},
+&quot;model&quot;: &quot;VDASD&quot;,
+&quot;partitions&quot;: {
+&quot;sda1&quot;: {
+&quot;holders&quot;: [],
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;scsi-SAIX_VDASD_00faf50900004b00000001639776309e.2-part1&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: []
+},
+&quot;sectors&quot;: &quot;8192&quot;,
+&quot;sectorsize&quot;: 512,
+&quot;size&quot;: &quot;4.00 MB&quot;,
+&quot;start&quot;: &quot;2048&quot;,
+&quot;uuid&quot;: null
+},
+&quot;sda2&quot;: {
+&quot;holders&quot;: [],
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;scsi-SAIX_VDASD_00faf50900004b00000001639776309e.2-part2&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;45ebd60d-1d8c-447d-aa73-890c2aaf73ed&quot;
+]
+},
+&quot;sectors&quot;: &quot;2097152&quot;,
+&quot;sectorsize&quot;: 512,
+&quot;size&quot;: &quot;1.00 GB&quot;,
+&quot;start&quot;: &quot;10240&quot;,
+&quot;uuid&quot;: &quot;45ebd60d-1d8c-447d-aa73-890c2aaf73ed&quot;
+},
+&quot;sda3&quot;: {
+&quot;holders&quot;: [
+&quot;rhel_ibm--p9z--18--lp2-swap&quot;,
+&quot;rhel_ibm--p9z--18--lp2-home&quot;,
+&quot;rhel_ibm--p9z--18--lp2-root&quot;
+],
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;lvm-pv-uuid-FfXwN7-MDsc-NG3Q-9NWn-Ys2y-I8YS-FZJYBU&quot;,
+&quot;scsi-SAIX_VDASD_00faf50900004b00000001639776309e.2-part3&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [
+&quot;dm-0&quot;,
+&quot;dm-1&quot;,
+&quot;dm-2&quot;
+],
+&quot;uuids&quot;: []
+},
+&quot;sectors&quot;: &quot;144693248&quot;,
+&quot;sectorsize&quot;: 512,
+&quot;size&quot;: &quot;69.00 GB&quot;,
+&quot;start&quot;: &quot;2107392&quot;,
+&quot;uuid&quot;: null
+}
+},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;mq-deadline&quot;,
+&quot;sectors&quot;: &quot;146800640&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;serial&quot;: &quot;00faf50900004b00000001639776309e&quot;,
+&quot;size&quot;: &quot;70.00 GB&quot;,
+&quot;support_discard&quot;: &quot;0&quot;,
+&quot;vendor&quot;: &quot;AIX&quot;,
+&quot;virtual&quot;: 1
+}
+},
+&quot;ansible_distribution&quot;: &quot;RedHat&quot;,
+&quot;ansible_distribution_file_parsed&quot;: true,
+&quot;ansible_distribution_file_path&quot;: &quot;/etc/redhat-release&quot;,
+&quot;ansible_distribution_file_search_string&quot;: &quot;Red Hat&quot;,
+&quot;ansible_distribution_file_variety&quot;: &quot;RedHat&quot;,
+&quot;ansible_distribution_major_version&quot;: &quot;8&quot;,
+&quot;ansible_distribution_release&quot;: &quot;Ootpa&quot;,
+&quot;ansible_distribution_version&quot;: &quot;8.6&quot;,
+&quot;ansible_dns&quot;: {
+&quot;nameservers&quot;: [
+&quot;10.11.5.19&quot;,
+&quot;10.11.5.160&quot;,
+&quot;10.2.32.1&quot;
+],
+&quot;search&quot;: [
+&quot;virt.pnr.lab.eng.rdu2.redhat.com&quot;
+]
+},
+&quot;ansible_domain&quot;: &quot;virt.pnr.lab.eng.rdu2.redhat.com&quot;,
+&quot;ansible_effective_group_id&quot;: 0,
+&quot;ansible_effective_user_id&quot;: 0,
+&quot;ansible_env&quot;: {
+&quot;BASH_FUNC_which%%&quot;: &quot;() {  ( alias;\n eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@\n}&quot;,
+&quot;BEAKER&quot;: &quot;https://beaker.engineering.redhat.com/&quot;,
+&quot;BEAKER_HUB_URL&quot;: &quot;https://beaker.engineering.redhat.com/&quot;,
+&quot;BEAKER_JOB_WHITEBOARD&quot;: &quot;Reserve Workflow provision of distro RHEL-8.6.0-updates-20221020.d.0 on any system for 172800 seconds&quot;,
+&quot;BEAKER_LAB_CONTROLLER&quot;: &quot;lab-02.rhts.eng.rdu.redhat.com&quot;,
+&quot;BEAKER_LAB_CONTROLLER_URL&quot;: &quot;http://lab-02.rhts.eng.rdu.redhat.com:8000/&quot;,
+&quot;BEAKER_RECIPE_ID&quot;: &quot;12806168&quot;,
+&quot;BEAKER_RECIPE_WHITEBOARD&quot;: &quot;&quot;,
+&quot;BEAKER_RESERVATION_POLICY_URL&quot;: &quot;https://home.corp.redhat.com/wiki/extended-reservations-beaker-general-pool-systems&quot;,
+&quot;BUILDURL&quot;: &quot;http://download.eng.rdu.redhat.com&quot;,
+&quot;DBUS_SESSION_BUS_ADDRESS&quot;: &quot;unix:path=/run/user/0/bus&quot;,
+&quot;DUMPSERVER&quot;: &quot;netdump-01.eng.rdu.redhat.com&quot;,
+&quot;HOME&quot;: &quot;/root&quot;,
+&quot;LAB_CONTROLLER&quot;: &quot;lab-02.rhts.eng.rdu.redhat.com&quot;,
+&quot;LANG&quot;: &quot;en_US.UTF-8&quot;,
+&quot;LESSOPEN&quot;: &quot;||/usr/bin/lesspipe.sh %s&quot;,
+&quot;LOGNAME&quot;: &quot;root&quot;,
+&quot;LOOKASIDE&quot;: &quot;http://download.eng.rdu.redhat.com/qa/rhts/lookaside/&quot;,
+&quot;LS_COLORS&quot;: &quot;rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:&quot;,
+&quot;NFSSERVERS&quot;: &quot;rhel6-nfs.eng.rdu2.redhat.com:/export/home rhel7-nfs.eng.rdu2.redhat.com:/export/home rhel8-nfs.eng.rdu2.redhat.com:/export/home fs-netapp-kernel1.fs.lab.eng.bos.redhat.com:/export/home&quot;,
+&quot;PATH&quot;: &quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin&quot;,
+&quot;PWD&quot;: &quot;/root&quot;,
+&quot;RHTS_OPTION_COMPATIBLE&quot;: &quot;&quot;,
+&quot;RHTS_OPTION_COMPAT_SERVICE&quot;: &quot;&quot;,
+&quot;SELINUX_LEVEL_REQUESTED&quot;: &quot;&quot;,
+&quot;SELINUX_ROLE_REQUESTED&quot;: &quot;&quot;,
+&quot;SELINUX_USE_CURRENT_RANGE&quot;: &quot;&quot;,
+&quot;SHELL&quot;: &quot;/bin/bash&quot;,
+&quot;SHLVL&quot;: &quot;2&quot;,
+&quot;SSH_CLIENT&quot;: &quot;10.73.2.3 53616 22&quot;,
+&quot;SSH_CONNECTION&quot;: &quot;10.73.2.3 53616 10.0.2.69 22&quot;,
+&quot;SSH_TTY&quot;: &quot;/dev/pts/0&quot;,
+&quot;TERM&quot;: &quot;xterm-256color&quot;,
+&quot;USER&quot;: &quot;root&quot;,
+&quot;XDG_RUNTIME_DIR&quot;: &quot;/run/user/0&quot;,
+&quot;XDG_SESSION_ID&quot;: &quot;4&quot;,
+&quot;_&quot;: &quot;/usr/libexec/platform-python&quot;,
+&quot;which_declare&quot;: &quot;declare -f&quot;
+},
+&quot;ansible_env2&quot;: {
+&quot;active&quot;: true,
+&quot;device&quot;: &quot;env2&quot;,
+&quot;features&quot;: {
+&quot;esp_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;esp_tx_csum_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;fcoe_mtu&quot;: &quot;off [fixed]&quot;,
+&quot;generic_receive_offload&quot;: &quot;on&quot;,
+&quot;generic_segmentation_offload&quot;: &quot;on&quot;,
+&quot;highdma&quot;: &quot;off [fixed]&quot;,
+&quot;hw_tc_offload&quot;: &quot;off [fixed]&quot;,
+&quot;l2_fwd_offload&quot;: &quot;off [fixed]&quot;,
+&quot;large_receive_offload&quot;: &quot;off [fixed]&quot;,
+&quot;loopback&quot;: &quot;off [fixed]&quot;,
+&quot;netns_local&quot;: &quot;off [fixed]&quot;,
+&quot;ntuple_filters&quot;: &quot;off [fixed]&quot;,
+&quot;receive_hashing&quot;: &quot;off [fixed]&quot;,
+&quot;rx_all&quot;: &quot;off [fixed]&quot;,
+&quot;rx_checksumming&quot;: &quot;on&quot;,
+&quot;rx_fcs&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_hw&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_list&quot;: &quot;off&quot;,
+&quot;rx_udp_gro_forwarding&quot;: &quot;off&quot;,
+&quot;rx_udp_tunnel_port_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_hw_parse&quot;: &quot;off [fixed]&quot;,
+&quot;scatter_gather&quot;: &quot;on&quot;,
+&quot;tcp_segmentation_offload&quot;: &quot;on&quot;,
+&quot;tls_hw_record&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_rx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_tx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_fcoe_crc&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ip_generic&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ipv4&quot;: &quot;on&quot;,
+&quot;tx_checksum_ipv6&quot;: &quot;on&quot;,
+&quot;tx_checksum_sctp&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksumming&quot;: &quot;on&quot;,
+&quot;tx_esp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_fcoe_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_list&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_partial&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_robust&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip4_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip6_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_lockless&quot;: &quot;off [fixed]&quot;,
+&quot;tx_nocache_copy&quot;: &quot;off&quot;,
+&quot;tx_scatter_gather&quot;: &quot;on&quot;,
+&quot;tx_scatter_gather_fraglist&quot;: &quot;off [fixed]&quot;,
+&quot;tx_sctp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_tcp6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_ecn_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_tcp_mangleid_segmentation&quot;: &quot;off&quot;,
+&quot;tx_tcp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tunnel_remcsum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_tnl_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_tnl_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_stag_hw_insert&quot;: &quot;off [fixed]&quot;,
+&quot;vlan_challenged&quot;: &quot;off [fixed]&quot;
+},
+&quot;hw_timestamp_filters&quot;: [],
+&quot;ipv4&quot;: {
+&quot;address&quot;: &quot;10.0.2.69&quot;,
+&quot;broadcast&quot;: &quot;10.0.2.255&quot;,
+&quot;netmask&quot;: &quot;255.255.255.0&quot;,
+&quot;network&quot;: &quot;10.0.2.0&quot;
+},
+&quot;ipv6&quot;: [
+{
+&quot;address&quot;: &quot;2620:52:0:2:7499:5ff:fef5:5602&quot;,
+&quot;prefix&quot;: &quot;64&quot;,
+&quot;scope&quot;: &quot;global&quot;
+}
+],
+&quot;macaddress&quot;: &quot;76:99:05:f5:56:02&quot;,
+&quot;module&quot;: &quot;ibmveth&quot;,
+&quot;mtu&quot;: 1500,
+&quot;pciid&quot;: &quot;30000002&quot;,
+&quot;promisc&quot;: false,
+&quot;speed&quot;: 1000,
+&quot;timestamping&quot;: [],
+&quot;type&quot;: &quot;ether&quot;
+},
+&quot;ansible_fips&quot;: false,
+&quot;ansible_form_factor&quot;: &quot;NA&quot;,
+&quot;ansible_fqdn&quot;: &quot;ibm-p9z-18-lp2.virt.pnr.lab.eng.rdu2.redhat.com&quot;,
+&quot;ansible_hostname&quot;: &quot;ibm-p9z-18-lp2&quot;,
+&quot;ansible_interfaces&quot;: [
+&quot;lo&quot;,
+&quot;cni-podman0&quot;,
+&quot;env2&quot;
+],
+&quot;ansible_is_chroot&quot;: false,
+&quot;ansible_iscsi_iqn&quot;: &quot;&quot;,
+&quot;ansible_kernel&quot;: &quot;4.18.0-372.32.1.el8_6.ppc64le&quot;,
+&quot;ansible_lo&quot;: {
+&quot;active&quot;: true,
+&quot;device&quot;: &quot;lo&quot;,
+&quot;features&quot;: {
+&quot;esp_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;esp_tx_csum_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;fcoe_mtu&quot;: &quot;off [fixed]&quot;,
+&quot;generic_receive_offload&quot;: &quot;on&quot;,
+&quot;generic_segmentation_offload&quot;: &quot;on&quot;,
+&quot;highdma&quot;: &quot;on [fixed]&quot;,
+&quot;hw_tc_offload&quot;: &quot;off [fixed]&quot;,
+&quot;l2_fwd_offload&quot;: &quot;off [fixed]&quot;,
+&quot;large_receive_offload&quot;: &quot;off [fixed]&quot;,
+&quot;loopback&quot;: &quot;on [fixed]&quot;,
+&quot;netns_local&quot;: &quot;on [fixed]&quot;,
+&quot;ntuple_filters&quot;: &quot;off [fixed]&quot;,
+&quot;receive_hashing&quot;: &quot;off [fixed]&quot;,
+&quot;rx_all&quot;: &quot;off [fixed]&quot;,
+&quot;rx_checksumming&quot;: &quot;on [fixed]&quot;,
+&quot;rx_fcs&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_hw&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_list&quot;: &quot;off&quot;,
+&quot;rx_udp_gro_forwarding&quot;: &quot;off&quot;,
+&quot;rx_udp_tunnel_port_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_hw_parse&quot;: &quot;off [fixed]&quot;,
+&quot;scatter_gather&quot;: &quot;on&quot;,
+&quot;tcp_segmentation_offload&quot;: &quot;on&quot;,
+&quot;tls_hw_record&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_rx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_tx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_fcoe_crc&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ip_generic&quot;: &quot;on [fixed]&quot;,
+&quot;tx_checksum_ipv4&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ipv6&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_sctp&quot;: &quot;on [fixed]&quot;,
+&quot;tx_checksumming&quot;: &quot;on&quot;,
+&quot;tx_esp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_fcoe_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_list&quot;: &quot;on&quot;,
+&quot;tx_gso_partial&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_robust&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip4_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip6_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_lockless&quot;: &quot;on [fixed]&quot;,
+&quot;tx_nocache_copy&quot;: &quot;off [fixed]&quot;,
+&quot;tx_scatter_gather&quot;: &quot;on [fixed]&quot;,
+&quot;tx_scatter_gather_fraglist&quot;: &quot;on [fixed]&quot;,
+&quot;tx_sctp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_ecn_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_mangleid_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tunnel_remcsum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_tnl_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_stag_hw_insert&quot;: &quot;off [fixed]&quot;,
+&quot;vlan_challenged&quot;: &quot;on [fixed]&quot;
+},
+&quot;hw_timestamp_filters&quot;: [],
+&quot;ipv4&quot;: {
+&quot;address&quot;: &quot;127.0.0.1&quot;,
+&quot;broadcast&quot;: &quot;host&quot;,
+&quot;netmask&quot;: &quot;255.0.0.0&quot;,
+&quot;network&quot;: &quot;127.0.0.0&quot;
+},
+&quot;ipv6&quot;: [
+{
+&quot;address&quot;: &quot;::1&quot;,
+&quot;prefix&quot;: &quot;128&quot;,
+&quot;scope&quot;: &quot;host&quot;
+}
+],
+&quot;mtu&quot;: 65536,
+&quot;promisc&quot;: false,
+&quot;timestamping&quot;: [],
+&quot;type&quot;: &quot;loopback&quot;
+},
+&quot;ansible_local&quot;: {},
+&quot;ansible_lsb&quot;: {},
+&quot;ansible_lvm&quot;: {
+&quot;lvs&quot;: {
+&quot;home&quot;: {
+&quot;size_g&quot;: &quot;20.34&quot;,
+&quot;vg&quot;: &quot;rhel_ibm-p9z-18-lp2&quot;
+},
+&quot;root&quot;: {
+&quot;size_g&quot;: &quot;41.66&quot;,
+&quot;vg&quot;: &quot;rhel_ibm-p9z-18-lp2&quot;
+},
+&quot;swap&quot;: {
+&quot;size_g&quot;: &quot;7.00&quot;,
+&quot;vg&quot;: &quot;rhel_ibm-p9z-18-lp2&quot;
+}
+},
+&quot;pvs&quot;: {
+&quot;/dev/sda3&quot;: {
+&quot;free_g&quot;: &quot;0&quot;,
+&quot;size_g&quot;: &quot;68.99&quot;,
+&quot;vg&quot;: &quot;rhel_ibm-p9z-18-lp2&quot;
+}
+},
+&quot;vgs&quot;: {
+&quot;rhel_ibm-p9z-18-lp2&quot;: {
+&quot;free_g&quot;: &quot;0&quot;,
+&quot;num_lvs&quot;: &quot;3&quot;,
+&quot;num_pvs&quot;: &quot;1&quot;,
+&quot;size_g&quot;: &quot;68.99&quot;
+}
+}
+},
+&quot;ansible_machine&quot;: &quot;ppc64le&quot;,
+&quot;ansible_machine_id&quot;: &quot;ea675676ae6444e5801452c26f740810&quot;,
+&quot;ansible_memfree_mb&quot;: 11131,
+&quot;ansible_memory_mb&quot;: {
+&quot;nocache&quot;: {
+&quot;free&quot;: 14454,
+&quot;used&quot;: 844
+},
+&quot;real&quot;: {
+&quot;free&quot;: 11131,
+&quot;total&quot;: 15298,
+&quot;used&quot;: 4167
+},
+&quot;swap&quot;: {
+&quot;cached&quot;: 0,
+&quot;free&quot;: 7167,
+&quot;total&quot;: 7167,
+&quot;used&quot;: 0
+}
+},
+&quot;ansible_memtotal_mb&quot;: 15298,
+&quot;ansible_mounts&quot;: [
+{
+&quot;block_available&quot;: 10064139,
+&quot;block_size&quot;: 4096,
+&quot;block_total&quot;: 10914604,
+&quot;block_used&quot;: 850465,
+&quot;device&quot;: &quot;/dev/mapper/rhel_ibm--p9z--18--lp2-root&quot;,
+&quot;fstype&quot;: &quot;xfs&quot;,
+&quot;inode_available&quot;: 21772344,
+&quot;inode_total&quot;: 21839872,
+&quot;inode_used&quot;: 67528,
+&quot;mount&quot;: &quot;/&quot;,
+&quot;options&quot;: &quot;rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota&quot;,
+&quot;size_available&quot;: 41222713344,
+&quot;size_total&quot;: 44706217984,
+&quot;uuid&quot;: &quot;a1556789-bf87-48dc-be51-37413ec986ba&quot;
+},
+{
+&quot;block_available&quot;: 192087,
+&quot;block_size&quot;: 4096,
+&quot;block_total&quot;: 259584,
+&quot;block_used&quot;: 67497,
+&quot;device&quot;: &quot;/dev/sda2&quot;,
+&quot;fstype&quot;: &quot;xfs&quot;,
+&quot;inode_available&quot;: 524039,
+&quot;inode_total&quot;: 524288,
+&quot;inode_used&quot;: 249,
+&quot;mount&quot;: &quot;/boot&quot;,
+&quot;options&quot;: &quot;rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota&quot;,
+&quot;size_available&quot;: 786788352,
+&quot;size_total&quot;: 1063256064,
+&quot;uuid&quot;: &quot;45ebd60d-1d8c-447d-aa73-890c2aaf73ed&quot;
+},
+{
+&quot;block_available&quot;: 5282916,
+&quot;block_size&quot;: 4096,
+&quot;block_total&quot;: 5328341,
+&quot;block_used&quot;: 45425,
+&quot;device&quot;: &quot;/dev/mapper/rhel_ibm--p9z--18--lp2-home&quot;,
+&quot;fstype&quot;: &quot;xfs&quot;,
+&quot;inode_available&quot;: 10661881,
+&quot;inode_total&quot;: 10661888,
+&quot;inode_used&quot;: 7,
+&quot;mount&quot;: &quot;/home&quot;,
+&quot;options&quot;: &quot;rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota&quot;,
+&quot;size_available&quot;: 21638823936,
+&quot;size_total&quot;: 21824884736,
+&quot;uuid&quot;: &quot;ba5aba35-c791-42b2-b7f1-9da60dcf2ee0&quot;
+}
+],
+&quot;ansible_nodename&quot;: &quot;ibm-p9z-18-lp2.virt.pnr.lab.eng.rdu2.redhat.com&quot;,
+&quot;ansible_os_family&quot;: &quot;RedHat&quot;,
+&quot;ansible_pkg_mgr&quot;: &quot;dnf&quot;,
+&quot;ansible_processor&quot;: [
+&quot;0&quot;,
+&quot;POWER9 (architected), altivec supported&quot;,
+&quot;1&quot;,
+&quot;POWER9 (architected), altivec supported&quot;,
+&quot;2&quot;,
+&quot;POWER9 (architected), altivec supported&quot;,
+&quot;3&quot;,
+&quot;POWER9 (architected), altivec supported&quot;,
+&quot;4&quot;,
+&quot;POWER9 (architected), altivec supported&quot;,
+&quot;5&quot;,
+&quot;POWER9 (architected), altivec supported&quot;,
+&quot;6&quot;,
+&quot;POWER9 (architected), altivec supported&quot;,
+&quot;7&quot;,
+&quot;POWER9 (architected), altivec supported&quot;
+],
+&quot;ansible_processor_cores&quot;: 1,
+&quot;ansible_processor_count&quot;: 16,
+&quot;ansible_processor_threads_per_core&quot;: 1,
+&quot;ansible_processor_vcpus&quot;: 16,
+&quot;ansible_product_name&quot;: &quot;NA&quot;,
+&quot;ansible_product_serial&quot;: &quot;NA&quot;,
+&quot;ansible_product_uuid&quot;: &quot;NA&quot;,
+&quot;ansible_product_version&quot;: &quot;NA&quot;,
+&quot;ansible_python&quot;: {
+&quot;executable&quot;: &quot;/usr/libexec/platform-python&quot;,
+&quot;has_sslcontext&quot;: true,
+&quot;type&quot;: &quot;cpython&quot;,
+&quot;version&quot;: {
+&quot;major&quot;: 3,
+&quot;micro&quot;: 8,
+&quot;minor&quot;: 6,
+&quot;releaselevel&quot;: &quot;final&quot;,
+&quot;serial&quot;: 0
+},
+&quot;version_info&quot;: [
+3,
+6,
+8,
+&quot;final&quot;,
+0
+]
+},
+&quot;ansible_python_version&quot;: &quot;3.6.8&quot;,
+&quot;ansible_real_group_id&quot;: 0,
+&quot;ansible_real_user_id&quot;: 0,
+&quot;ansible_selinux&quot;: {
+&quot;config_mode&quot;: &quot;enforcing&quot;,
+&quot;mode&quot;: &quot;enforcing&quot;,
+&quot;policyvers&quot;: 33,
+&quot;status&quot;: &quot;enabled&quot;,
+&quot;type&quot;: &quot;targeted&quot;
+},
+&quot;ansible_selinux_python_present&quot;: true,
+&quot;ansible_service_mgr&quot;: &quot;systemd&quot;,
+&quot;ansible_ssh_host_key_ecdsa_public&quot;: &quot;AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBBUXBIDoqKH0ADGgqJDtjixZq23dsvcmqgDFlbJnREDue/6AkcQfYOgqgXeddDNXw3PpMjURVjmMGSmColzfTFk=&quot;,
+&quot;ansible_ssh_host_key_ed25519_public&quot;: &quot;AAAAC3NzaC1lZDI1NTE5AAAAIMpJmdWNnpCCS56mhQ5Eay/H25BwqgwW7Ynz9rIlTBVp&quot;,
+&quot;ansible_ssh_host_key_rsa_public&quot;: &quot;AAAAB3NzaC1yc2EAAAADAQABAAABgQDwoS2aZPlbVtIE5sseFXivcsoI16DdL3z+OpDR6psJqurO1NVmwW+A4vsydojuWBr9FG2f7/5UhWPyuRAzj+h2+N/SzzDBISnyP/MnRxdAZlJQEIcPm58M/jFA9Ym3BPIQNep8YIbE1XmQ8EvPNSK6RhaI94Y719p3VEJAYzj9jd1y7jKCqrjfbVIKHGYWAqs5mz981wRzHY+OvPDN55tmEBXUQL5HHh1etJtzaKnmSxz9K5a7vtg4234oBIGnzrO5ZhpQgoV0tlP+dyhHwJGk08W9qcqWz6O81mr95grpUOVlVyrz227benmcW9Xtob7PXMKCzN8hlRZXpFilVKCrw73tz6I0XHy2RHfokKvntTDS5720Qsc9i+ux0JAjmWAmHIf6kKhm2WDhDEwYLYVO6Y73mbItW2XQlq5AEVMGcMI7WSJtxSzTHAajxIliake0WCNqRNVvGL18ygDGvhP4Q3oa/6P+6pZRi3Y19mYyptj9fk/6lqG+4T2mwSOF9rE=&quot;,
+&quot;ansible_swapfree_mb&quot;: 7167,
+&quot;ansible_swaptotal_mb&quot;: 7167,
+&quot;ansible_system&quot;: &quot;Linux&quot;,
+&quot;ansible_system_capabilities&quot;: [],
+&quot;ansible_system_capabilities_enforced&quot;: &quot;False&quot;,
+&quot;ansible_system_vendor&quot;: &quot;NA&quot;,
+&quot;ansible_uptime_seconds&quot;: 14491,
+&quot;ansible_user_dir&quot;: &quot;/root&quot;,
+&quot;ansible_user_gecos&quot;: &quot;root&quot;,
+&quot;ansible_user_gid&quot;: 0,
+&quot;ansible_user_id&quot;: &quot;root&quot;,
+&quot;ansible_user_shell&quot;: &quot;/bin/bash&quot;,
+&quot;ansible_user_uid&quot;: 0,
+&quot;ansible_userspace_bits&quot;: &quot;64&quot;,
+&quot;ansible_virtualization_role&quot;: &quot;NA&quot;,
+&quot;ansible_virtualization_type&quot;: &quot;NA&quot;,
+&quot;gather_subset&quot;: [
+&quot;all&quot;
+],
+&quot;module_setup&quot;: true
+},
+&quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase name="[10.8.1.6] all: Gathering Facts gather_subset=all, gather_timeout=10" time="14.692708" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:4">
+			<system-out>{
+&quot;ansible_facts&quot;: {
+&quot;ansible_all_ipv4_addresses&quot;: [
+&quot;10.8.1.6&quot;,
+&quot;10.88.0.1&quot;
+],
+&quot;ansible_all_ipv6_addresses&quot;: [
+&quot;fe80::50d5:32ff:fe02:6a06&quot;,
+&quot;2620:52:0:800:5054:ff:fe9c:6443&quot;,
+&quot;fe80::5054:ff:fe9c:6443&quot;,
+&quot;fe80::9432:9eff:fefd:746c&quot;
+],
+&quot;ansible_apparmor&quot;: {
+&quot;status&quot;: &quot;disabled&quot;
+},
+&quot;ansible_architecture&quot;: &quot;x86_64&quot;,
+&quot;ansible_bios_date&quot;: &quot;01/01/2011&quot;,
+&quot;ansible_bios_version&quot;: &quot;0.5.1&quot;,
+&quot;ansible_cmdline&quot;: {
+&quot;BOOT_IMAGE&quot;: &quot;(hd0,msdos1)/vmlinuz-4.18.0-372.32.1.el8_6.x86_64&quot;,
+&quot;console&quot;: &quot;ttyS0,115200&quot;,
+&quot;crashkernel&quot;: &quot;auto&quot;,
+&quot;rd.lvm.lv&quot;: &quot;rhel_kvm-01-guest05/swap&quot;,
+&quot;resume&quot;: &quot;/dev/mapper/rhel_kvm--01--guest05-swap&quot;,
+&quot;ro&quot;: true,
+&quot;root&quot;: &quot;/dev/mapper/rhel_kvm--01--guest05-root&quot;
+},
+&quot;ansible_cni_podman0&quot;: {
+&quot;active&quot;: true,
+&quot;device&quot;: &quot;cni-podman0&quot;,
+&quot;features&quot;: {
+&quot;esp_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;esp_tx_csum_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;fcoe_mtu&quot;: &quot;off [fixed]&quot;,
+&quot;generic_receive_offload&quot;: &quot;on&quot;,
+&quot;generic_segmentation_offload&quot;: &quot;on&quot;,
+&quot;highdma&quot;: &quot;on&quot;,
+&quot;hw_tc_offload&quot;: &quot;off [fixed]&quot;,
+&quot;l2_fwd_offload&quot;: &quot;off [fixed]&quot;,
+&quot;large_receive_offload&quot;: &quot;off [fixed]&quot;,
+&quot;loopback&quot;: &quot;off [fixed]&quot;,
+&quot;netns_local&quot;: &quot;on [fixed]&quot;,
+&quot;ntuple_filters&quot;: &quot;off [fixed]&quot;,
+&quot;receive_hashing&quot;: &quot;off [fixed]&quot;,
+&quot;rx_all&quot;: &quot;off [fixed]&quot;,
+&quot;rx_checksumming&quot;: &quot;off [fixed]&quot;,
+&quot;rx_fcs&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_hw&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_list&quot;: &quot;off&quot;,
+&quot;rx_udp_gro_forwarding&quot;: &quot;off&quot;,
+&quot;rx_udp_tunnel_port_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_hw_parse&quot;: &quot;off [fixed]&quot;,
+&quot;scatter_gather&quot;: &quot;on&quot;,
+&quot;tcp_segmentation_offload&quot;: &quot;on&quot;,
+&quot;tls_hw_record&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_rx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_tx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_fcoe_crc&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ip_generic&quot;: &quot;on&quot;,
+&quot;tx_checksum_ipv4&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ipv6&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_sctp&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksumming&quot;: &quot;on&quot;,
+&quot;tx_esp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_fcoe_segmentation&quot;: &quot;off [requested on]&quot;,
+&quot;tx_gre_csum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_gre_segmentation&quot;: &quot;on&quot;,
+&quot;tx_gso_list&quot;: &quot;on&quot;,
+&quot;tx_gso_partial&quot;: &quot;on&quot;,
+&quot;tx_gso_robust&quot;: &quot;off [requested on]&quot;,
+&quot;tx_ipxip4_segmentation&quot;: &quot;on&quot;,
+&quot;tx_ipxip6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_lockless&quot;: &quot;on [fixed]&quot;,
+&quot;tx_nocache_copy&quot;: &quot;off&quot;,
+&quot;tx_scatter_gather&quot;: &quot;on&quot;,
+&quot;tx_scatter_gather_fraglist&quot;: &quot;on&quot;,
+&quot;tx_sctp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_ecn_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_mangleid_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tunnel_remcsum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_csum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_segmentation&quot;: &quot;on&quot;,
+&quot;tx_vlan_offload&quot;: &quot;on&quot;,
+&quot;tx_vlan_stag_hw_insert&quot;: &quot;on&quot;,
+&quot;vlan_challenged&quot;: &quot;off [fixed]&quot;
+},
+&quot;hw_timestamp_filters&quot;: [],
+&quot;id&quot;: &quot;8000.96329efd746c&quot;,
+&quot;interfaces&quot;: [
+&quot;vethc4328b9d&quot;
+],
+&quot;ipv4&quot;: {
+&quot;address&quot;: &quot;10.88.0.1&quot;,
+&quot;broadcast&quot;: &quot;10.88.255.255&quot;,
+&quot;netmask&quot;: &quot;255.255.0.0&quot;,
+&quot;network&quot;: &quot;10.88.0.0&quot;
+},
+&quot;ipv6&quot;: [
+{
+&quot;address&quot;: &quot;fe80::9432:9eff:fefd:746c&quot;,
+&quot;prefix&quot;: &quot;64&quot;,
+&quot;scope&quot;: &quot;link&quot;
+}
+],
+&quot;macaddress&quot;: &quot;96:32:9e:fd:74:6c&quot;,
+&quot;mtu&quot;: 1500,
+&quot;promisc&quot;: false,
+&quot;speed&quot;: 10000,
+&quot;stp&quot;: false,
+&quot;timestamping&quot;: [],
+&quot;type&quot;: &quot;bridge&quot;
+},
+&quot;ansible_date_time&quot;: {
+&quot;date&quot;: &quot;2022-10-21&quot;,
+&quot;day&quot;: &quot;21&quot;,
+&quot;epoch&quot;: &quot;1666338698&quot;,
+&quot;hour&quot;: &quot;03&quot;,
+&quot;iso8601&quot;: &quot;2022-10-21T07:51:38Z&quot;,
+&quot;iso8601_basic&quot;: &quot;20221021T035138305662&quot;,
+&quot;iso8601_basic_short&quot;: &quot;20221021T035138&quot;,
+&quot;iso8601_micro&quot;: &quot;2022-10-21T07:51:38.305855Z&quot;,
+&quot;minute&quot;: &quot;51&quot;,
+&quot;month&quot;: &quot;10&quot;,
+&quot;second&quot;: &quot;38&quot;,
+&quot;time&quot;: &quot;03:51:38&quot;,
+&quot;tz&quot;: &quot;EDT&quot;,
+&quot;tz_offset&quot;: &quot;-0400&quot;,
+&quot;weekday&quot;: &quot;Friday&quot;,
+&quot;weekday_number&quot;: &quot;5&quot;,
+&quot;weeknumber&quot;: &quot;42&quot;,
+&quot;year&quot;: &quot;2022&quot;
+},
+&quot;ansible_default_ipv4&quot;: {
+&quot;address&quot;: &quot;10.8.1.6&quot;,
+&quot;alias&quot;: &quot;ens3&quot;,
+&quot;broadcast&quot;: &quot;10.8.31.255&quot;,
+&quot;gateway&quot;: &quot;10.8.31.254&quot;,
+&quot;interface&quot;: &quot;ens3&quot;,
+&quot;macaddress&quot;: &quot;52:54:00:9c:64:43&quot;,
+&quot;mtu&quot;: 1500,
+&quot;netmask&quot;: &quot;255.255.224.0&quot;,
+&quot;network&quot;: &quot;10.8.0.0&quot;,
+&quot;type&quot;: &quot;ether&quot;
+},
+&quot;ansible_default_ipv6&quot;: {
+&quot;address&quot;: &quot;2620:52:0:800:5054:ff:fe9c:6443&quot;,
+&quot;gateway&quot;: &quot;fe80::3e94:d5ff:fe4f:d9c1&quot;,
+&quot;interface&quot;: &quot;ens3&quot;,
+&quot;macaddress&quot;: &quot;52:54:00:9c:64:43&quot;,
+&quot;mtu&quot;: 1500,
+&quot;prefix&quot;: &quot;64&quot;,
+&quot;scope&quot;: &quot;global&quot;,
+&quot;type&quot;: &quot;ether&quot;
+},
+&quot;ansible_device_links&quot;: {
+&quot;ids&quot;: {
+&quot;dm-0&quot;: [
+&quot;dm-name-rhel_kvm--01--guest05-root&quot;,
+&quot;dm-uuid-LVM-ehtUWtindnn0N8DtgxwTbNqOPO3io4qxdDcTT2jV2ctasjPcWmhpZOj541GqQyuv&quot;
+],
+&quot;dm-1&quot;: [
+&quot;dm-name-rhel_kvm--01--guest05-swap&quot;,
+&quot;dm-uuid-LVM-ehtUWtindnn0N8DtgxwTbNqOPO3io4qxJhk8X8g2oc9wLWO58YALLRH7NS3xrA3q&quot;
+],
+&quot;vda2&quot;: [
+&quot;lvm-pv-uuid-V0Llqf-dC2B-ftiO-uwis-RItX-HMJV-bAdQl3&quot;
+]
+},
+&quot;labels&quot;: {},
+&quot;masters&quot;: {
+&quot;vda2&quot;: [
+&quot;dm-0&quot;,
+&quot;dm-1&quot;
+]
+},
+&quot;uuids&quot;: {
+&quot;dm-0&quot;: [
+&quot;1be5a1ea-825d-4273-a5f3-fbc2e135905b&quot;
+],
+&quot;dm-1&quot;: [
+&quot;c1bac99f-f68a-4f59-b9c1-2505a944005a&quot;
+],
+&quot;vda1&quot;: [
+&quot;936546d7-1c0e-4b63-a43d-2a3c871b180a&quot;
+]
+}
+},
+&quot;ansible_devices&quot;: {
+&quot;dm-0&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;dm-name-rhel_kvm--01--guest05-root&quot;,
+&quot;dm-uuid-LVM-ehtUWtindnn0N8DtgxwTbNqOPO3io4qxdDcTT2jV2ctasjPcWmhpZOj541GqQyuv&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;1be5a1ea-825d-4273-a5f3-fbc2e135905b&quot;
+]
+},
+&quot;model&quot;: null,
+&quot;partitions&quot;: {},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;&quot;,
+&quot;sectors&quot;: &quot;94445568&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;size&quot;: &quot;45.04 GB&quot;,
+&quot;support_discard&quot;: &quot;0&quot;,
+&quot;vendor&quot;: null,
+&quot;virtual&quot;: 1
+},
+&quot;dm-1&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;dm-name-rhel_kvm--01--guest05-swap&quot;,
+&quot;dm-uuid-LVM-ehtUWtindnn0N8DtgxwTbNqOPO3io4qxJhk8X8g2oc9wLWO58YALLRH7NS3xrA3q&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;c1bac99f-f68a-4f59-b9c1-2505a944005a&quot;
+]
+},
+&quot;model&quot;: null,
+&quot;partitions&quot;: {},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;&quot;,
+&quot;sectors&quot;: &quot;8306688&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;size&quot;: &quot;3.96 GB&quot;,
+&quot;support_discard&quot;: &quot;0&quot;,
+&quot;vendor&quot;: null,
+&quot;virtual&quot;: 1
+},
+&quot;vda&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;SCSI storage controller: Red Hat, Inc. Virtio block device&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: []
+},
+&quot;model&quot;: null,
+&quot;partitions&quot;: {
+&quot;vda1&quot;: {
+&quot;holders&quot;: [],
+&quot;links&quot;: {
+&quot;ids&quot;: [],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;936546d7-1c0e-4b63-a43d-2a3c871b180a&quot;
+]
+},
+&quot;sectors&quot;: &quot;2097152&quot;,
+&quot;sectorsize&quot;: 512,
+&quot;size&quot;: &quot;1.00 GB&quot;,
+&quot;start&quot;: &quot;2048&quot;,
+&quot;uuid&quot;: &quot;936546d7-1c0e-4b63-a43d-2a3c871b180a&quot;
+},
+&quot;vda2&quot;: {
+&quot;holders&quot;: [
+&quot;rhel_kvm--01--guest05-swap&quot;,
+&quot;rhel_kvm--01--guest05-root&quot;
+],
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;lvm-pv-uuid-V0Llqf-dC2B-ftiO-uwis-RItX-HMJV-bAdQl3&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [
+&quot;dm-0&quot;,
+&quot;dm-1&quot;
+],
+&quot;uuids&quot;: []
+},
+&quot;sectors&quot;: &quot;102758400&quot;,
+&quot;sectorsize&quot;: 512,
+&quot;size&quot;: &quot;49.00 GB&quot;,
+&quot;start&quot;: &quot;2099200&quot;,
+&quot;uuid&quot;: null
+}
+},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;mq-deadline&quot;,
+&quot;sectors&quot;: &quot;104857600&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;size&quot;: &quot;50.00 GB&quot;,
+&quot;support_discard&quot;: &quot;0&quot;,
+&quot;vendor&quot;: &quot;0x1af4&quot;,
+&quot;virtual&quot;: 1
+}
+},
+&quot;ansible_distribution&quot;: &quot;RedHat&quot;,
+&quot;ansible_distribution_file_parsed&quot;: true,
+&quot;ansible_distribution_file_path&quot;: &quot;/etc/redhat-release&quot;,
+&quot;ansible_distribution_file_search_string&quot;: &quot;Red Hat&quot;,
+&quot;ansible_distribution_file_variety&quot;: &quot;RedHat&quot;,
+&quot;ansible_distribution_major_version&quot;: &quot;8&quot;,
+&quot;ansible_distribution_release&quot;: &quot;Ootpa&quot;,
+&quot;ansible_distribution_version&quot;: &quot;8.6&quot;,
+&quot;ansible_dns&quot;: {
+&quot;nameservers&quot;: [
+&quot;10.11.5.19&quot;,
+&quot;10.11.5.160&quot;,
+&quot;10.2.32.1&quot;
+],
+&quot;search&quot;: [
+&quot;lab.eng.rdu2.redhat.com&quot;
+]
+},
+&quot;ansible_domain&quot;: &quot;lab.eng.rdu2.redhat.com&quot;,
+&quot;ansible_effective_group_id&quot;: 0,
+&quot;ansible_effective_user_id&quot;: 0,
+&quot;ansible_ens3&quot;: {
+&quot;active&quot;: true,
+&quot;device&quot;: &quot;ens3&quot;,
+&quot;features&quot;: {
+&quot;esp_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;esp_tx_csum_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;fcoe_mtu&quot;: &quot;off [fixed]&quot;,
+&quot;generic_receive_offload&quot;: &quot;on&quot;,
+&quot;generic_segmentation_offload&quot;: &quot;on&quot;,
+&quot;highdma&quot;: &quot;on [fixed]&quot;,
+&quot;hw_tc_offload&quot;: &quot;off [fixed]&quot;,
+&quot;l2_fwd_offload&quot;: &quot;off [fixed]&quot;,
+&quot;large_receive_offload&quot;: &quot;off [fixed]&quot;,
+&quot;loopback&quot;: &quot;off [fixed]&quot;,
+&quot;netns_local&quot;: &quot;off [fixed]&quot;,
+&quot;ntuple_filters&quot;: &quot;off [fixed]&quot;,
+&quot;receive_hashing&quot;: &quot;off [fixed]&quot;,
+&quot;rx_all&quot;: &quot;off [fixed]&quot;,
+&quot;rx_checksumming&quot;: &quot;on [fixed]&quot;,
+&quot;rx_fcs&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_hw&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_list&quot;: &quot;off&quot;,
+&quot;rx_udp_gro_forwarding&quot;: &quot;off&quot;,
+&quot;rx_udp_tunnel_port_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_filter&quot;: &quot;on [fixed]&quot;,
+&quot;rx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_hw_parse&quot;: &quot;off [fixed]&quot;,
+&quot;scatter_gather&quot;: &quot;on&quot;,
+&quot;tcp_segmentation_offload&quot;: &quot;on&quot;,
+&quot;tls_hw_record&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_rx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_tx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_fcoe_crc&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ip_generic&quot;: &quot;on&quot;,
+&quot;tx_checksum_ipv4&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ipv6&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_sctp&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksumming&quot;: &quot;on&quot;,
+&quot;tx_esp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_fcoe_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_list&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_partial&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_robust&quot;: &quot;on [fixed]&quot;,
+&quot;tx_ipxip4_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip6_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_lockless&quot;: &quot;off [fixed]&quot;,
+&quot;tx_nocache_copy&quot;: &quot;off&quot;,
+&quot;tx_scatter_gather&quot;: &quot;on&quot;,
+&quot;tx_scatter_gather_fraglist&quot;: &quot;off [fixed]&quot;,
+&quot;tx_sctp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_tcp6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_ecn_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_mangleid_segmentation&quot;: &quot;off&quot;,
+&quot;tx_tcp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tunnel_remcsum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_tnl_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_tnl_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_stag_hw_insert&quot;: &quot;off [fixed]&quot;,
+&quot;vlan_challenged&quot;: &quot;off [fixed]&quot;
+},
+&quot;hw_timestamp_filters&quot;: [],
+&quot;ipv4&quot;: {
+&quot;address&quot;: &quot;10.8.1.6&quot;,
+&quot;broadcast&quot;: &quot;10.8.31.255&quot;,
+&quot;netmask&quot;: &quot;255.255.224.0&quot;,
+&quot;network&quot;: &quot;10.8.0.0&quot;
+},
+&quot;ipv6&quot;: [
+{
+&quot;address&quot;: &quot;2620:52:0:800:5054:ff:fe9c:6443&quot;,
+&quot;prefix&quot;: &quot;64&quot;,
+&quot;scope&quot;: &quot;global&quot;
+}
+],
+&quot;macaddress&quot;: &quot;52:54:00:9c:64:43&quot;,
+&quot;module&quot;: &quot;virtio_net&quot;,
+&quot;mtu&quot;: 1500,
+&quot;pciid&quot;: &quot;virtio0&quot;,
+&quot;promisc&quot;: false,
+&quot;speed&quot;: -1,
+&quot;timestamping&quot;: [],
+&quot;type&quot;: &quot;ether&quot;
+},
+&quot;ansible_env&quot;: {
+&quot;BASH_FUNC_which%%&quot;: &quot;() {  ( alias;\n eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@\n}&quot;,
+&quot;BEAKER&quot;: &quot;https://beaker.engineering.redhat.com/&quot;,
+&quot;BEAKER_HUB_URL&quot;: &quot;https://beaker.engineering.redhat.com/&quot;,
+&quot;BEAKER_JOB_WHITEBOARD&quot;: &quot;Reserve Workflow provision of distro RHEL-8.6.0-updates-20221020.d.0 on any system for 172800 seconds&quot;,
+&quot;BEAKER_LAB_CONTROLLER&quot;: &quot;lab-02.rhts.eng.rdu.redhat.com&quot;,
+&quot;BEAKER_LAB_CONTROLLER_URL&quot;: &quot;http://lab-02.rhts.eng.rdu.redhat.com:8000/&quot;,
+&quot;BEAKER_RECIPE_ID&quot;: &quot;12806165&quot;,
+&quot;BEAKER_RECIPE_WHITEBOARD&quot;: &quot;&quot;,
+&quot;BEAKER_RESERVATION_POLICY_URL&quot;: &quot;https://home.corp.redhat.com/wiki/extended-reservations-beaker-general-pool-systems&quot;,
+&quot;BUILDURL&quot;: &quot;http://download.eng.rdu.redhat.com&quot;,
+&quot;DBUS_SESSION_BUS_ADDRESS&quot;: &quot;unix:path=/run/user/0/bus&quot;,
+&quot;DUMPSERVER&quot;: &quot;netdump-01.eng.rdu.redhat.com&quot;,
+&quot;HOME&quot;: &quot;/root&quot;,
+&quot;LAB_CONTROLLER&quot;: &quot;lab-02.rhts.eng.rdu.redhat.com&quot;,
+&quot;LANG&quot;: &quot;en_US.UTF-8&quot;,
+&quot;LESSOPEN&quot;: &quot;||/usr/bin/lesspipe.sh %s&quot;,
+&quot;LOGNAME&quot;: &quot;root&quot;,
+&quot;LOOKASIDE&quot;: &quot;http://download.eng.rdu.redhat.com/qa/rhts/lookaside/&quot;,
+&quot;LS_COLORS&quot;: &quot;rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:&quot;,
+&quot;NFSSERVERS&quot;: &quot;rhel6-nfs.eng.rdu2.redhat.com:/export/home rhel7-nfs.eng.rdu2.redhat.com:/export/home rhel8-nfs.eng.rdu2.redhat.com:/export/home fs-netapp-kernel1.fs.lab.eng.bos.redhat.com:/export/home&quot;,
+&quot;PATH&quot;: &quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin&quot;,
+&quot;PWD&quot;: &quot;/root&quot;,
+&quot;RHTS_OPTION_COMPATIBLE&quot;: &quot;&quot;,
+&quot;RHTS_OPTION_COMPAT_SERVICE&quot;: &quot;&quot;,
+&quot;SELINUX_LEVEL_REQUESTED&quot;: &quot;&quot;,
+&quot;SELINUX_ROLE_REQUESTED&quot;: &quot;&quot;,
+&quot;SELINUX_USE_CURRENT_RANGE&quot;: &quot;&quot;,
+&quot;SHELL&quot;: &quot;/bin/bash&quot;,
+&quot;SHLVL&quot;: &quot;2&quot;,
+&quot;SSH_CLIENT&quot;: &quot;10.73.2.3 37516 22&quot;,
+&quot;SSH_CONNECTION&quot;: &quot;10.73.2.3 37516 10.8.1.6 22&quot;,
+&quot;SSH_TTY&quot;: &quot;/dev/pts/1&quot;,
+&quot;TERM&quot;: &quot;xterm-256color&quot;,
+&quot;USER&quot;: &quot;root&quot;,
+&quot;XDG_RUNTIME_DIR&quot;: &quot;/run/user/0&quot;,
+&quot;XDG_SESSION_ID&quot;: &quot;5&quot;,
+&quot;_&quot;: &quot;/usr/libexec/platform-python&quot;,
+&quot;which_declare&quot;: &quot;declare -f&quot;
+},
+&quot;ansible_fips&quot;: false,
+&quot;ansible_form_factor&quot;: &quot;Other&quot;,
+&quot;ansible_fqdn&quot;: &quot;kvm-01-guest05.lab.eng.rdu2.redhat.com&quot;,
+&quot;ansible_hostname&quot;: &quot;kvm-01-guest05&quot;,
+&quot;ansible_interfaces&quot;: [
+&quot;ens3&quot;,
+&quot;lo&quot;,
+&quot;cni-podman0&quot;,
+&quot;vethc4328b9d&quot;
+],
+&quot;ansible_is_chroot&quot;: false,
+&quot;ansible_iscsi_iqn&quot;: &quot;&quot;,
+&quot;ansible_kernel&quot;: &quot;4.18.0-372.32.1.el8_6.x86_64&quot;,
+&quot;ansible_lo&quot;: {
+&quot;active&quot;: true,
+&quot;device&quot;: &quot;lo&quot;,
+&quot;features&quot;: {
+&quot;esp_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;esp_tx_csum_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;fcoe_mtu&quot;: &quot;off [fixed]&quot;,
+&quot;generic_receive_offload&quot;: &quot;on&quot;,
+&quot;generic_segmentation_offload&quot;: &quot;on&quot;,
+&quot;highdma&quot;: &quot;on [fixed]&quot;,
+&quot;hw_tc_offload&quot;: &quot;off [fixed]&quot;,
+&quot;l2_fwd_offload&quot;: &quot;off [fixed]&quot;,
+&quot;large_receive_offload&quot;: &quot;off [fixed]&quot;,
+&quot;loopback&quot;: &quot;on [fixed]&quot;,
+&quot;netns_local&quot;: &quot;on [fixed]&quot;,
+&quot;ntuple_filters&quot;: &quot;off [fixed]&quot;,
+&quot;receive_hashing&quot;: &quot;off [fixed]&quot;,
+&quot;rx_all&quot;: &quot;off [fixed]&quot;,
+&quot;rx_checksumming&quot;: &quot;on [fixed]&quot;,
+&quot;rx_fcs&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_hw&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_list&quot;: &quot;off&quot;,
+&quot;rx_udp_gro_forwarding&quot;: &quot;off&quot;,
+&quot;rx_udp_tunnel_port_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_hw_parse&quot;: &quot;off [fixed]&quot;,
+&quot;scatter_gather&quot;: &quot;on&quot;,
+&quot;tcp_segmentation_offload&quot;: &quot;on&quot;,
+&quot;tls_hw_record&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_rx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_tx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_fcoe_crc&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ip_generic&quot;: &quot;on [fixed]&quot;,
+&quot;tx_checksum_ipv4&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ipv6&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_sctp&quot;: &quot;on [fixed]&quot;,
+&quot;tx_checksumming&quot;: &quot;on&quot;,
+&quot;tx_esp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_fcoe_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_list&quot;: &quot;on&quot;,
+&quot;tx_gso_partial&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_robust&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip4_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip6_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_lockless&quot;: &quot;on [fixed]&quot;,
+&quot;tx_nocache_copy&quot;: &quot;off [fixed]&quot;,
+&quot;tx_scatter_gather&quot;: &quot;on [fixed]&quot;,
+&quot;tx_scatter_gather_fraglist&quot;: &quot;on [fixed]&quot;,
+&quot;tx_sctp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_ecn_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_mangleid_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tunnel_remcsum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_tnl_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_stag_hw_insert&quot;: &quot;off [fixed]&quot;,
+&quot;vlan_challenged&quot;: &quot;on [fixed]&quot;
+},
+&quot;hw_timestamp_filters&quot;: [],
+&quot;ipv4&quot;: {
+&quot;address&quot;: &quot;127.0.0.1&quot;,
+&quot;broadcast&quot;: &quot;host&quot;,
+&quot;netmask&quot;: &quot;255.0.0.0&quot;,
+&quot;network&quot;: &quot;127.0.0.0&quot;
+},
+&quot;ipv6&quot;: [
+{
+&quot;address&quot;: &quot;::1&quot;,
+&quot;prefix&quot;: &quot;128&quot;,
+&quot;scope&quot;: &quot;host&quot;
+}
+],
+&quot;mtu&quot;: 65536,
+&quot;promisc&quot;: false,
+&quot;timestamping&quot;: [],
+&quot;type&quot;: &quot;loopback&quot;
+},
+&quot;ansible_local&quot;: {},
+&quot;ansible_lsb&quot;: {},
+&quot;ansible_lvm&quot;: {
+&quot;lvs&quot;: {
+&quot;root&quot;: {
+&quot;size_g&quot;: &quot;45.04&quot;,
+&quot;vg&quot;: &quot;rhel_kvm-01-guest05&quot;
+},
+&quot;swap&quot;: {
+&quot;size_g&quot;: &quot;3.96&quot;,
+&quot;vg&quot;: &quot;rhel_kvm-01-guest05&quot;
+}
+},
+&quot;pvs&quot;: {
+&quot;/dev/vda2&quot;: {
+&quot;free_g&quot;: &quot;0&quot;,
+&quot;size_g&quot;: &quot;49.00&quot;,
+&quot;vg&quot;: &quot;rhel_kvm-01-guest05&quot;
+}
+},
+&quot;vgs&quot;: {
+&quot;rhel_kvm-01-guest05&quot;: {
+&quot;free_g&quot;: &quot;0&quot;,
+&quot;num_lvs&quot;: &quot;2&quot;,
+&quot;num_pvs&quot;: &quot;1&quot;,
+&quot;size_g&quot;: &quot;49.00&quot;
+}
+}
+},
+&quot;ansible_machine&quot;: &quot;x86_64&quot;,
+&quot;ansible_machine_id&quot;: &quot;38686a94fc6240adb9a799509d9c1716&quot;,
+&quot;ansible_memfree_mb&quot;: 1924,
+&quot;ansible_memory_mb&quot;: {
+&quot;nocache&quot;: {
+&quot;free&quot;: 3350,
+&quot;used&quot;: 382
+},
+&quot;real&quot;: {
+&quot;free&quot;: 1924,
+&quot;total&quot;: 3732,
+&quot;used&quot;: 1808
+},
+&quot;swap&quot;: {
+&quot;cached&quot;: 0,
+&quot;free&quot;: 4055,
+&quot;total&quot;: 4055,
+&quot;used&quot;: 0
+}
+},
+&quot;ansible_memtotal_mb&quot;: 3732,
+&quot;ansible_mounts&quot;: [
+{
+&quot;block_available&quot;: 11018041,
+&quot;block_size&quot;: 4096,
+&quot;block_total&quot;: 11799932,
+&quot;block_used&quot;: 781891,
+&quot;device&quot;: &quot;/dev/mapper/rhel_kvm--01--guest05-root&quot;,
+&quot;fstype&quot;: &quot;xfs&quot;,
+&quot;inode_available&quot;: 23545083,
+&quot;inode_total&quot;: 23611392,
+&quot;inode_used&quot;: 66309,
+&quot;mount&quot;: &quot;/&quot;,
+&quot;options&quot;: &quot;rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota&quot;,
+&quot;size_available&quot;: 45129895936,
+&quot;size_total&quot;: 48332521472,
+&quot;uuid&quot;: &quot;1be5a1ea-825d-4273-a5f3-fbc2e135905b&quot;
+},
+{
+&quot;block_available&quot;: 205304,
+&quot;block_size&quot;: 4096,
+&quot;block_total&quot;: 259584,
+&quot;block_used&quot;: 54280,
+&quot;device&quot;: &quot;/dev/vda1&quot;,
+&quot;fstype&quot;: &quot;xfs&quot;,
+&quot;inode_available&quot;: 523978,
+&quot;inode_total&quot;: 524288,
+&quot;inode_used&quot;: 310,
+&quot;mount&quot;: &quot;/boot&quot;,
+&quot;options&quot;: &quot;rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota&quot;,
+&quot;size_available&quot;: 840925184,
+&quot;size_total&quot;: 1063256064,
+&quot;uuid&quot;: &quot;936546d7-1c0e-4b63-a43d-2a3c871b180a&quot;
+},
+{
+&quot;block_available&quot;: 11018041,
+&quot;block_size&quot;: 4096,
+&quot;block_total&quot;: 11799932,
+&quot;block_used&quot;: 781891,
+&quot;device&quot;: &quot;/dev/mapper/rhel_kvm--01--guest05-root&quot;,
+&quot;fstype&quot;: &quot;xfs&quot;,
+&quot;inode_available&quot;: 23545083,
+&quot;inode_total&quot;: 23611392,
+&quot;inode_used&quot;: 66309,
+&quot;mount&quot;: &quot;/var/lib/containers/storage/overlay&quot;,
+&quot;options&quot;: &quot;rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota,bind&quot;,
+&quot;size_available&quot;: 45129895936,
+&quot;size_total&quot;: 48332521472,
+&quot;uuid&quot;: &quot;1be5a1ea-825d-4273-a5f3-fbc2e135905b&quot;
+}
+],
+&quot;ansible_nodename&quot;: &quot;kvm-01-guest05.lab.eng.rdu2.redhat.com&quot;,
+&quot;ansible_os_family&quot;: &quot;RedHat&quot;,
+&quot;ansible_pkg_mgr&quot;: &quot;dnf&quot;,
+&quot;ansible_processor&quot;: [
+&quot;0&quot;,
+&quot;GenuineIntel&quot;,
+&quot;Intel Xeon Processor (Skylake, IBRS)&quot;
+],
+&quot;ansible_processor_cores&quot;: 1,
+&quot;ansible_processor_count&quot;: 1,
+&quot;ansible_processor_threads_per_core&quot;: 1,
+&quot;ansible_processor_vcpus&quot;: 1,
+&quot;ansible_product_name&quot;: &quot;KVM&quot;,
+&quot;ansible_product_serial&quot;: &quot;NA&quot;,
+&quot;ansible_product_uuid&quot;: &quot;38686a94-fc62-40ad-b9a7-99509d9c1716&quot;,
+&quot;ansible_product_version&quot;: &quot;RHEL 7.0.0 PC (i440FX + PIIX, 1996)&quot;,
+&quot;ansible_python&quot;: {
+&quot;executable&quot;: &quot;/usr/libexec/platform-python&quot;,
+&quot;has_sslcontext&quot;: true,
+&quot;type&quot;: &quot;cpython&quot;,
+&quot;version&quot;: {
+&quot;major&quot;: 3,
+&quot;micro&quot;: 8,
+&quot;minor&quot;: 6,
+&quot;releaselevel&quot;: &quot;final&quot;,
+&quot;serial&quot;: 0
+},
+&quot;version_info&quot;: [
+3,
+6,
+8,
+&quot;final&quot;,
+0
+]
+},
+&quot;ansible_python_version&quot;: &quot;3.6.8&quot;,
+&quot;ansible_real_group_id&quot;: 0,
+&quot;ansible_real_user_id&quot;: 0,
+&quot;ansible_selinux&quot;: {
+&quot;config_mode&quot;: &quot;enforcing&quot;,
+&quot;mode&quot;: &quot;enforcing&quot;,
+&quot;policyvers&quot;: 33,
+&quot;status&quot;: &quot;enabled&quot;,
+&quot;type&quot;: &quot;targeted&quot;
+},
+&quot;ansible_selinux_python_present&quot;: true,
+&quot;ansible_service_mgr&quot;: &quot;systemd&quot;,
+&quot;ansible_ssh_host_key_ecdsa_public&quot;: &quot;AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBL2DKXMyxkbPQ/gt2M2Dlb5cJEPUO2iD6AauLhB8fYLwxNe5REMPBuPuhKDHQmU8cZoS2VhAxy+EfddQ1Zuy3nU=&quot;,
+&quot;ansible_ssh_host_key_ed25519_public&quot;: &quot;AAAAC3NzaC1lZDI1NTE5AAAAIAXusRaSCaEQCUn5Ot1CJ9dph0EQULbnUzQm3S9tFU/d&quot;,
+&quot;ansible_ssh_host_key_rsa_public&quot;: &quot;AAAAB3NzaC1yc2EAAAADAQABAAABgQDAbcy+g3HOoUblM8VJsssx6wkMUsppS066UMTKkP0uL80bjg4z7hZxS8NzJAX8+zqNPq7uAeh8HuBSO9deU5VyKDuo7JHu7eLo/WPx9k8F+QR8/djYtttwgajxxeHfneH1dM40jZikgvWBBtjqUDzLxOWyetjIQJ0BCqgQscSkvvK4fYDUoXD/LfDXfuZRH31RSYJH2O2NCQ0zX2XeQ6gaFJlEMnh1DnxdTG6cj/03g5LPhXHLFW0uiPNopbvgaU3IsK6TC6NDa2SsMlkQLEcFEaqKWE2+NXRfWDuGZLKEuwdszYiFwR+YYoFp8eR3h+1zgjGpA/UoSg/e96BRPlVpU3V7tGayIRRERrYnyqdfbvuojT8GosVJFQqQn8cFCpK6cPzCm3/EmyWuPPArbSp7tt3yulsf01HFeqpm+eim8vq9YESkoRPc8WXgHo8sYuItsgXS7ilV0+4uXQqlBzBZW1BCO9ueD+dsP3/n/Y5ROF+aZvpN5tjEnyH2sLK5jI0=&quot;,
+&quot;ansible_swapfree_mb&quot;: 4055,
+&quot;ansible_swaptotal_mb&quot;: 4055,
+&quot;ansible_system&quot;: &quot;Linux&quot;,
+&quot;ansible_system_capabilities&quot;: [],
+&quot;ansible_system_capabilities_enforced&quot;: &quot;False&quot;,
+&quot;ansible_system_vendor&quot;: &quot;Red Hat&quot;,
+&quot;ansible_uptime_seconds&quot;: 15124,
+&quot;ansible_user_dir&quot;: &quot;/root&quot;,
+&quot;ansible_user_gecos&quot;: &quot;root&quot;,
+&quot;ansible_user_gid&quot;: 0,
+&quot;ansible_user_id&quot;: &quot;root&quot;,
+&quot;ansible_user_shell&quot;: &quot;/bin/bash&quot;,
+&quot;ansible_user_uid&quot;: 0,
+&quot;ansible_userspace_architecture&quot;: &quot;x86_64&quot;,
+&quot;ansible_userspace_bits&quot;: &quot;64&quot;,
+&quot;ansible_vethc4328b9d&quot;: {
+&quot;active&quot;: true,
+&quot;device&quot;: &quot;vethc4328b9d&quot;,
+&quot;features&quot;: {
+&quot;esp_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;esp_tx_csum_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;fcoe_mtu&quot;: &quot;off [fixed]&quot;,
+&quot;generic_receive_offload&quot;: &quot;off&quot;,
+&quot;generic_segmentation_offload&quot;: &quot;on&quot;,
+&quot;highdma&quot;: &quot;on&quot;,
+&quot;hw_tc_offload&quot;: &quot;off [fixed]&quot;,
+&quot;l2_fwd_offload&quot;: &quot;off [fixed]&quot;,
+&quot;large_receive_offload&quot;: &quot;off [fixed]&quot;,
+&quot;loopback&quot;: &quot;off [fixed]&quot;,
+&quot;netns_local&quot;: &quot;off [fixed]&quot;,
+&quot;ntuple_filters&quot;: &quot;off [fixed]&quot;,
+&quot;receive_hashing&quot;: &quot;off [fixed]&quot;,
+&quot;rx_all&quot;: &quot;off [fixed]&quot;,
+&quot;rx_checksumming&quot;: &quot;on&quot;,
+&quot;rx_fcs&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_hw&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_list&quot;: &quot;off&quot;,
+&quot;rx_udp_gro_forwarding&quot;: &quot;off&quot;,
+&quot;rx_udp_tunnel_port_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_offload&quot;: &quot;on&quot;,
+&quot;rx_vlan_stag_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_hw_parse&quot;: &quot;on&quot;,
+&quot;scatter_gather&quot;: &quot;on&quot;,
+&quot;tcp_segmentation_offload&quot;: &quot;on&quot;,
+&quot;tls_hw_record&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_rx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_tx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_fcoe_crc&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ip_generic&quot;: &quot;on&quot;,
+&quot;tx_checksum_ipv4&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ipv6&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_sctp&quot;: &quot;on&quot;,
+&quot;tx_checksumming&quot;: &quot;on&quot;,
+&quot;tx_esp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_fcoe_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_csum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_gre_segmentation&quot;: &quot;on&quot;,
+&quot;tx_gso_list&quot;: &quot;on&quot;,
+&quot;tx_gso_partial&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_robust&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip4_segmentation&quot;: &quot;on&quot;,
+&quot;tx_ipxip6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_lockless&quot;: &quot;on [fixed]&quot;,
+&quot;tx_nocache_copy&quot;: &quot;off&quot;,
+&quot;tx_scatter_gather&quot;: &quot;on&quot;,
+&quot;tx_scatter_gather_fraglist&quot;: &quot;on&quot;,
+&quot;tx_sctp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_ecn_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_mangleid_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tunnel_remcsum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_csum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_segmentation&quot;: &quot;on&quot;,
+&quot;tx_vlan_offload&quot;: &quot;on&quot;,
+&quot;tx_vlan_stag_hw_insert&quot;: &quot;on&quot;,
+&quot;vlan_challenged&quot;: &quot;off [fixed]&quot;
+},
+&quot;hw_timestamp_filters&quot;: [],
+&quot;ipv6&quot;: [
+{
+&quot;address&quot;: &quot;fe80::50d5:32ff:fe02:6a06&quot;,
+&quot;prefix&quot;: &quot;64&quot;,
+&quot;scope&quot;: &quot;link&quot;
+}
+],
+&quot;macaddress&quot;: &quot;52:d5:32:02:6a:06&quot;,
+&quot;mtu&quot;: 1500,
+&quot;promisc&quot;: true,
+&quot;speed&quot;: 10000,
+&quot;timestamping&quot;: [],
+&quot;type&quot;: &quot;ether&quot;
+},
+&quot;ansible_virtualization_role&quot;: &quot;guest&quot;,
+&quot;ansible_virtualization_type&quot;: &quot;kvm&quot;,
+&quot;gather_subset&quot;: [
+&quot;all&quot;
+],
+&quot;module_setup&quot;: true
+},
+&quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase name="[10.0.160.8] all: Gathering Facts gather_subset=all, gather_timeout=10" time="18.881455" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:4">
+			<system-out>{
+&quot;ansible_facts&quot;: {
+&quot;ansible_all_ipv4_addresses&quot;: [
+&quot;10.88.0.1&quot;,
+&quot;10.0.160.8&quot;
+],
+&quot;ansible_all_ipv6_addresses&quot;: [
+&quot;fe80::54a1:daff:fe12:781d&quot;,
+&quot;2620:52:0:a1:202:55ff:fe75:f98&quot;,
+&quot;fe80::202:55ff:fe75:f98&quot;
+],
+&quot;ansible_apparmor&quot;: {
+&quot;status&quot;: &quot;disabled&quot;
+},
+&quot;ansible_architecture&quot;: &quot;s390x&quot;,
+&quot;ansible_bios_date&quot;: &quot;NA&quot;,
+&quot;ansible_bios_version&quot;: &quot;NA&quot;,
+&quot;ansible_cmdline&quot;: {
+&quot;crashkernel&quot;: &quot;auto&quot;,
+&quot;rd.lvm.lv&quot;: &quot;rhel_s390x-kvm-008/swap&quot;,
+&quot;root&quot;: &quot;/dev/mapper/rhel_s390x--kvm--008-root&quot;
+},
+&quot;ansible_cni_podman0&quot;: {
+&quot;active&quot;: false,
+&quot;device&quot;: &quot;cni-podman0&quot;,
+&quot;features&quot;: {
+&quot;esp_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;esp_tx_csum_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;fcoe_mtu&quot;: &quot;off [fixed]&quot;,
+&quot;generic_receive_offload&quot;: &quot;on&quot;,
+&quot;generic_segmentation_offload&quot;: &quot;on&quot;,
+&quot;highdma&quot;: &quot;on&quot;,
+&quot;hw_tc_offload&quot;: &quot;off [fixed]&quot;,
+&quot;l2_fwd_offload&quot;: &quot;off [fixed]&quot;,
+&quot;large_receive_offload&quot;: &quot;off [fixed]&quot;,
+&quot;loopback&quot;: &quot;off [fixed]&quot;,
+&quot;netns_local&quot;: &quot;on [fixed]&quot;,
+&quot;ntuple_filters&quot;: &quot;off [fixed]&quot;,
+&quot;receive_hashing&quot;: &quot;off [fixed]&quot;,
+&quot;rx_all&quot;: &quot;off [fixed]&quot;,
+&quot;rx_checksumming&quot;: &quot;off [fixed]&quot;,
+&quot;rx_fcs&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_hw&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_list&quot;: &quot;off&quot;,
+&quot;rx_udp_gro_forwarding&quot;: &quot;off&quot;,
+&quot;rx_udp_tunnel_port_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_hw_parse&quot;: &quot;off [fixed]&quot;,
+&quot;scatter_gather&quot;: &quot;on&quot;,
+&quot;tcp_segmentation_offload&quot;: &quot;on&quot;,
+&quot;tls_hw_record&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_rx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_tx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_fcoe_crc&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ip_generic&quot;: &quot;on&quot;,
+&quot;tx_checksum_ipv4&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ipv6&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_sctp&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksumming&quot;: &quot;on&quot;,
+&quot;tx_esp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_fcoe_segmentation&quot;: &quot;on&quot;,
+&quot;tx_gre_csum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_gre_segmentation&quot;: &quot;on&quot;,
+&quot;tx_gso_list&quot;: &quot;on&quot;,
+&quot;tx_gso_partial&quot;: &quot;on&quot;,
+&quot;tx_gso_robust&quot;: &quot;on&quot;,
+&quot;tx_ipxip4_segmentation&quot;: &quot;on&quot;,
+&quot;tx_ipxip6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_lockless&quot;: &quot;on [fixed]&quot;,
+&quot;tx_nocache_copy&quot;: &quot;off&quot;,
+&quot;tx_scatter_gather&quot;: &quot;on&quot;,
+&quot;tx_scatter_gather_fraglist&quot;: &quot;on&quot;,
+&quot;tx_sctp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_ecn_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_mangleid_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tunnel_remcsum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_csum_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_segmentation&quot;: &quot;on&quot;,
+&quot;tx_vlan_offload&quot;: &quot;on&quot;,
+&quot;tx_vlan_stag_hw_insert&quot;: &quot;on&quot;,
+&quot;vlan_challenged&quot;: &quot;off [fixed]&quot;
+},
+&quot;hw_timestamp_filters&quot;: [],
+&quot;id&quot;: &quot;8000.56a1da12781d&quot;,
+&quot;interfaces&quot;: [],
+&quot;ipv4&quot;: {
+&quot;address&quot;: &quot;10.88.0.1&quot;,
+&quot;broadcast&quot;: &quot;10.88.255.255&quot;,
+&quot;netmask&quot;: &quot;255.255.0.0&quot;,
+&quot;network&quot;: &quot;10.88.0.0&quot;
+},
+&quot;ipv6&quot;: [
+{
+&quot;address&quot;: &quot;fe80::54a1:daff:fe12:781d&quot;,
+&quot;prefix&quot;: &quot;64&quot;,
+&quot;scope&quot;: &quot;link&quot;
+}
+],
+&quot;macaddress&quot;: &quot;56:a1:da:12:78:1d&quot;,
+&quot;mtu&quot;: 1500,
+&quot;promisc&quot;: false,
+&quot;speed&quot;: -1,
+&quot;stp&quot;: false,
+&quot;timestamping&quot;: [],
+&quot;type&quot;: &quot;bridge&quot;
+},
+&quot;ansible_date_time&quot;: {
+&quot;date&quot;: &quot;2022-10-21&quot;,
+&quot;day&quot;: &quot;21&quot;,
+&quot;epoch&quot;: &quot;1666338702&quot;,
+&quot;hour&quot;: &quot;03&quot;,
+&quot;iso8601&quot;: &quot;2022-10-21T07:51:42Z&quot;,
+&quot;iso8601_basic&quot;: &quot;20221021T035142069525&quot;,
+&quot;iso8601_basic_short&quot;: &quot;20221021T035142&quot;,
+&quot;iso8601_micro&quot;: &quot;2022-10-21T07:51:42.069633Z&quot;,
+&quot;minute&quot;: &quot;51&quot;,
+&quot;month&quot;: &quot;10&quot;,
+&quot;second&quot;: &quot;42&quot;,
+&quot;time&quot;: &quot;03:51:42&quot;,
+&quot;tz&quot;: &quot;EDT&quot;,
+&quot;tz_offset&quot;: &quot;-0400&quot;,
+&quot;weekday&quot;: &quot;Friday&quot;,
+&quot;weekday_number&quot;: &quot;5&quot;,
+&quot;weeknumber&quot;: &quot;42&quot;,
+&quot;year&quot;: &quot;2022&quot;
+},
+&quot;ansible_default_ipv4&quot;: {
+&quot;address&quot;: &quot;10.0.160.8&quot;,
+&quot;alias&quot;: &quot;enc1&quot;,
+&quot;broadcast&quot;: &quot;10.0.161.255&quot;,
+&quot;gateway&quot;: &quot;10.0.161.254&quot;,
+&quot;interface&quot;: &quot;enc1&quot;,
+&quot;macaddress&quot;: &quot;00:02:55:75:0f:98&quot;,
+&quot;mtu&quot;: 1500,
+&quot;netmask&quot;: &quot;255.255.254.0&quot;,
+&quot;network&quot;: &quot;10.0.160.0&quot;,
+&quot;type&quot;: &quot;ether&quot;
+},
+&quot;ansible_default_ipv6&quot;: {
+&quot;address&quot;: &quot;2620:52:0:a1:202:55ff:fe75:f98&quot;,
+&quot;gateway&quot;: &quot;fe80::4e16:fc01:2e8c:98ed&quot;,
+&quot;interface&quot;: &quot;enc1&quot;,
+&quot;macaddress&quot;: &quot;00:02:55:75:0f:98&quot;,
+&quot;mtu&quot;: 1500,
+&quot;prefix&quot;: &quot;64&quot;,
+&quot;scope&quot;: &quot;global&quot;,
+&quot;type&quot;: &quot;ether&quot;
+},
+&quot;ansible_device_links&quot;: {
+&quot;ids&quot;: {
+&quot;dm-0&quot;: [
+&quot;dm-name-rhel_s390x--kvm--008-root&quot;,
+&quot;dm-uuid-LVM-fLU0VUcwkmdFPnOjWAN2cUgM89ttJWW0AIAV16IRsg3ZYLYwbmnksQLtspqPybmn&quot;
+],
+&quot;dm-1&quot;: [
+&quot;dm-name-rhel_s390x--kvm--008-swap&quot;,
+&quot;dm-uuid-LVM-fLU0VUcwkmdFPnOjWAN2cUgM89ttJWW0HoYvvZOvo7wX7XZTtlGAmOWFjoHp5WqY&quot;
+],
+&quot;dm-2&quot;: [
+&quot;dm-name-rhel_s390x--kvm--008-home&quot;,
+&quot;dm-uuid-LVM-fLU0VUcwkmdFPnOjWAN2cUgM89ttJWW0SKx5RgX17lI0POFWuU92jKxBGdP1hv8N&quot;
+],
+&quot;vda2&quot;: [
+&quot;lvm-pv-uuid-QpPEen-1ePL-RnJP-OVfN-A7RX-0krg-2vBdsn&quot;
+]
+},
+&quot;labels&quot;: {},
+&quot;masters&quot;: {
+&quot;vda2&quot;: [
+&quot;dm-0&quot;,
+&quot;dm-1&quot;,
+&quot;dm-2&quot;
+]
+},
+&quot;uuids&quot;: {
+&quot;dm-0&quot;: [
+&quot;bb82ea07-f321-4e3f-8abf-d59ca8af884b&quot;
+],
+&quot;dm-1&quot;: [
+&quot;80239792-f9a7-4946-9758-da1708faafbf&quot;
+],
+&quot;dm-2&quot;: [
+&quot;1d755fba-340e-4601-a917-e4689a176267&quot;
+],
+&quot;vda1&quot;: [
+&quot;0b44748c-8f8c-485e-8f14-c86dd2d03967&quot;
+]
+}
+},
+&quot;ansible_devices&quot;: {
+&quot;dm-0&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;dm-name-rhel_s390x--kvm--008-root&quot;,
+&quot;dm-uuid-LVM-fLU0VUcwkmdFPnOjWAN2cUgM89ttJWW0AIAV16IRsg3ZYLYwbmnksQLtspqPybmn&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;bb82ea07-f321-4e3f-8abf-d59ca8af884b&quot;
+]
+},
+&quot;model&quot;: null,
+&quot;partitions&quot;: {},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;&quot;,
+&quot;sectors&quot;: &quot;146800640&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;size&quot;: &quot;70.00 GB&quot;,
+&quot;support_discard&quot;: &quot;512&quot;,
+&quot;vendor&quot;: null,
+&quot;virtual&quot;: 1
+},
+&quot;dm-1&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;dm-name-rhel_s390x--kvm--008-swap&quot;,
+&quot;dm-uuid-LVM-fLU0VUcwkmdFPnOjWAN2cUgM89ttJWW0HoYvvZOvo7wX7XZTtlGAmOWFjoHp5WqY&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;80239792-f9a7-4946-9758-da1708faafbf&quot;
+]
+},
+&quot;model&quot;: null,
+&quot;partitions&quot;: {},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;&quot;,
+&quot;sectors&quot;: &quot;16728064&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;size&quot;: &quot;7.98 GB&quot;,
+&quot;support_discard&quot;: &quot;512&quot;,
+&quot;vendor&quot;: null,
+&quot;virtual&quot;: 1
+},
+&quot;dm-2&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;dm-name-rhel_s390x--kvm--008-home&quot;,
+&quot;dm-uuid-LVM-fLU0VUcwkmdFPnOjWAN2cUgM89ttJWW0SKx5RgX17lI0POFWuU92jKxBGdP1hv8N&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;1d755fba-340e-4601-a917-e4689a176267&quot;
+]
+},
+&quot;model&quot;: null,
+&quot;partitions&quot;: {},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;&quot;,
+&quot;sectors&quot;: &quot;86024192&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;size&quot;: &quot;41.02 GB&quot;,
+&quot;support_discard&quot;: &quot;512&quot;,
+&quot;vendor&quot;: null,
+&quot;virtual&quot;: 1
+},
+&quot;vda&quot;: {
+&quot;holders&quot;: [],
+&quot;host&quot;: &quot;&quot;,
+&quot;links&quot;: {
+&quot;ids&quot;: [],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: []
+},
+&quot;model&quot;: null,
+&quot;partitions&quot;: {
+&quot;vda1&quot;: {
+&quot;holders&quot;: [],
+&quot;links&quot;: {
+&quot;ids&quot;: [],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [],
+&quot;uuids&quot;: [
+&quot;0b44748c-8f8c-485e-8f14-c86dd2d03967&quot;
+]
+},
+&quot;sectors&quot;: &quot;2097152&quot;,
+&quot;sectorsize&quot;: 512,
+&quot;size&quot;: &quot;1.00 GB&quot;,
+&quot;start&quot;: &quot;2048&quot;,
+&quot;uuid&quot;: &quot;0b44748c-8f8c-485e-8f14-c86dd2d03967&quot;
+},
+&quot;vda2&quot;: {
+&quot;holders&quot;: [
+&quot;rhel_s390x--kvm--008-swap&quot;,
+&quot;rhel_s390x--kvm--008-home&quot;,
+&quot;rhel_s390x--kvm--008-root&quot;
+],
+&quot;links&quot;: {
+&quot;ids&quot;: [
+&quot;lvm-pv-uuid-QpPEen-1ePL-RnJP-OVfN-A7RX-0krg-2vBdsn&quot;
+],
+&quot;labels&quot;: [],
+&quot;masters&quot;: [
+&quot;dm-0&quot;,
+&quot;dm-1&quot;,
+&quot;dm-2&quot;
+],
+&quot;uuids&quot;: []
+},
+&quot;sectors&quot;: &quot;249559040&quot;,
+&quot;sectorsize&quot;: 512,
+&quot;size&quot;: &quot;119.00 GB&quot;,
+&quot;start&quot;: &quot;2099200&quot;,
+&quot;uuid&quot;: null
+}
+},
+&quot;removable&quot;: &quot;0&quot;,
+&quot;rotational&quot;: &quot;1&quot;,
+&quot;sas_address&quot;: null,
+&quot;sas_device_handle&quot;: null,
+&quot;scheduler_mode&quot;: &quot;mq-deadline&quot;,
+&quot;sectors&quot;: &quot;251658240&quot;,
+&quot;sectorsize&quot;: &quot;512&quot;,
+&quot;size&quot;: &quot;120.00 GB&quot;,
+&quot;support_discard&quot;: &quot;512&quot;,
+&quot;vendor&quot;: &quot;0x3832&quot;,
+&quot;virtual&quot;: 1
+}
+},
+&quot;ansible_distribution&quot;: &quot;RedHat&quot;,
+&quot;ansible_distribution_file_parsed&quot;: true,
+&quot;ansible_distribution_file_path&quot;: &quot;/etc/redhat-release&quot;,
+&quot;ansible_distribution_file_search_string&quot;: &quot;Red Hat&quot;,
+&quot;ansible_distribution_file_variety&quot;: &quot;RedHat&quot;,
+&quot;ansible_distribution_major_version&quot;: &quot;8&quot;,
+&quot;ansible_distribution_release&quot;: &quot;Ootpa&quot;,
+&quot;ansible_distribution_version&quot;: &quot;8.6&quot;,
+&quot;ansible_dns&quot;: {
+&quot;nameservers&quot;: [
+&quot;10.11.5.19&quot;,
+&quot;10.11.5.160&quot;,
+&quot;10.2.32.1&quot;
+],
+&quot;search&quot;: [
+&quot;rhts.eng.rdu2.redhat.com&quot;,
+&quot;lab.eng.rdu2.redhat.com&quot;
+]
+},
+&quot;ansible_domain&quot;: &quot;lab.eng.rdu2.redhat.com&quot;,
+&quot;ansible_effective_group_id&quot;: 0,
+&quot;ansible_effective_user_id&quot;: 0,
+&quot;ansible_enc1&quot;: {
+&quot;active&quot;: true,
+&quot;device&quot;: &quot;enc1&quot;,
+&quot;features&quot;: {
+&quot;esp_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;esp_tx_csum_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;fcoe_mtu&quot;: &quot;off [fixed]&quot;,
+&quot;generic_receive_offload&quot;: &quot;on&quot;,
+&quot;generic_segmentation_offload&quot;: &quot;on&quot;,
+&quot;highdma&quot;: &quot;on [fixed]&quot;,
+&quot;hw_tc_offload&quot;: &quot;off [fixed]&quot;,
+&quot;l2_fwd_offload&quot;: &quot;off [fixed]&quot;,
+&quot;large_receive_offload&quot;: &quot;off [fixed]&quot;,
+&quot;loopback&quot;: &quot;off [fixed]&quot;,
+&quot;netns_local&quot;: &quot;off [fixed]&quot;,
+&quot;ntuple_filters&quot;: &quot;off [fixed]&quot;,
+&quot;receive_hashing&quot;: &quot;off [fixed]&quot;,
+&quot;rx_all&quot;: &quot;off [fixed]&quot;,
+&quot;rx_checksumming&quot;: &quot;on [fixed]&quot;,
+&quot;rx_fcs&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_hw&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_list&quot;: &quot;off&quot;,
+&quot;rx_udp_gro_forwarding&quot;: &quot;off&quot;,
+&quot;rx_udp_tunnel_port_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_filter&quot;: &quot;on [fixed]&quot;,
+&quot;rx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_hw_parse&quot;: &quot;off [fixed]&quot;,
+&quot;scatter_gather&quot;: &quot;on&quot;,
+&quot;tcp_segmentation_offload&quot;: &quot;on&quot;,
+&quot;tls_hw_record&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_rx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_tx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_fcoe_crc&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ip_generic&quot;: &quot;on&quot;,
+&quot;tx_checksum_ipv4&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ipv6&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_sctp&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksumming&quot;: &quot;on&quot;,
+&quot;tx_esp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_fcoe_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_list&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_partial&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_robust&quot;: &quot;on [fixed]&quot;,
+&quot;tx_ipxip4_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip6_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_lockless&quot;: &quot;off [fixed]&quot;,
+&quot;tx_nocache_copy&quot;: &quot;off&quot;,
+&quot;tx_scatter_gather&quot;: &quot;on&quot;,
+&quot;tx_scatter_gather_fraglist&quot;: &quot;off [fixed]&quot;,
+&quot;tx_sctp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_tcp6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_ecn_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_mangleid_segmentation&quot;: &quot;off&quot;,
+&quot;tx_tcp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tunnel_remcsum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_tnl_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_tnl_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_stag_hw_insert&quot;: &quot;off [fixed]&quot;,
+&quot;vlan_challenged&quot;: &quot;off [fixed]&quot;
+},
+&quot;hw_timestamp_filters&quot;: [],
+&quot;ipv4&quot;: {
+&quot;address&quot;: &quot;10.0.160.8&quot;,
+&quot;broadcast&quot;: &quot;10.0.161.255&quot;,
+&quot;netmask&quot;: &quot;255.255.254.0&quot;,
+&quot;network&quot;: &quot;10.0.160.0&quot;
+},
+&quot;ipv6&quot;: [
+{
+&quot;address&quot;: &quot;2620:52:0:a1:202:55ff:fe75:f98&quot;,
+&quot;prefix&quot;: &quot;64&quot;,
+&quot;scope&quot;: &quot;global&quot;
+}
+],
+&quot;macaddress&quot;: &quot;00:02:55:75:0f:98&quot;,
+&quot;module&quot;: &quot;virtio_net&quot;,
+&quot;mtu&quot;: 1500,
+&quot;pciid&quot;: &quot;virtio1&quot;,
+&quot;promisc&quot;: false,
+&quot;speed&quot;: -1,
+&quot;timestamping&quot;: [],
+&quot;type&quot;: &quot;ether&quot;
+},
+&quot;ansible_env&quot;: {
+&quot;BASH_FUNC_which%%&quot;: &quot;() {  ( alias;\n eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@\n}&quot;,
+&quot;BEAKER&quot;: &quot;https://beaker.engineering.redhat.com/&quot;,
+&quot;BEAKER_HUB_URL&quot;: &quot;https://beaker.engineering.redhat.com/&quot;,
+&quot;BEAKER_JOB_WHITEBOARD&quot;: &quot;Reserve Workflow provision of distro RHEL-8.6.0-updates-20221020.d.0 on any system for 172800 seconds&quot;,
+&quot;BEAKER_LAB_CONTROLLER&quot;: &quot;lab-02.rhts.eng.rdu.redhat.com&quot;,
+&quot;BEAKER_LAB_CONTROLLER_URL&quot;: &quot;http://lab-02.rhts.eng.rdu.redhat.com:8000/&quot;,
+&quot;BEAKER_RECIPE_ID&quot;: &quot;12806171&quot;,
+&quot;BEAKER_RECIPE_WHITEBOARD&quot;: &quot;&quot;,
+&quot;BEAKER_RESERVATION_POLICY_URL&quot;: &quot;https://home.corp.redhat.com/wiki/extended-reservations-beaker-general-pool-systems&quot;,
+&quot;BUILDURL&quot;: &quot;http://download.eng.rdu.redhat.com&quot;,
+&quot;DBUS_SESSION_BUS_ADDRESS&quot;: &quot;unix:path=/run/user/0/bus&quot;,
+&quot;DUMPSERVER&quot;: &quot;netdump-01.eng.rdu.redhat.com&quot;,
+&quot;HOME&quot;: &quot;/root&quot;,
+&quot;LAB_CONTROLLER&quot;: &quot;lab-02.rhts.eng.rdu.redhat.com&quot;,
+&quot;LANG&quot;: &quot;en_US.UTF-8&quot;,
+&quot;LESSOPEN&quot;: &quot;||/usr/bin/lesspipe.sh %s&quot;,
+&quot;LOGNAME&quot;: &quot;root&quot;,
+&quot;LOOKASIDE&quot;: &quot;http://download.eng.rdu.redhat.com/qa/rhts/lookaside/&quot;,
+&quot;LS_COLORS&quot;: &quot;rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:&quot;,
+&quot;NFSSERVERS&quot;: &quot;rhel6-nfs.eng.rdu2.redhat.com:/export/home rhel7-nfs.eng.rdu2.redhat.com:/export/home rhel8-nfs.eng.rdu2.redhat.com:/export/home fs-netapp-kernel1.fs.lab.eng.bos.redhat.com:/export/home&quot;,
+&quot;PATH&quot;: &quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin&quot;,
+&quot;PWD&quot;: &quot;/root&quot;,
+&quot;RHTS_OPTION_COMPATIBLE&quot;: &quot;&quot;,
+&quot;RHTS_OPTION_COMPAT_SERVICE&quot;: &quot;&quot;,
+&quot;SELINUX_LEVEL_REQUESTED&quot;: &quot;&quot;,
+&quot;SELINUX_ROLE_REQUESTED&quot;: &quot;&quot;,
+&quot;SELINUX_USE_CURRENT_RANGE&quot;: &quot;&quot;,
+&quot;SHELL&quot;: &quot;/bin/bash&quot;,
+&quot;SHLVL&quot;: &quot;2&quot;,
+&quot;SSH_CLIENT&quot;: &quot;10.73.2.3 33558 22&quot;,
+&quot;SSH_CONNECTION&quot;: &quot;10.73.2.3 33558 10.0.160.8 22&quot;,
+&quot;SSH_TTY&quot;: &quot;/dev/pts/1&quot;,
+&quot;TERM&quot;: &quot;xterm-256color&quot;,
+&quot;USER&quot;: &quot;root&quot;,
+&quot;XDG_RUNTIME_DIR&quot;: &quot;/run/user/0&quot;,
+&quot;XDG_SESSION_ID&quot;: &quot;4&quot;,
+&quot;_&quot;: &quot;/usr/libexec/platform-python&quot;,
+&quot;which_declare&quot;: &quot;declare -f&quot;
+},
+&quot;ansible_fips&quot;: false,
+&quot;ansible_form_factor&quot;: &quot;NA&quot;,
+&quot;ansible_fqdn&quot;: &quot;s390x-kvm-008.lab.eng.rdu2.redhat.com&quot;,
+&quot;ansible_hostname&quot;: &quot;s390x-kvm-008&quot;,
+&quot;ansible_interfaces&quot;: [
+&quot;enc1&quot;,
+&quot;cni-podman0&quot;,
+&quot;lo&quot;
+],
+&quot;ansible_is_chroot&quot;: false,
+&quot;ansible_iscsi_iqn&quot;: &quot;&quot;,
+&quot;ansible_kernel&quot;: &quot;4.18.0-372.32.1.el8_6.s390x&quot;,
+&quot;ansible_lo&quot;: {
+&quot;active&quot;: true,
+&quot;device&quot;: &quot;lo&quot;,
+&quot;features&quot;: {
+&quot;esp_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;esp_tx_csum_hw_offload&quot;: &quot;off [fixed]&quot;,
+&quot;fcoe_mtu&quot;: &quot;off [fixed]&quot;,
+&quot;generic_receive_offload&quot;: &quot;on&quot;,
+&quot;generic_segmentation_offload&quot;: &quot;on&quot;,
+&quot;highdma&quot;: &quot;on [fixed]&quot;,
+&quot;hw_tc_offload&quot;: &quot;off [fixed]&quot;,
+&quot;l2_fwd_offload&quot;: &quot;off [fixed]&quot;,
+&quot;large_receive_offload&quot;: &quot;off [fixed]&quot;,
+&quot;loopback&quot;: &quot;on [fixed]&quot;,
+&quot;netns_local&quot;: &quot;on [fixed]&quot;,
+&quot;ntuple_filters&quot;: &quot;off [fixed]&quot;,
+&quot;receive_hashing&quot;: &quot;off [fixed]&quot;,
+&quot;rx_all&quot;: &quot;off [fixed]&quot;,
+&quot;rx_checksumming&quot;: &quot;on [fixed]&quot;,
+&quot;rx_fcs&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_hw&quot;: &quot;off [fixed]&quot;,
+&quot;rx_gro_list&quot;: &quot;off&quot;,
+&quot;rx_udp_gro_forwarding&quot;: &quot;off&quot;,
+&quot;rx_udp_tunnel_port_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_filter&quot;: &quot;off [fixed]&quot;,
+&quot;rx_vlan_stag_hw_parse&quot;: &quot;off [fixed]&quot;,
+&quot;scatter_gather&quot;: &quot;on&quot;,
+&quot;tcp_segmentation_offload&quot;: &quot;on&quot;,
+&quot;tls_hw_record&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_rx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tls_hw_tx_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_fcoe_crc&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ip_generic&quot;: &quot;on [fixed]&quot;,
+&quot;tx_checksum_ipv4&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_ipv6&quot;: &quot;off [fixed]&quot;,
+&quot;tx_checksum_sctp&quot;: &quot;on [fixed]&quot;,
+&quot;tx_checksumming&quot;: &quot;on&quot;,
+&quot;tx_esp_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_fcoe_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gre_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_list&quot;: &quot;on&quot;,
+&quot;tx_gso_partial&quot;: &quot;off [fixed]&quot;,
+&quot;tx_gso_robust&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip4_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_ipxip6_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_lockless&quot;: &quot;on [fixed]&quot;,
+&quot;tx_nocache_copy&quot;: &quot;off [fixed]&quot;,
+&quot;tx_scatter_gather&quot;: &quot;on [fixed]&quot;,
+&quot;tx_scatter_gather_fraglist&quot;: &quot;on [fixed]&quot;,
+&quot;tx_sctp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp6_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_ecn_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_mangleid_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tcp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_tunnel_remcsum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_segmentation&quot;: &quot;on&quot;,
+&quot;tx_udp_tnl_csum_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_udp_tnl_segmentation&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_offload&quot;: &quot;off [fixed]&quot;,
+&quot;tx_vlan_stag_hw_insert&quot;: &quot;off [fixed]&quot;,
+&quot;vlan_challenged&quot;: &quot;on [fixed]&quot;
+},
+&quot;hw_timestamp_filters&quot;: [],
+&quot;ipv4&quot;: {
+&quot;address&quot;: &quot;127.0.0.1&quot;,
+&quot;broadcast&quot;: &quot;host&quot;,
+&quot;netmask&quot;: &quot;255.0.0.0&quot;,
+&quot;network&quot;: &quot;127.0.0.0&quot;
+},
+&quot;ipv6&quot;: [
+{
+&quot;address&quot;: &quot;::1&quot;,
+&quot;prefix&quot;: &quot;128&quot;,
+&quot;scope&quot;: &quot;host&quot;
+}
+],
+&quot;mtu&quot;: 65536,
+&quot;promisc&quot;: false,
+&quot;timestamping&quot;: [],
+&quot;type&quot;: &quot;loopback&quot;
+},
+&quot;ansible_local&quot;: {},
+&quot;ansible_lsb&quot;: {},
+&quot;ansible_lvm&quot;: {
+&quot;lvs&quot;: {
+&quot;home&quot;: {
+&quot;size_g&quot;: &quot;41.02&quot;,
+&quot;vg&quot;: &quot;rhel_s390x-kvm-008&quot;
+},
+&quot;root&quot;: {
+&quot;size_g&quot;: &quot;70.00&quot;,
+&quot;vg&quot;: &quot;rhel_s390x-kvm-008&quot;
+},
+&quot;swap&quot;: {
+&quot;size_g&quot;: &quot;7.98&quot;,
+&quot;vg&quot;: &quot;rhel_s390x-kvm-008&quot;
+}
+},
+&quot;pvs&quot;: {
+&quot;/dev/vda2&quot;: {
+&quot;free_g&quot;: &quot;0&quot;,
+&quot;size_g&quot;: &quot;119.00&quot;,
+&quot;vg&quot;: &quot;rhel_s390x-kvm-008&quot;
+}
+},
+&quot;vgs&quot;: {
+&quot;rhel_s390x-kvm-008&quot;: {
+&quot;free_g&quot;: &quot;0&quot;,
+&quot;num_lvs&quot;: &quot;3&quot;,
+&quot;num_pvs&quot;: &quot;1&quot;,
+&quot;size_g&quot;: &quot;119.00&quot;
+}
+}
+},
+&quot;ansible_machine&quot;: &quot;s390x&quot;,
+&quot;ansible_machine_id&quot;: &quot;597b85a733e74dadbcbe474ef974314c&quot;,
+&quot;ansible_memfree_mb&quot;: 6063,
+&quot;ansible_memory_mb&quot;: {
+&quot;nocache&quot;: {
+&quot;free&quot;: 7439,
+&quot;used&quot;: 407
+},
+&quot;real&quot;: {
+&quot;free&quot;: 6063,
+&quot;total&quot;: 7846,
+&quot;used&quot;: 1783
+},
+&quot;swap&quot;: {
+&quot;cached&quot;: 0,
+&quot;free&quot;: 8167,
+&quot;total&quot;: 8167,
+&quot;used&quot;: 0
+}
+},
+&quot;ansible_memtotal_mb&quot;: 7846,
+&quot;ansible_mounts&quot;: [
+{
+&quot;block_available&quot;: 17534607,
+&quot;block_size&quot;: 4096,
+&quot;block_total&quot;: 18341120,
+&quot;block_used&quot;: 806513,
+&quot;device&quot;: &quot;/dev/mapper/rhel_s390x--kvm--008-root&quot;,
+&quot;fstype&quot;: &quot;xfs&quot;,
+&quot;inode_available&quot;: 36635164,
+&quot;inode_total&quot;: 36700160,
+&quot;inode_used&quot;: 64996,
+&quot;mount&quot;: &quot;/&quot;,
+&quot;options&quot;: &quot;rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota&quot;,
+&quot;size_available&quot;: 71821750272,
+&quot;size_total&quot;: 75125227520,
+&quot;uuid&quot;: &quot;bb82ea07-f321-4e3f-8abf-d59ca8af884b&quot;
+},
+{
+&quot;block_available&quot;: 221407,
+&quot;block_size&quot;: 4096,
+&quot;block_total&quot;: 259584,
+&quot;block_used&quot;: 38177,
+&quot;device&quot;: &quot;/dev/vda1&quot;,
+&quot;fstype&quot;: &quot;xfs&quot;,
+&quot;inode_available&quot;: 524271,
+&quot;inode_total&quot;: 524288,
+&quot;inode_used&quot;: 17,
+&quot;mount&quot;: &quot;/boot&quot;,
+&quot;options&quot;: &quot;rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota&quot;,
+&quot;size_available&quot;: 906883072,
+&quot;size_total&quot;: 1063256064,
+&quot;uuid&quot;: &quot;0b44748c-8f8c-485e-8f14-c86dd2d03967&quot;
+},
+{
+&quot;block_available&quot;: 10664567,
+&quot;block_size&quot;: 4096,
+&quot;block_total&quot;: 10747774,
+&quot;block_used&quot;: 83207,
+&quot;device&quot;: &quot;/dev/mapper/rhel_s390x--kvm--008-home&quot;,
+&quot;fstype&quot;: &quot;xfs&quot;,
+&quot;inode_available&quot;: 21506041,
+&quot;inode_total&quot;: 21506048,
+&quot;inode_used&quot;: 7,
+&quot;mount&quot;: &quot;/home&quot;,
+&quot;options&quot;: &quot;rw,seclabel,relatime,attr2,inode64,logbufs=8,logbsize=32k,noquota&quot;,
+&quot;size_available&quot;: 43682066432,
+&quot;size_total&quot;: 44022882304,
+&quot;uuid&quot;: &quot;1d755fba-340e-4601-a917-e4689a176267&quot;
+}
+],
+&quot;ansible_nodename&quot;: &quot;s390x-kvm-008.lab.eng.rdu2.redhat.com&quot;,
+&quot;ansible_os_family&quot;: &quot;RedHat&quot;,
+&quot;ansible_pkg_mgr&quot;: &quot;dnf&quot;,
+&quot;ansible_processor&quot;: [
+&quot;IBM/S390&quot;
+],
+&quot;ansible_processor_cores&quot;: 2,
+&quot;ansible_product_name&quot;: &quot;NA&quot;,
+&quot;ansible_product_serial&quot;: &quot;NA&quot;,
+&quot;ansible_product_uuid&quot;: &quot;NA&quot;,
+&quot;ansible_product_version&quot;: &quot;NA&quot;,
+&quot;ansible_python&quot;: {
+&quot;executable&quot;: &quot;/usr/libexec/platform-python&quot;,
+&quot;has_sslcontext&quot;: true,
+&quot;type&quot;: &quot;cpython&quot;,
+&quot;version&quot;: {
+&quot;major&quot;: 3,
+&quot;micro&quot;: 8,
+&quot;minor&quot;: 6,
+&quot;releaselevel&quot;: &quot;final&quot;,
+&quot;serial&quot;: 0
+},
+&quot;version_info&quot;: [
+3,
+6,
+8,
+&quot;final&quot;,
+0
+]
+},
+&quot;ansible_python_version&quot;: &quot;3.6.8&quot;,
+&quot;ansible_real_group_id&quot;: 0,
+&quot;ansible_real_user_id&quot;: 0,
+&quot;ansible_selinux&quot;: {
+&quot;config_mode&quot;: &quot;enforcing&quot;,
+&quot;mode&quot;: &quot;enforcing&quot;,
+&quot;policyvers&quot;: 33,
+&quot;status&quot;: &quot;enabled&quot;,
+&quot;type&quot;: &quot;targeted&quot;
+},
+&quot;ansible_selinux_python_present&quot;: true,
+&quot;ansible_service_mgr&quot;: &quot;systemd&quot;,
+&quot;ansible_ssh_host_key_ecdsa_public&quot;: &quot;AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEJNixsU0uOcxAzJxy7+sOyQvOcuhnFoLC/icX69GzOLd+NZWHBvv/tJ1pqS4p+1IBFvJSekKOTi5URVM1WKSR8=&quot;,
+&quot;ansible_ssh_host_key_ed25519_public&quot;: &quot;AAAAC3NzaC1lZDI1NTE5AAAAIOAvFRSVGWAJWSSrJEGip8leZsPJ1/sDXOgqU1Uq8DHx&quot;,
+&quot;ansible_ssh_host_key_rsa_public&quot;: &quot;AAAAB3NzaC1yc2EAAAADAQABAAABgQDXjGzaUZ4Ms3CfvpQ0vkYUUTI9Mn9zpfxlYaRyBS5YKHQdF1Wme+NLbOzXflTM+aWAWTQhKVvPf1nw4tGCvE3AsUwLwYxZEWHtIEeLjFyguno/+GFHYIga+jAWdJ1yy5jkKz1uXX4LMjxsuyw9AO92wP69stQt+y5I2Qi6fMFgGa0UTKpRaPsVjE/j6uZgnfDCiz3ANcMc58SIaTAKkCES7MvM7Ygl8sLE7Tj9k3nNtTsqE1WoNMT9oa5JIGRrqVlbu2vhG8SDFOQg2tDSmDJNIoQuOUtSNVlJxobz9RUJTCMK8ph98PHUhDAqo4cBtx8pwqlGWmhO+pvCTQ11+sq6s4b5f21JVpjGN3cV5GW+EJ/30cfjYd7UcBeoOPt0txlVp4r8u/av9Z4HwtPhjEsgZIPfpSWV0c+gDi42vUAq8JUZajNrkZamQ4B7Bap/FD8zC3Rra3WlbdTqJVN+DYKiFMz5KfKUYSlPQYLF/JqlYzKDqqAfGqlS4BUBTua17dc=&quot;,
+&quot;ansible_swapfree_mb&quot;: 8167,
+&quot;ansible_swaptotal_mb&quot;: 8167,
+&quot;ansible_system&quot;: &quot;Linux&quot;,
+&quot;ansible_system_capabilities&quot;: [],
+&quot;ansible_system_capabilities_enforced&quot;: &quot;False&quot;,
+&quot;ansible_system_vendor&quot;: &quot;NA&quot;,
+&quot;ansible_uptime_seconds&quot;: 15365,
+&quot;ansible_user_dir&quot;: &quot;/root&quot;,
+&quot;ansible_user_gecos&quot;: &quot;root&quot;,
+&quot;ansible_user_gid&quot;: 0,
+&quot;ansible_user_id&quot;: &quot;root&quot;,
+&quot;ansible_user_shell&quot;: &quot;/bin/bash&quot;,
+&quot;ansible_user_uid&quot;: 0,
+&quot;ansible_userspace_bits&quot;: &quot;64&quot;,
+&quot;ansible_virtualization_role&quot;: &quot;guest&quot;,
+&quot;ansible_virtualization_type&quot;: &quot;KVM/Linux&quot;,
+&quot;gather_subset&quot;: [
+&quot;all&quot;
+],
+&quot;module_setup&quot;: true
+},
+&quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase name="[10.8.1.6] all: set_fact ansible_distribution_major_version=9" time="0.017326" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:7">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: set_fact ansible_distribution_major_version=9" time="0.032534" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:7">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: set_fact ansible_distribution_major_version=9" time="0.040539" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:7">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.8.1.6] all: include_vars _raw_params=snmp_rhel7_vars.yml" time="0.017306" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:10">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: include_vars _raw_params=snmp_rhel7_vars.yml" time="0.033483" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:10">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: include_vars _raw_params=snmp_rhel7_vars.yml" time="0.041654" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:10">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.8.1.6] all: include_vars _raw_params=snmp_rhel7_ppc_vars.yml" time="0.017301" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:13">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: include_vars _raw_params=snmp_rhel7_ppc_vars.yml" time="0.032356" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:13">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: include_vars _raw_params=snmp_rhel7_ppc_vars.yml" time="0.042500" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:13">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.8.1.6] all: include_vars _raw_params=snmp_rhel7_s390x_vars.yml" time="0.017143" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:16">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: include_vars _raw_params=snmp_rhel7_s390x_vars.yml" time="0.034064" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:16">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: include_vars _raw_params=snmp_rhel7_s390x_vars.yml" time="0.044223" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:16">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: include_vars _raw_params=snmp_rhel8_vars.yml" time="0.033462" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:19">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: include_vars _raw_params=snmp_rhel8_vars.yml" time="0.043685" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:19">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.8.1.6] all: include_vars _raw_params=snmp_rhel8_vars.yml" time="0.087679" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:19">
+			<system-out>{
+&quot;ansible_facts&quot;: {
+&quot;size_max&quot;: 279,
+&quot;size_min&quot;: 229
+},
+&quot;ansible_included_var_files&quot;: [
+&quot;/root/automation/containers-ansible/containers-ansible/vars/snmp_rhel8_vars.yml&quot;
+],
+&quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase name="[10.8.1.6] all: include_vars _raw_params=snmp_rhel8_ppc_vars.yml" time="0.017401" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:22">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: include_vars _raw_params=snmp_rhel8_ppc_vars.yml" time="0.046931" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:22">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: include_vars _raw_params=snmp_rhel8_ppc_vars.yml" time="0.099584" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:22">
+			<system-out>{
+&quot;ansible_facts&quot;: {
+&quot;size_max&quot;: 355,
+&quot;size_min&quot;: 290
+},
+&quot;ansible_included_var_files&quot;: [
+&quot;/root/automation/containers-ansible/containers-ansible/vars/snmp_rhel8_ppc_vars.yml&quot;
+],
+&quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase name="[10.8.1.6] all: include_vars _raw_params=snmp_rhel8_s390x_vars.yml" time="0.018267" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:25">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: include_vars _raw_params=snmp_rhel8_s390x_vars.yml" time="0.033399" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:25">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: include_vars _raw_params=snmp_rhel8_s390x_vars.yml" time="0.098037" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:25">
+			<system-out>{
+&quot;ansible_facts&quot;: {
+&quot;size_max&quot;: 277,
+&quot;size_min&quot;: 227
+},
+&quot;ansible_included_var_files&quot;: [
+&quot;/root/automation/containers-ansible/containers-ansible/vars/snmp_rhel8_s390x_vars.yml&quot;
+],
+&quot;changed&quot;: false
+}</system-out>
+		</testcase>
+		<testcase name="[10.8.1.6] all: include_vars _raw_params=snmp_rhel9_vars.yml" time="0.018747" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:28">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: include_vars _raw_params=snmp_rhel9_vars.yml" time="0.035717" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:28">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: include_vars _raw_params=snmp_rhel9_vars.yml" time="0.044861" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:28">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.8.1.6] all: include_vars _raw_params=snmp_rhel9_ppc_vars.yml" time="0.017587" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:31">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: include_vars _raw_params=snmp_rhel9_ppc_vars.yml" time="0.032813" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:31">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: include_vars _raw_params=snmp_rhel9_ppc_vars.yml" time="0.042946" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:31">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.8.1.6] all: include_vars _raw_params=snmp_rhel9_s390x_vars.yml" time="0.017214" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:34">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: include_vars _raw_params=snmp_rhel9_s390x_vars.yml" time="0.034476" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:34">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: include_vars _raw_params=snmp_rhel9_s390x_vars.yml" time="0.043560" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:34">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: setup : check insecure registry is added _raw_params=grep -Pz '\[registries\.insecure\]\nregistries = \[\]' /etc/containers/registries.conf" time="7.014326" classname="/root/automation/containers-ansible/containers-ansible/roles/setup/tasks/main.yml:5">
+			<failure type="failure" message="non-zero return code">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;grep -Pz '\\[registries\\.insecure\\]\\nregistries = \\[\\]' /etc/containers/registries.conf&quot;,
+&quot;delta&quot;: &quot;0:00:00.001914&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:51:50.546795&quot;,
+&quot;msg&quot;: &quot;non-zero return code&quot;,
+&quot;rc&quot;: 1,
+&quot;start&quot;: &quot;2022-10-21 03:51:50.544881&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;&quot;,
+&quot;stdout_lines&quot;: []
+}</failure>
+		</testcase>
+		<testcase name="[10.8.1.6] all: setup : check insecure registry is added _raw_params=grep -Pz '\[registries\.insecure\]\nregistries = \[\]' /etc/containers/registries.conf" time="7.132987" classname="/root/automation/containers-ansible/containers-ansible/roles/setup/tasks/main.yml:5">
+			<failure type="failure" message="non-zero return code">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;grep -Pz '\\[registries\\.insecure\\]\\nregistries = \\[\\]' /etc/containers/registries.conf&quot;,
+&quot;delta&quot;: &quot;0:00:00.004740&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:51:50.640610&quot;,
+&quot;msg&quot;: &quot;non-zero return code&quot;,
+&quot;rc&quot;: 1,
+&quot;start&quot;: &quot;2022-10-21 03:51:50.635870&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;&quot;,
+&quot;stdout_lines&quot;: []
+}</failure>
+		</testcase>
+		<testcase name="[10.0.2.69] all: setup : check insecure registry is added _raw_params=grep -Pz '\[registries\.insecure\]\nregistries = \[\]' /etc/containers/registries.conf" time="7.400964" classname="/root/automation/containers-ansible/containers-ansible/roles/setup/tasks/main.yml:5">
+			<failure type="failure" message="non-zero return code">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;grep -Pz '\\[registries\\.insecure\\]\\nregistries = \\[\\]' /etc/containers/registries.conf&quot;,
+&quot;delta&quot;: &quot;0:00:00.008636&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:51:50.881161&quot;,
+&quot;msg&quot;: &quot;non-zero return code&quot;,
+&quot;rc&quot;: 1,
+&quot;start&quot;: &quot;2022-10-21 03:51:50.872525&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;&quot;,
+&quot;stdout_lines&quot;: []
+}</failure>
+		</testcase>
+		<testcase name="[10.8.1.6] all: setup : add insecure registry path=/etc/containers/registries.conf, regexp=^registries = \[\], insertbefore=^\[registries\.block\]$, firstmatch=True, line=registries = ['brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888', 'registry-proxy.engineering.redhat.com']" time="0.018512" classname="/root/automation/containers-ansible/containers-ansible/roles/setup/tasks/main.yml:10">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: setup : add insecure registry path=/etc/containers/registries.conf, regexp=^registries = \[\], insertbefore=^\[registries\.block\]$, firstmatch=True, line=registries = ['brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888', 'registry-proxy.engineering.redhat.com']" time="0.033700" classname="/root/automation/containers-ansible/containers-ansible/roles/setup/tasks/main.yml:10">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: setup : add insecure registry path=/etc/containers/registries.conf, regexp=^registries = \[\], insertbefore=^\[registries\.block\]$, firstmatch=True, line=registries = ['brew-pulp-docker01.web.prod.ext.phx2.redhat.com:8888', 'registry-proxy.engineering.redhat.com']" time="0.044074" classname="/root/automation/containers-ansible/containers-ansible/roles/setup/tasks/main.yml:10">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: setup : delete all containers with podman _raw_params=podman rm -af" time="6.686715" classname="/root/automation/containers-ansible/containers-ansible/roles/setup/tasks/main.yml:21">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman rm -af&quot;,
+&quot;delta&quot;: &quot;0:00:00.094252&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:51:57.690897&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:51:57.596645&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;&quot;,
+&quot;stdout_lines&quot;: []
+}</failure>
+		</testcase>
+		<testcase name="[10.8.1.6] all: setup : delete all containers with podman _raw_params=podman rm -af" time="6.944604" classname="/root/automation/containers-ansible/containers-ansible/roles/setup/tasks/main.yml:21">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman rm -af&quot;,
+&quot;delta&quot;: &quot;0:00:00.215885&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:51:57.926491&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:51:57.710606&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;25c6b6c721aa826e70ba5c8ba289d23e8f13740c4227101b18a10d3912f17760&quot;,
+&quot;stdout_lines&quot;: [
+&quot;25c6b6c721aa826e70ba5c8ba289d23e8f13740c4227101b18a10d3912f17760&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.2.69] all: setup : delete all containers with podman _raw_params=podman rm -af" time="7.385262" classname="/root/automation/containers-ansible/containers-ansible/roles/setup/tasks/main.yml:21">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman rm -af&quot;,
+&quot;delta&quot;: &quot;0:00:00.392912&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:51:58.342552&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:51:57.949640&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;&quot;,
+&quot;stdout_lines&quot;: []
+}</failure>
+		</testcase>
+		<testcase name="[10.8.1.6] all: pull : pull the image with podman _raw_params=podman pull {{ image_fullname }}" time="23.128877" classname="/root/automation/containers-ansible/containers-ansible/roles/pull/tasks/main.yml:4">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman pull registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178&quot;,
+&quot;delta&quot;: &quot;0:00:16.048418&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:21.501983&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:05.453565&quot;,
+&quot;stderr&quot;: &quot;Trying to pull registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178...\nGetting image source signatures\nCopying blob sha256:0e8a1cd8de4212f1618b11e01824359074d45f1ddaa85f857e745c8b141ffe83\nCopying blob sha256:6ac0dc04f22d3ed4799d9dbd7eaeea524193e9725dc579b86637a99b45b4cea5\nCopying config sha256:d0d62d6e83eaffa1529e70ccac3f1bb3bec5f3facf5fbf5598a6fc3ed39ab016\nWriting manifest to image destination\nStoring signatures&quot;,
+&quot;stderr_lines&quot;: [
+&quot;Trying to pull registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178...&quot;,
+&quot;Getting image source signatures&quot;,
+&quot;Copying blob sha256:0e8a1cd8de4212f1618b11e01824359074d45f1ddaa85f857e745c8b141ffe83&quot;,
+&quot;Copying blob sha256:6ac0dc04f22d3ed4799d9dbd7eaeea524193e9725dc579b86637a99b45b4cea5&quot;,
+&quot;Copying config sha256:d0d62d6e83eaffa1529e70ccac3f1bb3bec5f3facf5fbf5598a6fc3ed39ab016&quot;,
+&quot;Writing manifest to image destination&quot;,
+&quot;Storing signatures&quot;
+],
+&quot;stdout&quot;: &quot;d0d62d6e83eaffa1529e70ccac3f1bb3bec5f3facf5fbf5598a6fc3ed39ab016&quot;,
+&quot;stdout_lines&quot;: [
+&quot;d0d62d6e83eaffa1529e70ccac3f1bb3bec5f3facf5fbf5598a6fc3ed39ab016&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.160.8] all: pull : pull the image with podman _raw_params=podman pull {{ image_fullname }}" time="28.919749" classname="/root/automation/containers-ansible/containers-ansible/roles/pull/tasks/main.yml:4">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman pull registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178&quot;,
+&quot;delta&quot;: &quot;0:00:21.983882&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:27.321811&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:05.337929&quot;,
+&quot;stderr&quot;: &quot;Trying to pull registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178...\nGetting image source signatures\nCopying blob sha256:ca757485086767b769a7270a2cefc3783ca8dfcbce98e88abc69719ab316e90c\nCopying blob sha256:aa1ce5e783d98fddc9624b18d748549ec6e4a6ba2cc722ddc92edcc02b6850b4\nCopying config sha256:9c9d2171a89cb247c5a1cf91ee143d1d4e7d792a47343d2659340ec8c3d7adb7\nWriting manifest to image destination\nStoring signatures&quot;,
+&quot;stderr_lines&quot;: [
+&quot;Trying to pull registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178...&quot;,
+&quot;Getting image source signatures&quot;,
+&quot;Copying blob sha256:ca757485086767b769a7270a2cefc3783ca8dfcbce98e88abc69719ab316e90c&quot;,
+&quot;Copying blob sha256:aa1ce5e783d98fddc9624b18d748549ec6e4a6ba2cc722ddc92edcc02b6850b4&quot;,
+&quot;Copying config sha256:9c9d2171a89cb247c5a1cf91ee143d1d4e7d792a47343d2659340ec8c3d7adb7&quot;,
+&quot;Writing manifest to image destination&quot;,
+&quot;Storing signatures&quot;
+],
+&quot;stdout&quot;: &quot;9c9d2171a89cb247c5a1cf91ee143d1d4e7d792a47343d2659340ec8c3d7adb7&quot;,
+&quot;stdout_lines&quot;: [
+&quot;9c9d2171a89cb247c5a1cf91ee143d1d4e7d792a47343d2659340ec8c3d7adb7&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.2.69] all: pull : pull the image with podman _raw_params=podman pull {{ image_fullname }}" time="37.210480" classname="/root/automation/containers-ansible/containers-ansible/roles/pull/tasks/main.yml:4">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman pull registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178&quot;,
+&quot;delta&quot;: &quot;0:00:29.885073&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:35.573771&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:05.688698&quot;,
+&quot;stderr&quot;: &quot;Trying to pull registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178...\nGetting image source signatures\nCopying blob sha256:9b5c5a6010217e5ccb80eb8aed72e4bafd71bca921b5f6e892bf06f6645aa0db\nCopying blob sha256:fb5d0f496876875be3dde4d6b3cc5d69a47fc514787833f5c8c4db925e39d629\nCopying config sha256:1907165c81bf57e0ce9e104c71ce179cb6d1afca544bb2e5d333049de6583453\nWriting manifest to image destination\nStoring signatures&quot;,
+&quot;stderr_lines&quot;: [
+&quot;Trying to pull registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178...&quot;,
+&quot;Getting image source signatures&quot;,
+&quot;Copying blob sha256:9b5c5a6010217e5ccb80eb8aed72e4bafd71bca921b5f6e892bf06f6645aa0db&quot;,
+&quot;Copying blob sha256:fb5d0f496876875be3dde4d6b3cc5d69a47fc514787833f5c8c4db925e39d629&quot;,
+&quot;Copying config sha256:1907165c81bf57e0ce9e104c71ce179cb6d1afca544bb2e5d333049de6583453&quot;,
+&quot;Writing manifest to image destination&quot;,
+&quot;Storing signatures&quot;
+],
+&quot;stdout&quot;: &quot;1907165c81bf57e0ce9e104c71ce179cb6d1afca544bb2e5d333049de6583453&quot;,
+&quot;stdout_lines&quot;: [
+&quot;1907165c81bf57e0ce9e104c71ce179cb6d1afca544bb2e5d333049de6583453&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.160.8] all: check_label_version : get the label version _raw_params=podman inspect --format \{\{.Labels.version\}\} {{ image_fullname }}" time="7.015751" classname="/root/automation/containers-ansible/containers-ansible/roles/check_label_version/tasks/main.yml:4">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman inspect --format \\{\\{.Labels.version\\}\\} registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178&quot;,
+&quot;delta&quot;: &quot;0:00:00.093149&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:42.641095&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:42.547946&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;5.8&quot;,
+&quot;stdout_lines&quot;: [
+&quot;5.8&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.8.1.6] all: check_label_version : get the label version _raw_params=podman inspect --format \{\{.Labels.version\}\} {{ image_fullname }}" time="7.253516" classname="/root/automation/containers-ansible/containers-ansible/roles/check_label_version/tasks/main.yml:4">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman inspect --format \\{\\{.Labels.version\\}\\} registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178&quot;,
+&quot;delta&quot;: &quot;0:00:00.128022&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:42.831944&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:42.703922&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;5.8&quot;,
+&quot;stdout_lines&quot;: [
+&quot;5.8&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.2.69] all: check_label_version : get the label version _raw_params=podman inspect --format \{\{.Labels.version\}\} {{ image_fullname }}" time="8.090559" classname="/root/automation/containers-ansible/containers-ansible/roles/check_label_version/tasks/main.yml:4">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman inspect --format \\{\\{.Labels.version\\}\\} registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178&quot;,
+&quot;delta&quot;: &quot;0:00:00.403816&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:43.672738&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:43.268922&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;5.8&quot;,
+&quot;stdout_lines&quot;: [
+&quot;5.8&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.8.1.6] all: check_label_version : check label version msg=Label version does NOT match!" time="0.018766" classname="/root/automation/containers-ansible/containers-ansible/roles/check_label_version/tasks/main.yml:9">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.2.69] all: check_label_version : check label version msg=Label version does NOT match!" time="0.034175" classname="/root/automation/containers-ansible/containers-ansible/roles/check_label_version/tasks/main.yml:9">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.0.160.8] all: check_label_version : check label version msg=Label version does NOT match!" time="0.043249" classname="/root/automation/containers-ansible/containers-ansible/roles/check_label_version/tasks/main.yml:9">
+			<skipped type="skipped" message="Conditional result was False"/>
+		</testcase>
+		<testcase name="[10.8.1.6] all: run the container _raw_params=podman run -d --privileged --net=host {{ image_fullname }}" time="7.535316" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:46">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman run -d --privileged --net=host registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178&quot;,
+&quot;delta&quot;: &quot;0:00:00.405485&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:51.298095&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:50.892610&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;fa611d2b2f3b539eb8e3ab5c9dd81676bfb66e69b6632f08b882531e15763dbc&quot;,
+&quot;stdout_lines&quot;: [
+&quot;fa611d2b2f3b539eb8e3ab5c9dd81676bfb66e69b6632f08b882531e15763dbc&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.160.8] all: run the container _raw_params=podman run -d --privileged --net=host {{ image_fullname }}" time="7.724768" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:46">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman run -d --privileged --net=host registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178&quot;,
+&quot;delta&quot;: &quot;0:00:00.261572&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:51.513638&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:51.252066&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;abde780ef4c63817ab3dc67b9e57fe740506ec57e5e94d3f51ce52a7f7c8fbfc&quot;,
+&quot;stdout_lines&quot;: [
+&quot;abde780ef4c63817ab3dc67b9e57fe740506ec57e5e94d3f51ce52a7f7c8fbfc&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.2.69] all: run the container _raw_params=podman run -d --privileged --net=host {{ image_fullname }}" time="9.433017" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:46">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;podman run -d --privileged --net=host registry-proxy.engineering.redhat.com/rh-osbs/rhel8-net-snmp:5.8-178&quot;,
+&quot;delta&quot;: &quot;0:00:02.049257&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:53.160424&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:51.111167&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;bd5d4e11451d0f4aeb395757b4e7b9b9738ee5abb3a210f4f1e36ce68e552258&quot;,
+&quot;stdout_lines&quot;: [
+&quot;bd5d4e11451d0f4aeb395757b4e7b9b9738ee5abb3a210f4f1e36ce68e552258&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.8.1.6] all: run &quot;snmpgetnext -v 2c -c public $IP .1&quot; for remote target _raw_params=snmpgetnext -v 2c -c public {{ ansible_default_ipv4.address }} .1" time="0.555582" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:50">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;snmpgetnext -v 2c -c public 10.8.1.6 .1&quot;,
+&quot;delta&quot;: &quot;0:00:00.330385&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:54.591031&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:54.260646&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;SNMPv2-MIB::sysDescr.0 = STRING: Linux kvm-01-guest05.lab.eng.rdu2.redhat.com 4.18.0-372.32.1.el8_6.x86_64 #1 SMP Fri Oct 7 12:35:10 EDT 2022 x86_64&quot;,
+&quot;stdout_lines&quot;: [
+&quot;SNMPv2-MIB::sysDescr.0 = STRING: Linux kvm-01-guest05.lab.eng.rdu2.redhat.com 4.18.0-372.32.1.el8_6.x86_64 #1 SMP Fri Oct 7 12:35:10 EDT 2022 x86_64&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.2.69] all: run &quot;snmpgetnext -v 2c -c public $IP .1&quot; for remote target _raw_params=snmpgetnext -v 2c -c public {{ ansible_default_ipv4.address }} .1" time="0.573627" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:50">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;snmpgetnext -v 2c -c public 10.0.2.69 .1&quot;,
+&quot;delta&quot;: &quot;0:00:00.331189&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:54.613781&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:54.282592&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;SNMPv2-MIB::sysDescr.0 = STRING: Linux ibm-p9z-18-lp2.virt.pnr.lab.eng.rdu2.redhat.com 4.18.0-372.32.1.el8_6.ppc64le #1 SMP Fri Oct 7 11:37:39 EDT 2022 ppc64le&quot;,
+&quot;stdout_lines&quot;: [
+&quot;SNMPv2-MIB::sysDescr.0 = STRING: Linux ibm-p9z-18-lp2.virt.pnr.lab.eng.rdu2.redhat.com 4.18.0-372.32.1.el8_6.ppc64le #1 SMP Fri Oct 7 11:37:39 EDT 2022 ppc64le&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.160.8] all: run &quot;snmpgetnext -v 2c -c public $IP .1&quot; for remote target _raw_params=snmpgetnext -v 2c -c public {{ ansible_default_ipv4.address }} .1" time="0.595837" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:50">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;snmpgetnext -v 2c -c public 10.0.160.8 .1&quot;,
+&quot;delta&quot;: &quot;0:00:00.329578&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:54.632174&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:54.302596&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;SNMPv2-MIB::sysDescr.0 = STRING: Linux s390x-kvm-008.lab.eng.rdu2.redhat.com 4.18.0-372.32.1.el8_6.s390x #1 SMP Fri Oct 7 11:38:38 EDT 2022 s390x&quot;,
+&quot;stdout_lines&quot;: [
+&quot;SNMPv2-MIB::sysDescr.0 = STRING: Linux s390x-kvm-008.lab.eng.rdu2.redhat.com 4.18.0-372.32.1.el8_6.s390x #1 SMP Fri Oct 7 11:38:38 EDT 2022 s390x&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.8.1.6] all: run &quot;nmap -sU -p U:161 $IP&quot; for remote target _raw_params=nmap -sU -p U:161 {{ ansible_default_ipv4.address }}" time="1.106282" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:55">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;nmap -sU -p U:161 10.8.1.6&quot;,
+&quot;delta&quot;: &quot;0:00:00.857503&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:55.753191&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:54.895688&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;Starting Nmap 7.80 ( https://nmap.org ) at 2022-10-21 03:52 EDT\nNmap scan report for kvm-01-guest05.lab.eng.rdu2.redhat.com (10.8.1.6)\nHost is up (0.31s latency).\n\nPORT    STATE SERVICE\n161/udp open  snmp\n\nNmap done: 1 IP address (1 host up) scanned in 0.85 seconds&quot;,
+&quot;stdout_lines&quot;: [
+&quot;Starting Nmap 7.80 ( https://nmap.org ) at 2022-10-21 03:52 EDT&quot;,
+&quot;Nmap scan report for kvm-01-guest05.lab.eng.rdu2.redhat.com (10.8.1.6)&quot;,
+&quot;Host is up (0.31s latency).&quot;,
+&quot;&quot;,
+&quot;PORT    STATE SERVICE&quot;,
+&quot;161/udp open  snmp&quot;,
+&quot;&quot;,
+&quot;Nmap done: 1 IP address (1 host up) scanned in 0.85 seconds&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.160.8] all: run &quot;nmap -sU -p U:161 $IP&quot; for remote target _raw_params=nmap -sU -p U:161 {{ ansible_default_ipv4.address }}" time="1.135106" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:55">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;nmap -sU -p U:161 10.0.160.8&quot;,
+&quot;delta&quot;: &quot;0:00:00.858509&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:55.789090&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:54.930581&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;Starting Nmap 7.80 ( https://nmap.org ) at 2022-10-21 03:52 EDT\nNmap scan report for s390x-kvm-008.lab.eng.rdu2.redhat.com (10.0.160.8)\nHost is up (0.31s latency).\n\nPORT    STATE SERVICE\n161/udp open  snmp\n\nNmap done: 1 IP address (1 host up) scanned in 0.85 seconds&quot;,
+&quot;stdout_lines&quot;: [
+&quot;Starting Nmap 7.80 ( https://nmap.org ) at 2022-10-21 03:52 EDT&quot;,
+&quot;Nmap scan report for s390x-kvm-008.lab.eng.rdu2.redhat.com (10.0.160.8)&quot;,
+&quot;Host is up (0.31s latency).&quot;,
+&quot;&quot;,
+&quot;PORT    STATE SERVICE&quot;,
+&quot;161/udp open  snmp&quot;,
+&quot;&quot;,
+&quot;Nmap done: 1 IP address (1 host up) scanned in 0.85 seconds&quot;
+]
+}</failure>
+		</testcase>
+		<testcase name="[10.0.2.69] all: run &quot;nmap -sU -p U:161 $IP&quot; for remote target _raw_params=nmap -sU -p U:161 {{ ansible_default_ipv4.address }}" time="1.137663" classname="/root/automation/containers-ansible/containers-ansible/net_snmp.yml:55">
+			<failure type="failure" message="rc=0">{
+&quot;changed&quot;: true,
+&quot;cmd&quot;: &quot;nmap -sU -p U:161 10.0.2.69&quot;,
+&quot;delta&quot;: &quot;0:00:00.869763&quot;,
+&quot;end&quot;: &quot;2022-10-21 03:52:55.785910&quot;,
+&quot;rc&quot;: 0,
+&quot;start&quot;: &quot;2022-10-21 03:52:54.916147&quot;,
+&quot;stderr&quot;: &quot;&quot;,
+&quot;stderr_lines&quot;: [],
+&quot;stdout&quot;: &quot;Starting Nmap 7.80 ( https://nmap.org ) at 2022-10-21 03:52 EDT\nNmap scan report for ibm-p9z-18-lp2.virt.pnr.lab.eng.rdu2.redhat.com (10.0.2.69)\nHost is up (0.31s latency).\n\nPORT    STATE SERVICE\n161/udp open  snmp\n\nNmap done: 1 IP address (1 host up) scanned in 0.86 seconds&quot;,
+&quot;stdout_lines&quot;: [
+&quot;Starting Nmap 7.80 ( https://nmap.org ) at 2022-10-21 03:52 EDT&quot;,
+&quot;Nmap scan report for ibm-p9z-18-lp2.virt.pnr.lab.eng.rdu2.redhat.com (10.0.2.69)&quot;,
+&quot;Host is up (0.31s latency).&quot;,
+&quot;&quot;,
+&quot;PORT    STATE SERVICE&quot;,
+&quot;161/udp open  snmp&quot;,
+&quot;&quot;,
+&quot;Nmap done: 1 IP address (1 host up) scanned in 0.86 seconds&quot;
+]
+}</failure>
+		</testcase>
+	</testsuite>
+</testsuites>

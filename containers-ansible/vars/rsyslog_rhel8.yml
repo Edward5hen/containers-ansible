@@ -1,0 +1,7 @@
+---
+container_name: 'rhel8-rsyslog'
+mounts: "/etc/localtime /etc/machine-id /etc/pki/rsyslog /etc/rsyslog.conf /etc/rsyslog.d /etc/sysconfig/rsyslog /run /var/lib/rsyslog /var/log "
+install_files:
+  - /etc/pki/rsyslog
+  - /etc/rsyslog.conf
+  - /etc/sysconfig/rsyslog

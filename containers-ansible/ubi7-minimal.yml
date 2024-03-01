@@ -8,14 +8,13 @@
 
   pre_tasks:
   - include_vars: ubi7_minimal_vars.yml
-    when: ansible_architecture == 'x86_64'
 
   roles:
   - setup
   - pull
   - check_signature
   - check_label_version
-  - check_size
+    #  - check_size
 
   post_tasks:
   # Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1549765
@@ -56,6 +55,21 @@
       src: Dockerfile-ubi7-minimal-rhel.j2
       dest: /tmp/Dockerfile-ubi7-minimal-rhel
     become: true
+    when: ansible_architecture == 'x86_64'
+
+  - name: create dockerfile with rhel content for ppc64le
+    template:
+      src: Dockerfile-ubi7-minimal-rhel-ppc.j2
+      dest: /tmp/Dockerfile-ubi7-minimal-rhel
+    become: true
+    when: ansible_architecture == 'ppc64le'
+
+  - name: create dockerfile with rhel content
+    template:
+      src: Dockerfile-ubi7-minimal-rhel-s390x.j2
+      dest: /tmp/Dockerfile-ubi7-minimal-rhel
+    become: true
+    when: ansible_architecture == 's390x'
 
   - name: remove existing rhel content image
     shell: podman rmi -f ubi7-build-rhel
@@ -82,6 +96,21 @@
       src: Dockerfile-ubi7-minimal-ubi.j2
       dest: /tmp/Dockerfile-ubi7-minimal-ubi
     become: true
+    when: ansible_architecture == 'x86_64'
+
+  - name: create dockerfile with ubi content for ppc
+    template:
+      src: Dockerfile-ubi7-minimal-ubi-ppc.j2
+      dest: /tmp/Dockerfile-ubi7-minimal-ubi
+    become: true
+    when: ansible_architecture == 'ppc64le'
+
+  - name: create dockerfile with ubi content for s390x
+    template:
+      src: Dockerfile-ubi7-minimal-ubi-s390x.j2
+      dest: /tmp/Dockerfile-ubi7-minimal-ubi
+    become: true
+    when: ansible_architecture == 's390x'
 
   - name: remove existing ubi content based image
     shell: podman rmi -f ubi7-build-ubi

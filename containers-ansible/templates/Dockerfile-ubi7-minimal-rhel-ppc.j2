@@ -1,0 +1,6 @@
+FROM {{ image_fullname }}
+MAINTAINER  Atomic QE "atomic-qe@redhat.com"
+
+RUN microdnf install -y --enablerepo=rhel-7-for-power-le-rpms traceroute && microdnf clean all
+
+CMD ["/usr/bin/traceroute", "www.amazon.com"]

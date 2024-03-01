@@ -1,0 +1,82 @@
+---
+# This playbook is to test ubi9-micro container image
+
+- hosts: all
+
+  pre_tasks:
+  - include_vars: ubi8_minimal_vars.yml
+
+  roles:
+  - setup
+  - pull
+  - check_signature
+  - check_label_version
+    #  - check_size
+
+  post_tasks:
+  - name: check eula correctness with podman
+    shell: podman inspect {{ image_fullname }} | grep {{ eula_link }}
+    become: true
+
+  - name: check repo file with podman
+    shell: podman run --rm {{ image_fullname }} ls /etc/yum.repos.d | grep "ubi\.repo"
+    become: true
+
+  - name: check pem file with podman for arch x86_64
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "479\.pem"
+    become: true
+    when: ansible_architecture == 'x86_64'
+
+  - name: check pem file with podman for arch ppc64le
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "279\.pem"
+    become: true
+    when: ansible_architecture == 'ppc64le'
+
+  - name: check pem file with podman for arch s390x
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "72\.pem"
+    become: true
+    when: ansible_architecture == 's390x'
+
+  - name: check pem file with podman for arch aarch64
+    shell: podman run --rm {{ image_fullname }} ls /etc/pki/product-default | grep "419\.pem"
+    become: true
+    when: ansible_architecture == 'aarch64'
+
+  - name: install buildah with dnf
+    shell: dnf install -y buildah
+    become: true
+
+  - name: buildah unmount if exists
+    shell: buildah unmount ubi9-ubi-micro-working-container
+    ignore_errors: yes
+    become: true
+
+  - name: buildah remove container if exists
+    shell: buildah rm ubi9-ubi-micro-working-container
+    ignore_errors: yes
+    become: true
+
+  - name: buildah from
+    shell: buildah from {{ image_fullname }}
+    become: true
+
+  - name: buildah mount
+    shell: buildah mount ubi9-ubi-micro-working-container
+    register: scratchmnt
+    become: true
+
+  - name: copy repo file
+    shell: cp /etc/yum.repos.d/redhat.repo {{ scratchmnt.stdout }}/etc/yum.repos.d/redhat.repo
+    become: true
+
+  - name: install wget in mount dir
+    shell: dnf install -y --releasever=9 --disablerepo=ubi* --installroot={{ scratchmnt.stdout }} wget
+    become: true
+
+  - name: buildah commit
+    shell: buildah commit ubi9-ubi-micro-working-container localhost/microtest:latest
+    become: true
+
+  - name: run wget in container with podman
+    shell: podman run -t localhost/microtest:latest wget --no-check-certificate www.redhat.com
+    become: true

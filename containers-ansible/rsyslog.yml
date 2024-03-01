@@ -40,6 +40,9 @@
   - include_vars: rsyslog_rhel8_s390x_vars.yml
     when: ansible_distribution_major_version == '8' and ansible_architecture == 's390x'
 
+  - include_vars: rsyslog_rhel8.yml
+    when: ansible_distribution_major_version == '8' and ansible_architecture == 'aarch64'
+
   - include_vars: rsyslog_rhel9_vars.yml
     when: ansible_distribution_major_version == '9' and ansible_architecture == 'x86_64'
 
@@ -49,12 +52,15 @@
   - include_vars: rsyslog_rhel9_s390x_vars.yml
     when: ansible_distribution_major_version == '9' and ansible_architecture == 's390x'
 
+  - include_vars: rsyslog_rhel9_vars.yml
+    when: ansible_distribution_major_version == '9' and ansible_architecture == 'aarch64'
+
   roles:
   - setup
   - pull
   # only rhel7 container can be scanned now.
   #- scan
-  #- check_signature
+  - check_signature
   - check_label_version
     #- check_size
   - install_and_run
